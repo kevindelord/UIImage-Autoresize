@@ -15,7 +15,7 @@ In your PrefixHeader.pch file:
 
     #import "UIImage+DKHelper.h"
 
-When you instantiate an image in your code (or in storyboard):
+When you instantiate an image in your code:
 
     [UIImage imageNamed: @"background.png" ];
 
@@ -27,3 +27,7 @@ And is also documented on [CocoaPods][1] through this pod: [DKHelper][2]
   [1]: http://cocoadocs.org/docsets/DKHelper/0.7.5/Categories/UIImage+DKHelper.html
   [2]: https://github.com/kevindelord/DKHelper
   [3]: https://gist.github.com/kevindelord/fe2e691d06ab745fbb00
+
+# TODO:
+* iPad
+* Make it work with Storyboard
