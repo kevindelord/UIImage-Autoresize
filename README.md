@@ -10,7 +10,11 @@ Through the categorised class `UIImage+DKHelper`, I apply a naming convention to
 * **-667h@2x** for iPhone 6
 * **@3x** for iPhone 6 Plus
 
-When this class is integrated into your project, you have nothing else to do.
+When this class is integrated and imported into your project, you have nothing else to do.
+In your PrefixHeader.pch file:
+
+    #import "UIImage+DKHelper.h"
+
 When you instantiate an image in your code (or in storyboard):
 
     [UIImage imageNamed: @"background.png" ];
