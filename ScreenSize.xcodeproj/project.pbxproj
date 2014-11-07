@@ -12,7 +12,6 @@
 		756DA3CF19FFC19300C702B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 756DA3CE19FFC19300C702B7 /* ViewController.m */; };
 		756DA3D219FFC19300C702B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3D019FFC19300C702B7 /* Main.storyboard */; };
 		756DA3D419FFC19300C702B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3D319FFC19300C702B7 /* Images.xcassets */; };
-		756DA3D719FFC19300C702B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3D519FFC19300C702B7 /* LaunchScreen.xib */; };
 		756DA3E319FFC19300C702B7 /* ScreenSizeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 756DA3E219FFC19300C702B7 /* ScreenSizeTests.m */; };
 		756DA3F219FFC1B900C702B7 /* bg-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3ED19FFC1B900C702B7 /* bg-568h@2x.png */; };
 		756DA3F319FFC1B900C702B7 /* bg-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3EE19FFC1B900C702B7 /* bg-667h@2x.png */; };
@@ -20,6 +19,7 @@
 		756DA3F519FFC1B900C702B7 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3F019FFC1B900C702B7 /* bg@2x.png */; };
 		756DA3F619FFC1B900C702B7 /* bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3F119FFC1B900C702B7 /* bg@3x.png */; };
 		756DA3F919FFC2B100C702B7 /* UIImage+DKHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 756DA3F819FFC2B100C702B7 /* UIImage+DKHelper.m */; };
+		757A45DD1A0CD87A0029314C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 757A45DB1A0CD87A0029314C /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,6 @@
 		756DA3CE19FFC19300C702B7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		756DA3D119FFC19300C702B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		756DA3D319FFC19300C702B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		756DA3D619FFC19300C702B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		756DA3DC19FFC19300C702B7 /* ScreenSizeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScreenSizeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		756DA3E119FFC19300C702B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		756DA3E219FFC19300C702B7 /* ScreenSizeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScreenSizeTests.m; sourceTree = "<group>"; };
@@ -53,6 +52,7 @@
 		756DA3F119FFC1B900C702B7 /* bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@3x.png"; sourceTree = "<group>"; };
 		756DA3F719FFC2B100C702B7 /* UIImage+DKHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DKHelper.h"; sourceTree = "<group>"; };
 		756DA3F819FFC2B100C702B7 /* UIImage+DKHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+DKHelper.m"; sourceTree = "<group>"; };
+		757A45DC1A0CD87A0029314C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +95,7 @@
 		756DA3C519FFC19300C702B7 /* ScreenSize */ = {
 			isa = PBXGroup;
 			children = (
+				757A45DB1A0CD87A0029314C /* LaunchScreen.xib */,
 				756DA3F719FFC2B100C702B7 /* UIImage+DKHelper.h */,
 				756DA3F819FFC2B100C702B7 /* UIImage+DKHelper.m */,
 				756DA3CA19FFC19300C702B7 /* AppDelegate.h */,
@@ -103,7 +104,6 @@
 				756DA3CE19FFC19300C702B7 /* ViewController.m */,
 				756DA3D019FFC19300C702B7 /* Main.storyboard */,
 				756DA3D319FFC19300C702B7 /* Images.xcassets */,
-				756DA3D519FFC19300C702B7 /* LaunchScreen.xib */,
 				756DA3C619FFC19300C702B7 /* Supporting Files */,
 			);
 			path = ScreenSize;
@@ -231,9 +231,9 @@
 				756DA3F319FFC1B900C702B7 /* bg-667h@2x.png in Resources */,
 				756DA3F219FFC1B900C702B7 /* bg-568h@2x.png in Resources */,
 				756DA3F419FFC1B900C702B7 /* bg.png in Resources */,
+				757A45DD1A0CD87A0029314C /* LaunchScreen.xib in Resources */,
 				756DA3F519FFC1B900C702B7 /* bg@2x.png in Resources */,
 				756DA3D219FFC19300C702B7 /* Main.storyboard in Resources */,
-				756DA3D719FFC19300C702B7 /* LaunchScreen.xib in Resources */,
 				756DA3D419FFC19300C702B7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,10 +286,10 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		756DA3D519FFC19300C702B7 /* LaunchScreen.xib */ = {
+		757A45DB1A0CD87A0029314C /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				756DA3D619FFC19300C702B7 /* Base */,
+				757A45DC1A0CD87A0029314C /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -377,6 +377,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ScreenSize/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -388,6 +389,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ScreenSize/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -448,6 +450,7 @@
 				756DA3E819FFC19300C702B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		756DA3E919FFC19300C702B7 /* Build configuration list for PBXNativeTarget "ScreenSizeTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +459,7 @@
 				756DA3EB19FFC19300C702B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
