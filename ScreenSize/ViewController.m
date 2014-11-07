@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // uncomment this and remove the picture in the storyboard to test a manual initialization
+//    self.imageView.image = [UIImage imageNamed:@"bg.png"];
 }
 
 @end

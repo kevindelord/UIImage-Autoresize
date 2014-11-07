@@ -16,8 +16,8 @@ static Method origImageNamedMethod = nil;
 #pragma mark - UIImage Initializer
 
 + (void)initialize {
-    origImageNamedMethod = class_getClassMethod(self, @selector(imageNamed:));
-    method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(self, @selector(dynamicImageNamed:)));
+    origImageNamedMethod = class_getClassMethod(self.class, @selector(imageNamed:));
+    method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(self.class, @selector(dynamicImageNamed:)));
 }
 
 + (UIImage *)dynamicImageNamed:(NSString *)imageName {
