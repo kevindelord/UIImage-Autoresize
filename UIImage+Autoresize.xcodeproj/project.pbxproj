@@ -19,6 +19,9 @@
 		756DA3F419FFC1B900C702B7 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3EF19FFC1B900C702B7 /* bg.png */; };
 		756DA3F519FFC1B900C702B7 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3F019FFC1B900C702B7 /* bg@2x.png */; };
 		756DA3F619FFC1B900C702B7 /* bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3F119FFC1B900C702B7 /* bg@3x.png */; };
+		758C05291A0E1D32004B9297 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 758C05241A0E1D32004B9297 /* README.md */; };
+		758C052B1A0E1D32004B9297 /* UIImage+Autoresize.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 758C05261A0E1D32004B9297 /* UIImage+Autoresize.podspec */; };
+		758C052C1A0E1D32004B9297 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 758C05271A0E1D32004B9297 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		756DA3F019FFC1B900C702B7 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		756DA3F119FFC1B900C702B7 /* bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@3x.png"; sourceTree = "<group>"; };
 		758C05221A0E1B0B004B9297 /* Project-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project-Prefix.pch"; sourceTree = "<group>"; };
+		758C05241A0E1D32004B9297 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		758C05261A0E1D32004B9297 /* UIImage+Autoresize.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UIImage+Autoresize.podspec"; sourceTree = "<group>"; };
+		758C05271A0E1D32004B9297 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,9 @@
 		756DA3BA19FFC19300C702B7 = {
 			isa = PBXGroup;
 			children = (
+				758C05241A0E1D32004B9297 /* README.md */,
+				758C05261A0E1D32004B9297 /* UIImage+Autoresize.podspec */,
+				758C05271A0E1D32004B9297 /* LICENSE */,
 				756655391A0E161A000CBCBC /* Project */,
 				756655351A0E1615000CBCBC /* Classes */,
 				756DA3EC19FFC1B900C702B7 /* Ressources */,
@@ -172,8 +181,10 @@
 				756DA3F319FFC1B900C702B7 /* bg-667h@2x.png in Resources */,
 				756DA3F219FFC1B900C702B7 /* bg-568h@2x.png in Resources */,
 				756DA3F419FFC1B900C702B7 /* bg.png in Resources */,
+				758C052C1A0E1D32004B9297 /* LICENSE in Resources */,
 				756655461A0E161A000CBCBC /* LaunchScreen.xib in Resources */,
 				756DA3F519FFC1B900C702B7 /* bg@2x.png in Resources */,
+				758C052B1A0E1D32004B9297 /* UIImage+Autoresize.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				758C05291A0E1D32004B9297 /* README.md in Sources */,
 				756655451A0E161A000CBCBC /* AppDelegate.m in Sources */,
 				7566554A1A0E161A000CBCBC /* main.m in Sources */,
 				7566554B1A0E161A000CBCBC /* ViewController.m in Sources */,
