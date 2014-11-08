@@ -1,19 +1,19 @@
-# UIImage+Autoreisze
+# UIImage+Autoresize
 
-[![CI Status](http://img.shields.io/travis/${USER_NAME}/${REPO_NAME}.svg?style=flat)](https://travis-ci.org/${USER_NAME}/${REPO_NAME})
-[![Version](https://img.shields.io/cocoapods/v/${POD_NAME}.svg?style=flat)](http://cocoadocs.org/docsets/${POD_NAME})
-[![License](https://img.shields.io/cocoapods/l/${POD_NAME}.svg?style=flat)](http://cocoadocs.org/docsets/${POD_NAME})
-[![Platform](https://img.shields.io/cocoapods/p/${POD_NAME}.svg?style=flat)](http://cocoadocs.org/docsets/${POD_NAME})
+[![CI Status](http://img.shields.io/travis/UIImage+Autoresize/UIImage+Autoresize.svg?style=flat)](https://travis-ci.org/kevindelord/UIImage+Autoresize)
+[![Version](https://img.shields.io/cocoapods/v/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
+[![License](https://img.shields.io/cocoapods/l/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
+[![Platform](https://img.shields.io/cocoapods/p/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
 
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-The class is also available through this [Gist][https://gist.github.com/kevindelord/fe2e691d06ab745fbb00].
+The class is also available through this [Gist](https://gist.github.com/kevindelord/fe2e691d06ab745fbb00).
 
 ## Requirements
 
-Through the categorised class `UIImage+Autoreisze`, a naming convention is applied to deal with different image files:
+Through the categorised class `UIImage+Autoresize`, a naming convention is applied to deal with different image files:
 
 * **none** if @1x small old phones
 * **@2x** for iPhone 4
@@ -34,14 +34,14 @@ The code will `automatically` create an image corresponding to the current devic
 
 ## Documentation
 
-This pod is also documented on [CocoaDocs][http://cocoadocs.org/docsets/DKHelper/0.7.5/Categories/UIImage+DKHelper.html]
+This pod is also documented on [CocoaDocs](http://cocoadocs.org/docsets/DKHelper/0.7.5/Categories/UIImage+DKHelper.html)
 
 ## Installation
 
-${POD_NAME} is available through [CocoaPods](http://cocoapods.org). To install
+UIImage+Autoresize is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-pod "UIImage+Autoreisze"
+    pod "UIImage+Autoresize"
 
 ## TODO:
 * iPad
@@ -49,7 +49,7 @@ pod "UIImage+Autoreisze"
 
 ## Author
 
-${USER_NAME}, ${USER_EMAIL}
+kevindelord, delord.kevin@gmail.com
 
 ## License
 
