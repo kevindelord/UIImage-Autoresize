@@ -23,7 +23,7 @@ Through the categorised class `UIImage+Autoresize`, a naming convention is appli
 When this class is integrated and imported into your project, you have nothing else to do.
 In your PrefixHeader.pch file:
 
-    #import "UIImage+DKHelper.h"
+    #import "UIImage+Autoresize.h"
 
 When you instantiate an image in your code:
 

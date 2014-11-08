@@ -1,9 +1,9 @@
 //
-//  UIImage+DKHelper.m
-//  DKHelper
+//  UIImage+Autoresize.m
+//  UIImage+Autoresize
 //
 //  Created by kevin delord on 24/04/14.
-//  Copyright (c) 2014 DK. All rights reserved.
+//  Copyright (c) 2014 Kevin Delord. All rights reserved.
 //
 
 #import "UIImage+Autoresize.h"
@@ -11,7 +11,7 @@
 
 static Method origImageNamedMethod = nil;
 
-@implementation UIImage (DKHelper)
+@implementation UIImage (Autoresize)
 
 #pragma mark - UIImage Initializer
 

@@ -1,20 +1,20 @@
 //
-//  UIImage+DKHelper.h
-//  DKHelper
+//  UIImage+Autoresize.h
+//  UIImage+Autoresize
 //
 //  Created by kevin delord on 24/04/14.
-//  Copyright (c) 2014 DK. All rights reserved.
+//  Copyright (c) 2014 Kevin Delord. All rights reserved.
 //
 
-#ifndef DKHelper_UIImage_h__
-#define DKHelper_UIImage_h__
+#ifndef UIImage_Autoresize_h__
+#define UIImage_Autoresize_h__
 
 #import <UIKit/UIKit.h>
 
 /**
  * A categorized class of UIImage to add a bunch of helping methods.
  */
-@interface UIImage (DKHelper)
+@interface UIImage (Autoresize)
 
 #pragma mark - UIImage Initializer
 
