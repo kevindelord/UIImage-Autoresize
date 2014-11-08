@@ -12,7 +12,13 @@
 #import <UIKit/UIKit.h>
 
 /**
- * A categorized class of UIImage to add a bunch of helping methods.
+ * A categorized class of UIImage to add a naming convetion to deal with different image files:
+ *
+ * **none** if @1x small old phones
+ * **@2x** for iPhone 4
+ * **-568h@2x** for iPhone 5
+ * **-667h@2x** for iPhone 6
+ * **@3x** for iPhone 6 Plus
  */
 @interface UIImage (Autoresize)
 
