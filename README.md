@@ -53,4 +53,4 @@ kevindelord, delord.kevin@gmail.com
 
 ## License
 
-${POD_NAME} is available under the MIT license. See the LICENSE file for more info.
+UIImage+Autoresize is available under the MIT license. See the LICENSE file for more info.
