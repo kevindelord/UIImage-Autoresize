@@ -33,7 +33,7 @@ The code will `automatically` create an image corresponding to the current devic
 
 ## Documentation
 
-This pod is also documented on [CocoaDocs](http://cocoadocs.org/docsets/DKHelper/0.7.5/Categories/UIImage+DKHelper.html)
+This pod is also documented on [CocoaDocs](http://cocoadocs.org/docsets/UIImage+Autoresize)
 
 ## Installation
 
