@@ -1,6 +1,5 @@
 # UIImage+Autoresize
 
-[![CI Status](http://img.shields.io/travis/UIImage+Autoresize/UIImage+Autoresize.svg?style=flat)](https://travis-ci.org/kevindelord/UIImage+Autoresize)
 [![Version](https://img.shields.io/cocoapods/v/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
 [![License](https://img.shields.io/cocoapods/l/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
 [![Platform](https://img.shields.io/cocoapods/p/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
