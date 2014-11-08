@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:ScreenSize.xcodeproj">
+      location = "self:UIImage+Autoresize.xcodeproj">
    </FileRef>
 </Workspace>

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 DK. All rights reserved.
 //
 
-#import "UIImage+DKHelper.h"
+#import "UIImage+Autoresize.h"
 #import <objc/runtime.h>
 
 static Method origImageNamedMethod = nil;
