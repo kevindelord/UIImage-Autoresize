@@ -29,7 +29,7 @@
  * The new method and its implementation will be executed instead of the default UIImage::imageNamed:
  * The user don't need to do anything.
  */
-+ (void)initialize;
++ (void)load;
 
 /**
  * Returns a new UIImage object created from a filename.

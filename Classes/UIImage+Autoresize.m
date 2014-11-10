@@ -9,15 +9,16 @@
 #import "UIImage+Autoresize.h"
 #import <objc/runtime.h>
 
-static Method origImageNamedMethod = nil;
-
 @implementation UIImage (Autoresize)
 
 #pragma mark - UIImage Initializer
 
-+ (void)initialize {
-    origImageNamedMethod = class_getClassMethod(self.class, @selector(imageNamed:));
-    method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(self.class, @selector(dynamicImageNamed:)));
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Method origImageNamedMethod = class_getClassMethod(self.class, @selector(imageNamed:));
+        method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(self.class, @selector(dynamicImageNamed:)));
+    });
 }
 
 + (UIImage *)dynamicImageNamed:(NSString *)imageName {
