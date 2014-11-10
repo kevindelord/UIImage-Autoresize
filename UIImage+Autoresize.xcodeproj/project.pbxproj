@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7533CC0F1A10CF57007AAC39 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7533CC0E1A10CF57007AAC39 /* SecondViewController.m */; };
 		756655381A0E1615000CBCBC /* UIImage+Autoresize.m in Sources */ = {isa = PBXBuildFile; fileRef = 756655371A0E1615000CBCBC /* UIImage+Autoresize.m */; };
 		756655451A0E161A000CBCBC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7566553B1A0E161A000CBCBC /* AppDelegate.m */; };
 		756655461A0E161A000CBCBC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7566553C1A0E161A000CBCBC /* LaunchScreen.xib */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7533CC0D1A10CF57007AAC39 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		7533CC0E1A10CF57007AAC39 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		756655361A0E1615000CBCBC /* UIImage+Autoresize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Autoresize.h"; sourceTree = "<group>"; };
 		756655371A0E1615000CBCBC /* UIImage+Autoresize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Autoresize.m"; sourceTree = "<group>"; };
 		7566553A1A0E161A000CBCBC /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 		756655391A0E161A000CBCBC /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				7533CC0D1A10CF57007AAC39 /* SecondViewController.h */,
+				7533CC0E1A10CF57007AAC39 /* SecondViewController.m */,
 				758C05221A0E1B0B004B9297 /* Project-Prefix.pch */,
 				7566553A1A0E161A000CBCBC /* AppDelegate.h */,
 				7566553B1A0E161A000CBCBC /* AppDelegate.m */,
@@ -195,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7533CC0F1A10CF57007AAC39 /* SecondViewController.m in Sources */,
 				758C05291A0E1D32004B9297 /* README.md in Sources */,
 				756655451A0E161A000CBCBC /* AppDelegate.m in Sources */,
 				7566554A1A0E161A000CBCBC /* main.m in Sources */,
