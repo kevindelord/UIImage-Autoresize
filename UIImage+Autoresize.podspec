@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "UIImage+Autoresize"
-  s.version          = "0.2.0"
+  s.version          = "0.3.0"
   s.summary          = "Apply a naming convention to deal with multiple image sizes for iPhone devices."
   s.homepage         = "https://github.com/kevindelord/UIImage-Autoresize.git"
   s.license          = 'MIT'
