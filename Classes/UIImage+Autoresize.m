@@ -9,6 +9,8 @@
 #import "UIImage+Autoresize.h"
 #import <objc/runtime.h>
 
+#define __K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__      true
+
 @implementation UIImage (Autoresize)
 
 #pragma mark - UIImage Initializer
@@ -21,6 +23,62 @@
     });
 }
 
++ (NSString *)verticalExtensionForScale:(CGFloat)scale height:(CGFloat)h width:(CGFloat)w {
+
+    if (__K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__) {
+        NSLog(@"-------------------------------------");
+        NSLog(@"h: %f", h);
+        NSLog(@"w: %f", w);
+        NSLog(@"scale: %f", scale);
+        NSLog(@"-------------------------------------");
+    }
+
+    // generate the current valid file extension depending on the current device screen size.
+    NSString *extension = @"";
+    if (scale == 3.f) {
+        extension = @"@3x";    // iPhone 6+
+    } else if (scale == 2.f && h == 568.0f && w == 320.0f) {
+        extension = @"-568h@2x";    // iPhone 5, 5S, 5C
+    } else if (scale == 2.f && h == 667.0f && w == 375.0f) {
+        extension = @"-667h@2x";    // iPhone 6
+    } else if (scale == 2.f && h == 480.0f && w == 320.0f) {
+        extension = @"@2x";         // iPhone 4, 4S
+    } else if (scale == 1.f && h == 1024.0f && w == 768.0f) {
+        extension = @"-512h";       // iPad Mini, iPad 2, iPad 1
+    } else if (scale == 2.f && h == 1024.0f && w == 768.0f) {
+        extension = @"-1024h@2x";   // iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2
+    }
+    return extension;
+}
+
++ (NSString *)horizontalExtensionForScale:(CGFloat)scale height:(CGFloat)h width:(CGFloat)w {
+
+    if (__K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__) {
+        NSLog(@"-------------------------------------");
+        NSLog(@"h: %f", h);
+        NSLog(@"w: %f", w);
+        NSLog(@"scale: %f", scale);
+        NSLog(@"-------------------------------------");
+    }
+
+    // generate the current valid file extension depending on the current device screen size.
+    NSString *extension = @"";
+    if (scale == 3.f && h == 414.0f && w == 736.0f) {
+        extension = @"-414h@3x";    // iPhone 6+
+    } else if (scale == 2.f && h == 568.0f && w == 320.0f) {
+        extension = @"-320h@2x";    // iPhone 5, 5S, 5C
+    } else if (scale == 2.f && h == 667.0f && w == 375.0f) {
+        extension = @"-375h@2x";    // iPhone 6
+    } else if (scale == 2.f && h == 480.0f && w == 320.0f) {
+        extension = @"-320h@2x";       // iPhone 4, 4S
+    } else if (scale == 1.f && h == 1024.0f && w == 768.0f) {
+        extension = @"-384h";       // iPad Mini, iPad 2, iPad 1
+    } else if (scale == 2.f && h == 1024.0f && w == 768.0f) {
+        extension = @"-768h@2x";   // iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2
+    }
+    return extension;
+}
+
 + (UIImage *)dynamicImageNamed:(NSString *)imageName {
 
     // only change the name if no '@2x' or '@3x' are specified
@@ -30,16 +88,11 @@
         CGFloat w = [UIScreen mainScreen].bounds.size.width;
         CGFloat scale = [UIScreen mainScreen].scale;
 
-        // generate the current valid file extension depending on the current device screen size.
         NSString *extension = @"";
-        if (scale == 3.f) {
-            extension = @"@3x";
-        } else if (scale == 2.f && h == 568.0f && w == 320.0f) {
-            extension = @"-568h@2x";
-        } else if (scale == 2.f && h == 667.0f && w == 375.0f) {
-            extension = @"-667h@2x";
-        } else if (scale == 2.f && h == 480.0f && w == 320.0f) {
-            extension = @"@2x";
+        if (h >= w) {
+            extension = [self verticalExtensionForScale:scale height:h width:w];
+        } else {
+            extension = [self horizontalExtensionForScale:scale height:h width:w];
         }
 
         // add the extension to the image name
