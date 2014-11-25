@@ -20,8 +20,8 @@
 		756DA3F419FFC1B900C702B7 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3EF19FFC1B900C702B7 /* bg.png */; };
 		756DA3F519FFC1B900C702B7 /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3F019FFC1B900C702B7 /* bg@2x.png */; };
 		756DA3F619FFC1B900C702B7 /* bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 756DA3F119FFC1B900C702B7 /* bg@3x.png */; };
-		7584C7341A24BDE5003F6B5A /* bg-512h.png in Resources */ = {isa = PBXBuildFile; fileRef = 7584C7321A24BDE5003F6B5A /* bg-512h.png */; };
-		7584C7351A24BDE5003F6B5A /* bg-1024h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7584C7331A24BDE5003F6B5A /* bg-1024h@2x.png */; };
+		7584C7381A24CCA1003F6B5A /* bg-512h.png in Resources */ = {isa = PBXBuildFile; fileRef = 7584C7361A24CCA1003F6B5A /* bg-512h.png */; };
+		7584C7391A24CCA1003F6B5A /* bg-1024h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7584C7371A24CCA1003F6B5A /* bg-1024h@2x.png */; };
 		758C05291A0E1D32004B9297 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 758C05241A0E1D32004B9297 /* README.md */; };
 		758C052B1A0E1D32004B9297 /* UIImage+Autoresize.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 758C05261A0E1D32004B9297 /* UIImage+Autoresize.podspec */; };
 		758C052C1A0E1D32004B9297 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 758C05271A0E1D32004B9297 /* LICENSE */; };
@@ -47,8 +47,8 @@
 		756DA3EF19FFC1B900C702B7 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		756DA3F019FFC1B900C702B7 /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
 		756DA3F119FFC1B900C702B7 /* bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@3x.png"; sourceTree = "<group>"; };
-		7584C7321A24BDE5003F6B5A /* bg-512h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-512h.png"; sourceTree = "<group>"; };
-		7584C7331A24BDE5003F6B5A /* bg-1024h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-1024h@2x.png"; sourceTree = "<group>"; };
+		7584C7361A24CCA1003F6B5A /* bg-512h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-512h.png"; sourceTree = "<group>"; };
+		7584C7371A24CCA1003F6B5A /* bg-1024h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-1024h@2x.png"; sourceTree = "<group>"; };
 		758C05221A0E1B0B004B9297 /* Project-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project-Prefix.pch"; sourceTree = "<group>"; };
 		758C05241A0E1D32004B9297 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		758C05261A0E1D32004B9297 /* UIImage+Autoresize.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UIImage+Autoresize.podspec"; sourceTree = "<group>"; };
@@ -118,8 +118,8 @@
 		756DA3EC19FFC1B900C702B7 /* Ressources */ = {
 			isa = PBXGroup;
 			children = (
-				7584C7321A24BDE5003F6B5A /* bg-512h.png */,
-				7584C7331A24BDE5003F6B5A /* bg-1024h@2x.png */,
+				7584C7361A24CCA1003F6B5A /* bg-512h.png */,
+				7584C7371A24CCA1003F6B5A /* bg-1024h@2x.png */,
 				756DA3ED19FFC1B900C702B7 /* bg-568h@2x.png */,
 				756DA3EE19FFC1B900C702B7 /* bg-667h@2x.png */,
 				756DA3EF19FFC1B900C702B7 /* bg.png */,
@@ -188,8 +188,9 @@
 			files = (
 				7584C7351A24BDE5003F6B5A /* bg-1024h@2x.png in Resources */,
 				756655471A0E161A000CBCBC /* Main.storyboard in Resources */,
+				7584C7391A24CCA1003F6B5A /* bg-1024h@2x.png in Resources */,
 				756655481A0E161A000CBCBC /* Images.xcassets in Resources */,
-				7584C7341A24BDE5003F6B5A /* bg-512h.png in Resources */,
+				7584C7381A24CCA1003F6B5A /* bg-512h.png in Resources */,
 				756DA3F619FFC1B900C702B7 /* bg@3x.png in Resources */,
 				756DA3F319FFC1B900C702B7 /* bg-667h@2x.png in Resources */,
 				756DA3F219FFC1B900C702B7 /* bg-568h@2x.png in Resources */,
