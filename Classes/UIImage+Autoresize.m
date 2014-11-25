@@ -9,7 +9,7 @@
 #import "UIImage+Autoresize.h"
 #import <objc/runtime.h>
 
-#define __K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__      true
+#define __K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__      false
 
 @implementation UIImage (Autoresize)
 
@@ -63,18 +63,18 @@
 
     // generate the current valid file extension depending on the current device screen size.
     NSString *extension = @"";
-    if (scale == 3.f && h == 414.0f && w == 736.0f) {
-        extension = @"-414h@3x";    // iPhone 6+
-    } else if (scale == 2.f && h == 568.0f && w == 320.0f) {
-        extension = @"-320h@2x";    // iPhone 5, 5S, 5C
-    } else if (scale == 2.f && h == 667.0f && w == 375.0f) {
-        extension = @"-375h@2x";    // iPhone 6
-    } else if (scale == 2.f && h == 480.0f && w == 320.0f) {
-        extension = @"-320h@2x";       // iPhone 4, 4S
-    } else if (scale == 1.f && h == 1024.0f && w == 768.0f) {
-        extension = @"-384h";       // iPad Mini, iPad 2, iPad 1
-    } else if (scale == 2.f && h == 1024.0f && w == 768.0f) {
-        extension = @"-768h@2x";   // iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2
+    if (scale == 3.f) {
+        extension = @"-l@3x";    // iPhone 6+
+    } else if (scale == 2.f && w == 320.0f && h == 320.0f) {
+        extension = @"-320h-l@2x";    // iPhone 5, 5S, 5C
+    } else if (scale == 2.f && w == 667.0f && h == 375.0f) {
+        extension = @"-375h-l@2x";    // iPhone 6
+    } else if (scale == 2.f && w == 480.0f && h == 320.0f) {
+        extension = @"-l@2x";    // iPhone 4, 4S
+    } else if (scale == 1.f && w == 1024.0f && h == 768.0f) {
+        extension = @"-384h-l";       // iPad Mini, iPad 2, iPad 1
+    } else if (scale == 2.f && w == 1024.0f && h == 768.0f) {
+        extension = @"-768h-l@2x";   // iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2
     }
     return extension;
 }

@@ -20,4 +20,22 @@
     self.imageView.image = [UIImage imageNamed:@"bg.png"];
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+//    CGFloat h = size.height;
+//    CGFloat w = size.width;
+//    CGFloat scale = [UIScreen mainScreen].scale;
+//    NSLog(@"-------------------------------------");
+//    NSLog(@"h: %f", h);
+//    NSLog(@"w: %f", w);
+//    NSLog(@"scale: %f", scale);
+//    NSLog(@"-------------------------------------");
+
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+//    NSLog(@"-------------------------------------");
+//    NSLog(@"didRotateFromInterfaceOrientation");
+    self.imageView.image = [UIImage imageNamed:@"bg.png"];
+}
+
 @end
