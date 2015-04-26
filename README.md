@@ -4,15 +4,11 @@
 [![License](https://img.shields.io/cocoapods/l/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
 [![Platform](https://img.shields.io/cocoapods/p/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
 
-## Usage
+### Description
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-The class is also available through this [Gist](https://gist.github.com/kevindelord/fe2e691d06ab745fbb00).
-
-## Documentation
-
-This pod is also documented on [CocoaDocs](http://cocoadocs.org/docsets/UIImage+Autoresize)
+This project is an UIImage extension which automatically generate a valid UIImage object based on the current device's size and orientation.
+Working on iPhones and iPads on portrait and landscape modes, this library will add, if needed, a suffix to the given image filename in order to find and display the correct asset.
+The suffixes are described as [requirements](https://github.com/kevindelord/UIImage-Autoresize/tree/master#requirements).
 
 ## Installation
 
@@ -26,6 +22,10 @@ And finally import the header file:
     #import "UIImage+Autoresize.h"
 
 You are now ready to go!
+
+## Documentation
+
+This pod is also documented on [CocoaDocs](http://cocoadocs.org/docsets/UIImage+Autoresize)
 
 ## Requirements
 
@@ -77,6 +77,13 @@ This way, you should have less problems when the orientation change while a chil
 ## Swift
 
 The library works with Swift as smooth as it does in Obj-C. Nothing to worry about :)
+
+## Example
+
+To run the example project, clone the repo, and open the `UIImage+Autoresize.xcodeproj` file.
+
+The class is also available through this [Gist](https://gist.github.com/kevindelord/fe2e691d06ab745fbb00).
+
 
 ## TODO:
 * Make it work with Storyboard
