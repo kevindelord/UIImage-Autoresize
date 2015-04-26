@@ -32,30 +32,15 @@ This pod is also documented on [CocoaDocs](http://cocoadocs.org/docsets/UIImage+
 Through the categorised class `UIImage+Autoresize`, a naming convention is applied to deal with different image files.
 The following suffixes are expected:
 
-### Vertical / Portrait mode
-
-| Extension   | Devices |
-| ----------- | ----------- |
-| none        | 3GS and earlier |
-| @2x         | iPhone 4, 4S |
-| -568h@2x    | iPhone 5, 5C, 5S |
-| -667h@2x    | iPhone 6 |
-| @3x         | iPhone 6 Plus |
-| -512h       | iPad Mini, iPad 2, iPad 1 |
-| -1024h@2x   | iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2 |
-
-### Horizontal / Landscape mode
-
-| Extension   | Devices |
-| ----------- | ----------- |
-| -l          | 3GS and earlier |
-| -l@2x       | iPhone 4, 4S |
-| -320h-l@2x  | iPhone 5, 5S, 5C |
-| -375h-l@2x  | iPhone 6 |
-| -l@3x       | iPhone 6 Plus |
-| -384h-l     | iPad Mini, iPad 2, iPad 1 |
-| -768h-l@2x  | iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2 |
-
+| Vertical    | Horizontal  | Devices |
+| ----------- | ----------- | --------- |
+| none        | -l          | 3GS and earlier |
+| @2x         | -l@2x       | iPhone 4, 4S |
+| -568h@2x    | -320h-l@2x  | iPhone 5, 5C, 5S |
+| -667h@2x    | -375h-l@2x  | iPhone 6 |
+| @3x         | -l@3x       | iPhone 6 Plus |
+| -512h       | -384h-l     | iPad Mini, iPad 2, iPad 1 |
+| -1024h@2x   | -768h-l@2x  | iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2 |
 
 ## Usage
 
