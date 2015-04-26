@@ -33,7 +33,7 @@ Through the categorised class `UIImage+Autoresize`, a naming convention is appli
 The following suffixes are expected:
 
 | Vertical    | Horizontal  | Devices |
-| ----------- | ----------- | --------- |
+|:------------|:------------|:---------|
 | none        | -l          | 3GS and earlier |
 | @2x         | -l@2x       | iPhone 4, 4S |
 | -568h@2x    | -320h-l@2x  | iPhone 5, 5C, 5S |
