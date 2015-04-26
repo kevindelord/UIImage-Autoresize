@@ -32,9 +32,9 @@
 
     if (_background == nil) {
         _background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
-        [self matchParentConstraints:self.view child:_background];
         [self.view addSubview:_background];
         [self.view sendSubviewToBack:_background];
+        [self matchParentConstraints:self.view child:_background];
     } else {
         _background.image = [UIImage imageNamed:@"bg.png"];
     }
@@ -45,7 +45,6 @@
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    NSLog(@"%s", __FUNCTION__);
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 
     _background.image = [UIImage imageNamed:@"bg.png" withTransitionSize:size];
