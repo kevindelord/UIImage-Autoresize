@@ -12,20 +12,19 @@
 #import <UIKit/UIKit.h>
 
 /**
- * A categorized class of UIImage to add a naming convetion to deal with different image files:
+ * A categorized class of UIImage replacing the default `UIImage::imageNamed:` method with a custom one.
+ * Mainly used for fullscreen background images, this class adds a naming convetion to deal image assets 
+ * with different sizes, orientations and scales.
  *
- * **none** if @1x small old phones
- * **@2x** for iPhone 4
- * **-568h@2x** for iPhone 5
- * **-667h@2x** for iPhone 6
- * **@3x** for iPhone 6 Plus
+ * The suffixes are describe in the `README.md`.
+ *
  */
 @interface UIImage (Autoresize)
 
 #pragma mark - UIImage Initializer
 
 /**
- * Method to override the UIImage::imageNamed: method with the retina4ImageNamed: one.
+ * Method to override the `UIImage::imageNamed:` method with a custom one.
  * The new method and its implementation will be executed instead of the default UIImage::imageNamed:
  * The user don't need to do anything.
  */
@@ -34,17 +33,26 @@
 /**
  * Returns a new UIImage object created from a filename.
  *
- * @discussion If needed, this method will automatically add the needed image suffix for the current device:
- * - "@2x"
- * - "-568h@2x"
- * - "-667h@2x"
- * - "@3x"
+ * @discussion This method will automatically add the needed image suffix for the current device.
+ * It also deals with the device interface orientation and different iOS versions.
  * Important: the given filename should NOT contain any size-extension, only a name and its file type.
  *
  * @param imageName The NSString object representing the filename of the image.
- * @return An UIImage created from a given string.
+ * @return An UIImage created from a given string name.
  */
 + (UIImage *)dynamicImageNamed:(NSString *)imageName;
+
+/**
+ * Returns a new UIImage object created from a filename and a required transition Size.
+ *
+ * @discussion This function should be called from a view controller when the device changes its orientation.
+ * The function `viewWillTransitionToSize:withTransitionCoordinator:` is only available from iOS 8.
+ *
+ * @param imageName The NSString object representing the filename of the image.
+ * @param size The new size for the container’s view.
+ * @return An UIImage created from a generated string name.
+ */
++ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size;
 
 @end
 

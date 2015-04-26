@@ -4,35 +4,11 @@
 [![License](https://img.shields.io/cocoapods/l/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
 [![Platform](https://img.shields.io/cocoapods/p/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
 
-## Usage
+### Description
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-The class is also available through this [Gist](https://gist.github.com/kevindelord/fe2e691d06ab745fbb00).
-
-## Requirements
-
-Through the categorised class `UIImage+Autoresize`, a naming convention is applied to deal with different image files.
-The following suffixes are expected:
-
-* **none** for 3GS and earlier
-* **@2x** for iPhone 4, 4S
-* **-568h@2x** for iPhone 5, 5C, 5S
-* **-667h@2x** for iPhone 6
-* **@3x** for iPhone 6 Plus
-* **-512h** for iPad Mini, iPad 2, iPad 1
-* **-1024h@2x** for iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2
-
-When this class is integrated into your project, you have nothing else to do.
-You can now instantiate an image in your code like this:
-
-    [UIImage imageNamed: @"background.png" ];
-
-The code will `automatically` load an image corresponding to the current device.
-
-## Documentation
-
-This pod is also documented on [CocoaDocs](http://cocoadocs.org/docsets/UIImage+Autoresize)
+This project is an UIImage extension which automatically generates a valid UIImage object based on the current device's orientation, size and scale.
+Working on iPhones and iPads on portrait and landscape modes, this library will add, if needed, a suffix to the given image filename in order to find and display the correct asset.
+The suffixes are described as [requirements](https://github.com/kevindelord/UIImage-Autoresize/tree/master#requirements).
 
 ## Installation
 
@@ -41,8 +17,78 @@ it, simply add the following line to your Podfile:
 
     pod "UIImage+Autoresize"
 
+And finally import the header file:
+
+    #import "UIImage+Autoresize.h"
+
+You are now ready to go!
+
+## Documentation
+
+This pod is also documented on [CocoaDocs](http://cocoadocs.org/docsets/UIImage+Autoresize)
+
+## Requirements
+
+Through the categorised class `UIImage+Autoresize`, a naming convention is applied to deal with different image files.
+The following suffixes are expected:
+
+| Vertical    | Horizontal  | Devices |
+|:------------|:------------|:---------|
+| none        | -l          | 3GS and earlier |
+| @2x         | -l@2x       | iPhone 4, 4S |
+| -568h@2x    | -320h-l@2x  | iPhone 5, 5C, 5S |
+| -667h@2x    | -375h-l@2x  | iPhone 6 |
+| @3x         | -l@3x       | iPhone 6 Plus |
+| -512h       | -384h-l     | iPad Mini, iPad 2, iPad 1 |
+| -1024h@2x   | -768h-l@2x  | iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2 |
+
+## Usage
+
+When this class is integrated into your project, you have nothing else to do.
+You can instantiate an image in your code as you used to like this:
+
+    [UIImage imageNamed: @"background.png" ];
+
+The code will `automatically` load an image corresponding to the current device.
+You do NOT need to specify any file extension.
+If you do, the library will ignore its own methods and only load the file you are asking for.
+
+## Rotating screen: Portrait & Landscape modes
+
+When dealing with multiple interface orientations, an application might need different backgrounds.
+One for the portrait mode and another one for the landscape.
+With `UIImage+Autoresize` and its naming convention you could even use the same asset name in the code.
+The displayed picture will simply change by implementing the folloying methods in your view controller:
+
+On iOS 8:
+
+    - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+        [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+        self.imageView.image = [UIImage imageNamed:@"bg.png" withTransitionSize:size];
+    }
+
+On iOS 7:
+
+    - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+        [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+        self.imageView.image = [UIImage imageNamed:@"bg.png" ];
+    }
+
+### Tips
+
+If you are implementing a multi interface orientations app, it would be good to do the first initialization of your UIImageView in the viewWillAppear.
+This way, you should have less problems when the orientation change while a child view controller is presented.
+When the user pops back, the previous background will look as it should.
+
+## Swift
+
+The library works with Swift as smooth as it does in Obj-C. Nothing to worry about :)
+
+## Example
+
+To run the example project, clone the repo, and open the `UIImage+Autoresize.xcodeproj` file.
+
 ## TODO:
-* landscape logic
 * Make it work with Storyboard
 
 ## Special thanks to
