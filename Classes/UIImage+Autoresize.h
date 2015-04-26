@@ -15,6 +15,9 @@
  * A categorized class of UIImage replacing the default `UIImage::imageNamed:` method with a custom one.
  * Mainly used for fullscreen background images, this class adds a naming convetion to deal image assets 
  * with different sizes, orientations and scales.
+ *
+ * The suffixes are describe in the `README.md`.
+ *
  */
 @interface UIImage (Autoresize)
 

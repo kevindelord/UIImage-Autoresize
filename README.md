@@ -32,6 +32,12 @@ This pod is also documented on [CocoaDocs](http://cocoadocs.org/docsets/UIImage+
 Through the categorised class `UIImage+Autoresize`, a naming convention is applied to deal with different image files.
 The following suffixes are expected:
 
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
 * **none** for 3GS and earlier
 * **@2x** for iPhone 4, 4S
 * **-568h@2x** for iPhone 5, 5C, 5S
