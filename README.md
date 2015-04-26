@@ -48,10 +48,11 @@ The following suffixes are expected:
 
 | Extension   | Devices |
 | ----------- | ----------- |
-| -l@3x       | iPhone 6+ |
+| -l          | 3GS and earlier |
+| -l@2x       | iPhone 4, 4S |
 | -320h-l@2x  | iPhone 5, 5S, 5C |
 | -375h-l@2x  | iPhone 6 |
-| -l@2x       | iPhone 4, 4S |
+| -l@3x       | iPhone 6 Plus |
 | -384h-l     | iPad Mini, iPad 2, iPad 1 |
 | -768h-l@2x  | iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2 |
 
