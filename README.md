@@ -6,7 +6,7 @@
 
 ### Description
 
-This project is an UIImage extension which automatically generate a valid UIImage object based on the current device's size and orientation.
+This project is an UIImage extension which automatically generates a valid UIImage object based on the current device's orientation, size and scale.
 Working on iPhones and iPads on portrait and landscape modes, this library will add, if needed, a suffix to the given image filename in order to find and display the correct asset.
 The suffixes are described as [requirements](https://github.com/kevindelord/UIImage-Autoresize/tree/master#requirements).
 
@@ -65,16 +65,17 @@ You can instantiate an image in your code as you used to like this:
     [UIImage imageNamed: @"background.png" ];
 
 The code will `automatically` load an image corresponding to the current device.
-You do NOT need to specify any file extension, if you do the library will ignore itself and only load the file you are asking for.
+You do NOT need to specify any file extension.
+If you do, the library will ignore its own methods and only load the file you are asking for.
 
 ## Rotating screen: Portrait & Landscape modes
 
-When dealing with multiple interface orientation, an app might need different backgrounds.
+When dealing with multiple interface orientations, an application might need different backgrounds.
 One for the portrait mode and another one for the landscape.
 With `UIImage+Autoresize` and its naming convention you could even use the same asset name in the code.
 The displayed picture will simply change by implementing the folloying methods in your view controller:
 
-On iOS 8 :
+On iOS 8:
 
     - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
         [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
@@ -90,8 +91,9 @@ On iOS 7:
 
 ### Tips
 
-If you are implementing a multi interface orientation app, it would be good to do the first initialization of your UIImageView in the viewWillAppear.
-This way, you should have less problems when the orientation change while a child view controller is presented. When the user pop back the previous background will look as it should.
+If you are implementing a multi interface orientations app, it would be good to do the first initialization of your UIImageView in the viewWillAppear.
+This way, you should have less problems when the orientation change while a child view controller is presented.
+When the user pops back, the previous background will look as it should.
 
 ## Swift
 
@@ -100,9 +102,6 @@ The library works with Swift as smooth as it does in Obj-C. Nothing to worry abo
 ## Example
 
 To run the example project, clone the repo, and open the `UIImage+Autoresize.xcodeproj` file.
-
-The class is also available through this [Gist](https://gist.github.com/kevindelord/fe2e691d06ab745fbb00).
-
 
 ## TODO:
 * Make it work with Storyboard
