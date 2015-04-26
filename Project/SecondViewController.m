@@ -8,37 +8,53 @@
 
 #import "SecondViewController.h"
 
-@interface SecondViewController ()
+@interface SecondViewController () {
+    UIImageView * _background;
+}
 
 @end
 
 @implementation SecondViewController
 
+- (void)matchParentConstraints:(UIView *)parent child:(UIView *)child {
+    [child setTranslatesAutoresizingMaskIntoConstraints:false];
+
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:child attribute:(NSLayoutAttributeBottom) relatedBy:(NSLayoutRelationEqual) toItem:parent attribute:(NSLayoutAttributeBottom) multiplier:1 constant:0];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:child attribute:(NSLayoutAttributeTop) relatedBy:(NSLayoutRelationEqual) toItem:parent attribute:(NSLayoutAttributeTop) multiplier:1 constant:0];
+    NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:child attribute:(NSLayoutAttributeLeft) relatedBy:(NSLayoutRelationEqual) toItem:parent attribute:(NSLayoutAttributeLeft) multiplier:1 constant:0];
+    NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:child attribute:(NSLayoutAttributeRight) relatedBy:(NSLayoutRelationEqual) toItem:parent attribute:(NSLayoutAttributeRight) multiplier:1 constant:0];
+
+    [parent addConstraints:@[left, right, bottom, top]];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-
-    UIImageView *background = [[UIImageView alloc] init];
-    background.frame = CGRectMake(0,0,screenRect.size.width,screenRect.size.height);
-    background.image = [UIImage imageNamed:@"bg.png"];
-    [self.view addSubview:background];
-    [self.view sendSubviewToBack:background];
-
-    UITextView *histView = [[UITextView alloc] init];
-    histView.frame = CGRectMake(0, 100, screenRect.size.width ,screenRect.size.height);
-    histView.editable = NO;
-    histView.backgroundColor = [UIColor clearColor];
-    histView.font = [UIFont fontWithName:@"Verdana" size:15];
-    histView.text = @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-    histView.scrollEnabled = YES;
-    [histView setDataDetectorTypes:UIDataDetectorTypeAll];
-    histView.textColor = [UIColor whiteColor];
-    [self.view addSubview:histView];
+    if (_background == nil) {
+        _background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+        [self matchParentConstraints:self.view child:_background];
+        [self.view addSubview:_background];
+        [self.view sendSubviewToBack:_background];
+    } else {
+        _background.image = [UIImage imageNamed:@"bg.png"];
+    }
 }
 
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    NSLog(@"%s", __FUNCTION__);
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+
+    _background.image = [UIImage imageNamed:@"bg.png" withTransitionSize:size];
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+
+    _background.image = [UIImage imageNamed:@"bg.png"];
 }
 
 @end

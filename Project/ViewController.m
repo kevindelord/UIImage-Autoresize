@@ -16,11 +16,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%s", __FUNCTION__);
     // uncomment this and remove the picture in the storyboard to test a manual initialization
+//    self.imageView.image = [UIImage imageNamed:@"bg.png"];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     self.imageView.image = [UIImage imageNamed:@"bg.png"];
 }
 
+//- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+//    NSLog(@"%s", __FUNCTION__);
+//}
+
+
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    NSLog(@"%s", __FUNCTION__);
+    
+
+    self.imageView.image = [UIImage imageNamed:@"bg.png" withTransitionSize:size];
+
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 //    CGFloat h = size.height;
 //    CGFloat w = size.width;
 //    CGFloat scale = [UIScreen mainScreen].scale;
@@ -33,9 +49,9 @@
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-//    NSLog(@"-------------------------------------");
-//    NSLog(@"didRotateFromInterfaceOrientation");
-    self.imageView.image = [UIImage imageNamed:@"bg.png"];
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+
+    self.imageView.image = [UIImage imageNamed:@"bg.png" ];
 }
 
 @end
