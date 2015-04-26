@@ -74,8 +74,11 @@ On iOS 7:
 If you are implementing a multi interface orientation app, it would be good to do the first initialization of your UIImageView in the viewWillAppear.
 This way, you should have less problems when the orientation change while a child view controller is presented. When the user pop back the previous background will look as it should.
 
+## Swift
+
+The library works as smooth as it does in Obj-C. Nothing to worry about :)
+
 ## TODO:
-* landscape logic
 * Make it work with Storyboard
 
 ## Special thanks to
