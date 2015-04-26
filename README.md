@@ -76,7 +76,7 @@ This way, you should have less problems when the orientation change while a chil
 
 ## Swift
 
-The library works as smooth as it does in Obj-C. Nothing to worry about :)
+The library works with Swift as smooth as it does in Obj-C. Nothing to worry about :)
 
 ## TODO:
 * Make it work with Storyboard
