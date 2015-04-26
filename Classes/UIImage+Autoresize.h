@@ -46,6 +46,9 @@
  */
 + (UIImage *)dynamicImageNamed:(NSString *)imageName;
 
+
++ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size;
+
 @end
 
 #endif

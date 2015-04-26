@@ -23,14 +23,17 @@
     });
 }
 
-+ (NSString *)verticalExtensionForScale:(CGFloat)scale height:(CGFloat)h width:(CGFloat)w {
++ (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w {
+    NSLog(@"%s", __FUNCTION__);
+    // Get the current device scale
+    CGFloat scale = [UIScreen mainScreen].scale;
 
     if (__K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__) {
-        NSLog(@"-------------------------------------");
+        NSLog(@"---------------  VERTICAL  ----------------------");
         NSLog(@"h: %f", h);
         NSLog(@"w: %f", w);
         NSLog(@"scale: %f", scale);
-        NSLog(@"-------------------------------------");
+        NSLog(@"-------------------------------------------------");
     }
 
     // generate the current valid file extension depending on the current device screen size.
@@ -51,21 +54,24 @@
     return extension;
 }
 
-+ (NSString *)horizontalExtensionForScale:(CGFloat)scale height:(CGFloat)h width:(CGFloat)w {
++ (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w {
+    NSLog(@"%s", __FUNCTION__);
+    // Get the current device scale
+    CGFloat scale = [UIScreen mainScreen].scale;
 
     if (__K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__) {
-        NSLog(@"-------------------------------------");
+        NSLog(@"---------------  HORIZONTAL  --------------------");
         NSLog(@"h: %f", h);
         NSLog(@"w: %f", w);
         NSLog(@"scale: %f", scale);
-        NSLog(@"-------------------------------------");
+        NSLog(@"-------------------------------------------------");
     }
 
-    // generate the current valid file extension depending on the current device screen size.
+    // Generate the current valid file extension depending on the current device screen size.
     NSString *extension = @"";
     if (scale == 3.f) {
         extension = @"-l@3x";    // iPhone 6+
-    } else if (scale == 2.f && w == 320.0f && h == 320.0f) {
+    } else if (scale == 2.f && w == 568.0f && h == 320.0f) {
         extension = @"-320h-l@2x";    // iPhone 5, 5S, 5C
     } else if (scale == 2.f && w == 667.0f && h == 375.0f) {
         extension = @"-375h-l@2x";    // iPhone 6
@@ -80,19 +86,38 @@
 }
 
 + (UIImage *)dynamicImageNamed:(NSString *)imageName {
-
+    NSLog(@"%s", __FUNCTION__);
     // only change the name if no '@2x' or '@3x' are specified
     if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
-        CGFloat h = [UIScreen mainScreen].bounds.size.height;
-        CGFloat w = [UIScreen mainScreen].bounds.size.width;
-        CGFloat scale = [UIScreen mainScreen].scale;
+        UIInterfaceOrientation interfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
+        CGSize size = [UIScreen mainScreen].bounds.size;
+        // less than
+        if ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedAscending) {
+            if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+                CGFloat temp = size.width;
+                size.width = size.height;
+                size.height = temp;
+            }
+        }
+        return [self imageNamed:imageName withTransitionSize:size];
+    }
+
+    // otherwise returns an UIImage with the original filename.
+    NSLog(@"dynamicImageNamed : %@", imageName);
+    return [UIImage dynamicImageNamed:imageName];
+}
+
++ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size {
+    NSLog(@"%s", __FUNCTION__);
+    // only change the name if no '@2x' or '@3x' are specified
+    if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
         NSString *extension = @"";
-        if (h >= w) {
-            extension = [self verticalExtensionForScale:scale height:h width:w];
+        if (size.height >= size.width) {
+            extension = [self verticalExtensionForHeight:size.height width:size.width];
         } else {
-            extension = [self horizontalExtensionForScale:scale height:h width:w];
+            extension = [self horizontalExtensionForHeight:size.height width:size.width];
         }
 
         // add the extension to the image name
@@ -105,10 +130,12 @@
 
         // if exist returns the corresponding UIImage
         if ([[NSBundle mainBundle] pathForResource:imageNameMutable ofType:@""]) {
+            NSLog(@"imageNamed:withTransitionSize: %@", imageNameMutable);
             return [UIImage dynamicImageNamed:imageNameMutable];
         }
     }
     // otherwise returns an UIImage with the original filename.
+    NSLog(@"imageNamed:withTransitionSize: %@", imageName);
     return [UIImage dynamicImageNamed:imageName];
 }
 
