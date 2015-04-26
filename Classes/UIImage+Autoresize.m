@@ -38,7 +38,7 @@
     // generate the current valid file extension depending on the current device screen size.
     NSString *extension = @"";
     if (scale == 3.f) {
-        extension = @"@3x";    // iPhone 6+
+        extension = @"@3x";         // iPhone 6+
     } else if (scale == 2.f && h == 568.0f && w == 320.0f) {
         extension = @"-568h@2x";    // iPhone 5, 5S, 5C
     } else if (scale == 2.f && h == 667.0f && w == 375.0f) {
@@ -68,17 +68,17 @@
     // Generate the current valid file extension depending on the current device screen size.
     NSString *extension = @"";
     if (scale == 3.f) {
-        extension = @"-l@3x";    // iPhone 6+
+        extension = @"-l@3x";       // iPhone 6+
     } else if (scale == 2.f && w == 568.0f && h == 320.0f) {
-        extension = @"-320h-l@2x";    // iPhone 5, 5S, 5C
+        extension = @"-320h-l@2x";  // iPhone 5, 5S, 5C
     } else if (scale == 2.f && w == 667.0f && h == 375.0f) {
-        extension = @"-375h-l@2x";    // iPhone 6
+        extension = @"-375h-l@2x";  // iPhone 6
     } else if (scale == 2.f && w == 480.0f && h == 320.0f) {
-        extension = @"-l@2x";    // iPhone 4, 4S
+        extension = @"-l@2x";       // iPhone 4, 4S
     } else if (scale == 1.f && w == 1024.0f && h == 768.0f) {
-        extension = @"-384h-l";       // iPad Mini, iPad 2, iPad 1
+        extension = @"-384h-l";     // iPad Mini, iPad 2, iPad 1
     } else if (scale == 2.f && w == 1024.0f && h == 768.0f) {
-        extension = @"-768h-l@2x";   // iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2
+        extension = @"-768h-l@2x";  // iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2
     }
     return extension;
 }

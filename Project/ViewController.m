@@ -8,28 +8,41 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
-
-@end
-
 @implementation ViewController
+
+#pragma mark - Life view cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // uncomment this and remove the picture in the storyboard to test a manual initialization
-//    self.imageView.image = [UIImage imageNamed:@"bg.png"];
+    // TODO: find a way to make the library loads the correct image when instanciated from a storyboard.
 }
 
+/*
+ * In order to improve the flow and automatic image resize, the `imageView` is initialized once (in the storyboard)
+ * but its image attribute is updated each time in the `viewWillAppear`.
+ * This way when the interface orientation changes while a child view controller is presented, the main view controller
+ * will be correct when shown again.
+ */
 - (void)viewWillAppear:(BOOL)animated {
     self.imageView.image = [UIImage imageNamed:@"bg.png"];
 }
 
+#pragma mark - Rotation
+
+/*
+ * Update the current background image depending on the transition size.
+ * Method used in iOS 8 and newer.
+ */
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 
     self.imageView.image = [UIImage imageNamed:@"bg.png" withTransitionSize:size];
 }
 
+/*
+ * Update the current background image with the normal initialization method.
+ * Method used until iOS 7.
+ */
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 
