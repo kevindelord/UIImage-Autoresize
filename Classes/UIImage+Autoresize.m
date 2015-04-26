@@ -45,9 +45,9 @@
     }
 
     // Generate the current valid file extension depending on the current device screen size.
-    NSString *extension = @"";
+    NSString *extension = @"";      // iPhone 3GS and earlier
     if (scale == 3.f) {
-        extension = @"@3x";         // iPhone 6+
+        extension = @"@3x";         // iPhone 6 Plus
     } else if (scale == 2.f && h == 568.0f && w == 320.0f) {
         extension = @"-568h@2x";    // iPhone 5, 5S, 5C
     } else if (scale == 2.f && h == 667.0f && w == 375.0f) {
@@ -80,9 +80,9 @@
     }
 
     // Generate the current valid file extension depending on the current device screen size.
-    NSString *extension = @"";
+    NSString *extension = @"-l";    // iPhone 3GS and earlier
     if (scale == 3.f) {
-        extension = @"-l@3x";       // iPhone 6+
+        extension = @"-l@3x";       // iPhone 6 Plus
     } else if (scale == 2.f && w == 568.0f && h == 320.0f) {
         extension = @"-320h-l@2x";  // iPhone 5, 5S, 5C
     } else if (scale == 2.f && w == 667.0f && h == 375.0f) {
