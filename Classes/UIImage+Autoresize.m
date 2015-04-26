@@ -15,6 +15,10 @@
 
 #pragma mark - UIImage Initializer
 
+/**
+ * This function actually do the magic trick. When called for the first time it will swizz (replace)
+ * the normal `imageNamed:` method with a custom one implemented in this library.
+ */
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -23,7 +27,12 @@
     });
 }
 
+/**
+ * Returns a valid suffix string to use with a portrait/vertical image file.
+ * It takes as parameters the desired height and witdh of the screen.
+ */
 + (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w {
+    //
     // Get the current device scale
     CGFloat scale = [UIScreen mainScreen].scale;
 
@@ -35,7 +44,7 @@
         NSLog(@"-------------------------------------------------");
     }
 
-    // generate the current valid file extension depending on the current device screen size.
+    // Generate the current valid file extension depending on the current device screen size.
     NSString *extension = @"";
     if (scale == 3.f) {
         extension = @"@3x";         // iPhone 6+
@@ -53,7 +62,12 @@
     return extension;
 }
 
+/**
+ * Returns a valid suffix string to use with a landscape/horizontal image file.
+ * It takes as parameters the desired height and witdh of the screen.
+ */
 + (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w {
+    //
     // Get the current device scale
     CGFloat scale = [UIScreen mainScreen].scale;
 
@@ -83,13 +97,22 @@
     return extension;
 }
 
+/**
+ * This function calculates the required CGSize with which the UIImage should depend from.
+ * This size is then use to get the correct suffix of the image filename.
+ *
+ * Returns an UIImage object.
+ */
 + (UIImage *)dynamicImageNamed:(NSString *)imageName {
-    // only change the name if no '@2x' or '@3x' are specified
+    //
+    // Only change the name if no '@2x' or '@3x' are specified
     if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
         UIInterfaceOrientation interfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
         CGSize size = [UIScreen mainScreen].bounds.size;
-        // less than
+        //
+        // Before iOS 8.0 the current mainScreen bounds were giving a different result than with newest iOS version.
+        // The size needs to be reversed for landscape mode.
         if ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedAscending) {
             if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
                 CGFloat temp = size.width;
@@ -100,12 +123,18 @@
         return [self imageNamed:imageName withTransitionSize:size];
     }
 
-    // otherwise returns an UIImage with the original filename.
+    // Otherwise returns an UIImage with the original filename.
     return [UIImage dynamicImageNamed:imageName];
 }
 
+/**
+ * When given a valid name and a transition size as parameters, this function will generate a new
+ * filename with a required suffix.
+ * This filename is used to create and return a new UIImage object.
+ */
 + (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size {
-    // only change the name if no '@2x' or '@3x' are specified
+    //
+    // Only change the name if no '@2x' or '@3x' are specified
     if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
         NSString *extension = @"";
@@ -115,20 +144,20 @@
             extension = [self horizontalExtensionForHeight:size.height width:size.width];
         }
 
-        // add the extension to the image name
+        // Add the extension to the image name
         NSRange dot = [imageName rangeOfString:@"."];
         NSMutableString *imageNameMutable = [imageName mutableCopy];
-        if (dot.location != NSNotFound)
+        if (dot.location != NSNotFound) {
             [imageNameMutable insertString:extension atIndex:dot.location];
-        else
+        } else {
             [imageNameMutable appendString:extension];
-
-        // if exist returns the corresponding UIImage
+        }
+        // If exist returns the corresponding UIImage
         if ([[NSBundle mainBundle] pathForResource:imageNameMutable ofType:@""]) {
             return [UIImage dynamicImageNamed:imageNameMutable];
         }
     }
-    // otherwise returns an UIImage with the original filename.
+    // Otherwise returns an UIImage with the original filename.
     return [UIImage dynamicImageNamed:imageName];
 }
 
