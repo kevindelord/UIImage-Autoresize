@@ -17,7 +17,7 @@
     // TODO: find a way to make the library loads the correct image when instanciated from a storyboard.
 }
 
-/*
+/**
  * In order to improve the flow and automatic image resize, the `imageView` is initialized once (in the storyboard)
  * but its image attribute is updated each time in the `viewWillAppear`.
  * This way when the interface orientation changes while a child view controller is presented, the main view controller
@@ -29,7 +29,7 @@
 
 #pragma mark - Rotation
 
-/*
+/**
  * Update the current background image depending on the transition size.
  * Method used in iOS 8 and newer.
  */
@@ -39,7 +39,7 @@
     self.imageView.image = [UIImage imageNamed:@"bg.png" withTransitionSize:size];
 }
 
-/*
+/**
  * Update the current background image with the normal initialization method.
  * Method used until iOS 7.
  */

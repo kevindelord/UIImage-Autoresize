@@ -18,7 +18,7 @@
 
 #pragma mark - Constraints
 
-/*
+/**
  * Create and add constraints to make a child view match its parent frame.
  */
 - (void)matchParentConstraints:(UIView *)parent child:(UIView *)child {
@@ -34,7 +34,7 @@
 
 #pragma mark - Life view cycle
 
-/*
+/**
  * This `secondVieyController` is a test/proof that the library still works
  * when the imageView is instanciated from the code.
  * In order to improve the flow and automatic image resize, the `_background` is
@@ -55,7 +55,7 @@
 
 #pragma mark - Actions
 
-/*
+/**
  * Pop the current view controller.
  */
 - (IBAction)backAction:(id)sender {
@@ -64,7 +64,7 @@
 
 #pragma mark - Rotation
 
-/*
+/**
  * Update the current background image depending on the transition size.
  * Method used in iOS 8 and newer.
  */
@@ -74,7 +74,7 @@
     _background.image = [UIImage imageNamed:@"bg.png" withTransitionSize:size];
 }
 
-/*
+/**
  * Update the current background image with the normal initialization method.
  * Method used until iOS 7.
  */
