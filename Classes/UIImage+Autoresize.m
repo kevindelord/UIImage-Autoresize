@@ -24,7 +24,6 @@
 }
 
 + (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w {
-    NSLog(@"%s", __FUNCTION__);
     // Get the current device scale
     CGFloat scale = [UIScreen mainScreen].scale;
 
@@ -55,7 +54,6 @@
 }
 
 + (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w {
-    NSLog(@"%s", __FUNCTION__);
     // Get the current device scale
     CGFloat scale = [UIScreen mainScreen].scale;
 
@@ -86,7 +84,6 @@
 }
 
 + (UIImage *)dynamicImageNamed:(NSString *)imageName {
-    NSLog(@"%s", __FUNCTION__);
     // only change the name if no '@2x' or '@3x' are specified
     if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
@@ -104,12 +101,10 @@
     }
 
     // otherwise returns an UIImage with the original filename.
-    NSLog(@"dynamicImageNamed : %@", imageName);
     return [UIImage dynamicImageNamed:imageName];
 }
 
 + (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size {
-    NSLog(@"%s", __FUNCTION__);
     // only change the name if no '@2x' or '@3x' are specified
     if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
@@ -130,12 +125,10 @@
 
         // if exist returns the corresponding UIImage
         if ([[NSBundle mainBundle] pathForResource:imageNameMutable ofType:@""]) {
-            NSLog(@"imageNamed:withTransitionSize: %@", imageNameMutable);
             return [UIImage dynamicImageNamed:imageNameMutable];
         }
     }
     // otherwise returns an UIImage with the original filename.
-    NSLog(@"imageNamed:withTransitionSize: %@", imageName);
     return [UIImage dynamicImageNamed:imageName];
 }
 
