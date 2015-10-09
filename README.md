@@ -6,6 +6,8 @@
 
 ### Description
 
+#### Deal with all screensizes for your images without changing your code. Just you image extentions
+
 This project is an UIImage extension which automatically generates a valid UIImage object based on the current device's orientation, size and scale.
 Working on iPhones and iPads on portrait and landscape modes, this library will add, if needed, a suffix to the given image filename in order to find and display the correct asset.
 The suffixes are described as [requirements](https://github.com/kevindelord/UIImage-Autoresize/tree/master#requirements).
