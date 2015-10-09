@@ -4,11 +4,23 @@
 [![License](https://img.shields.io/cocoapods/l/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
 [![Platform](https://img.shields.io/cocoapods/p/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
 
-### Description
+## Description
 
-This project is an UIImage extension which automatically generates a valid UIImage object based on the current device's orientation, size and scale.
-Working on iPhones and iPads on portrait and landscape modes, this library will add, if needed, a suffix to the given image filename in order to find and display the correct asset.
+#### One library to rule them all!
+
+This library automatically generates UIImage objects fitting the current device's orientation, size and scale.
+Working on iPhones and iPads on portrait and landscape modes, it will add, if needed, a suffix to the given image filename in order to find and display the correct asset.
+
 The suffixes are described as [requirements](https://github.com/kevindelord/UIImage-Autoresize/tree/master#requirements).
+
+#### Original problem & solution
+
+With Xcode, at the moment, it is pretty hard to use the xcassets logic to deal with image backgrounds for all your devices supporting all interface orientation.
+You could maybe achieve such thing with [Size Class](https://developer.apple.com/library/ios/recipes/xcode_help-IB_adaptive_sizes/chapters/SelectingASizeClass.html) and the [customized assets](https://developer.apple.com/library/ios/recipes/xcode_help-image_catalog-1.0/chapters/CustomizingImageSetsforSizeClasses.html) (if so please, contact me).
+
+But the easiest solution so far, is still to link one picture to one interface-oriented-screen-size.
+
+This library is here for you!
 
 ## Installation
 
@@ -20,8 +32,6 @@ it, simply add the following line to your Podfile:
 And finally import the header file:
 
     #import "UIImage+Autoresize.h"
-
-You are now ready to go!
 
 ## Documentation
 
@@ -50,13 +60,15 @@ You can instantiate an image in your code as you used to like this:
     [UIImage imageNamed: @"background.png" ];
 
 The code will `automatically` load an image corresponding to the current device.
-You do NOT need to specify any file extension.
+
+You do NOT need to specify any custom file extension.
 If you do, the library will ignore its own methods and only load the file you are asking for.
 
 ## Rotating screen: Portrait & Landscape modes
 
 When dealing with multiple interface orientations, an application might need different backgrounds.
 One for the portrait mode and another one for the landscape.
+
 With `UIImage+Autoresize` and its naming convention you could even use the same asset name in the code.
 The displayed picture will simply change by implementing the folloying methods in your view controller:
 
