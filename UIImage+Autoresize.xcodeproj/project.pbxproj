@@ -15,9 +15,6 @@
 		756655481A0E161A000CBCBC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 756655401A0E161A000CBCBC /* Images.xcassets */; };
 		7566554A1A0E161A000CBCBC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 756655421A0E161A000CBCBC /* main.m */; };
 		7566554B1A0E161A000CBCBC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 756655441A0E161A000CBCBC /* ViewController.m */; };
-		758C05291A0E1D32004B9297 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 758C05241A0E1D32004B9297 /* README.md */; };
-		758C052B1A0E1D32004B9297 /* UIImage+Autoresize.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 758C05261A0E1D32004B9297 /* UIImage+Autoresize.podspec */; };
-		758C052C1A0E1D32004B9297 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 758C05271A0E1D32004B9297 /* LICENSE */; };
 		75AF24E91A24CFBA00D0E553 /* bg-320h-l@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 75AF24DA1A24CFBA00D0E553 /* bg-320h-l@2x.png */; };
 		75AF24EA1A24CFBA00D0E553 /* bg-375h-l@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 75AF24DB1A24CFBA00D0E553 /* bg-375h-l@2x.png */; };
 		75AF24EB1A24CFBA00D0E553 /* bg-384h-l.png in Resources */ = {isa = PBXBuildFile; fileRef = 75AF24DC1A24CFBA00D0E553 /* bg-384h-l.png */; };
@@ -192,7 +189,7 @@
 		756DA3BB19FFC19300C702B7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Smart Mobile Factory";
 				TargetAttributes = {
 					756DA3C219FFC19300C702B7 = {
@@ -229,11 +226,9 @@
 				756655481A0E161A000CBCBC /* Images.xcassets in Resources */,
 				75AF24F41A24CFBA00D0E553 /* bg.png in Resources */,
 				75AF24EC1A24CFBA00D0E553 /* bg-768h-l@2x.png in Resources */,
-				758C052C1A0E1D32004B9297 /* LICENSE in Resources */,
 				75AF24EE1A24CFBA00D0E553 /* bg-l@2x.png in Resources */,
 				756655461A0E161A000CBCBC /* LaunchScreen.xib in Resources */,
 				75AF24F51A24CFBA00D0E553 /* bg@2x.png in Resources */,
-				758C052B1A0E1D32004B9297 /* UIImage+Autoresize.podspec in Resources */,
 				75AF24F61A24CFBA00D0E553 /* bg@3x.png in Resources */,
 				75AF24E91A24CFBA00D0E553 /* bg-320h-l@2x.png in Resources */,
 				75AF24F01A24CFBA00D0E553 /* bg-1024h@2x.png in Resources */,
@@ -253,7 +248,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7533CC0F1A10CF57007AAC39 /* SecondViewController.m in Sources */,
-				758C05291A0E1D32004B9297 /* README.md in Sources */,
 				756655451A0E161A000CBCBC /* AppDelegate.m in Sources */,
 				7566554A1A0E161A000CBCBC /* main.m in Sources */,
 				7566554B1A0E161A000CBCBC /* ViewController.m in Sources */,
@@ -303,6 +297,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -368,6 +363,7 @@
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "SMF.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "UIImage+Autoresize";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -382,6 +378,7 @@
 				INFOPLIST_FILE = Project/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "SMF.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "UIImage+Autoresize";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
