@@ -6,11 +6,21 @@
 
 ### Description
 
-#### Deal with all screensizes for your images without changing your code. Just you image extentions
+##### One library to rule them all!
 
-This project is an UIImage extension which automatically generates a valid UIImage object based on the current device's orientation, size and scale.
-Working on iPhones and iPads on portrait and landscape modes, this library will add, if needed, a suffix to the given image filename in order to find and display the correct asset.
+This library automatically generates UIImage objects fitting the current device's orientation, size and scale.
+Working on iPhones and iPads on portrait and landscape modes, it will add, if needed, a suffix to the given image filename in order to find and display the correct asset.
+
 The suffixes are described as [requirements](https://github.com/kevindelord/UIImage-Autoresize/tree/master#requirements).
+
+#### Original problem & solution
+
+With Xcode, at the moment, it is pretty hard to use the xcassets logic to deal with image backgrounds for all your devices supporting all interface orientation.
+You could maybe achieve such thing with [Size Class](https://developer.apple.com/library/ios/recipes/xcode_help-IB_adaptive_sizes/chapters/SelectingASizeClass.html) and the [customized assets](https://developer.apple.com/library/ios/recipes/xcode_help-image_catalog-1.0/chapters/CustomizingImageSetsforSizeClasses.html) (if so please, contact me).
+
+But the easiest solution so far, is still to link one picture to one interface-oriented-screen-size.
+
+This library is here for you!
 
 ## Installation
 
