@@ -120,11 +120,11 @@
                 size.height = temp;
             }
         }
-        return [self imageNamed:imageName withTransitionSize:size];
+		return [self imageNamed:imageName withTransitionSize:size];
     }
 
     // Otherwise returns an UIImage with the original filename.
-    return [UIImage dynamicImageNamed:imageName];
+	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName];
 }
 
 /**
@@ -154,11 +154,21 @@
         }
         // If exist returns the corresponding UIImage
         if ([[NSBundle mainBundle] pathForResource:imageNameMutable ofType:@""]) {
-            return [UIImage dynamicImageNamed:imageNameMutable];
+			return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageNameMutable];
         }
     }
     // Otherwise returns an UIImage with the original filename.
-    return [UIImage dynamicImageNamed:imageName];
+	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName];
 }
 
+/**
+ * Instanciate an UIImage object given a specific filename and set the `accessibilityIdentifier` to the same image name.
+ *
+ * After that, it will be possible to get the filename used at runtime for a dedicated UIImage object.
+ */
++ (UIImage *)dynamicImageNamedWithAccessibilityIdentifier:(NSString *)imageName {
+	UIImage *finalImage = [UIImage dynamicImageNamed:imageName];
+	finalImage.accessibilityIdentifier = imageName;
+	return finalImage;
+}
 @end
