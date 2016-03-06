@@ -144,8 +144,8 @@
             extension = [self horizontalExtensionForHeight:size.height width:size.width];
         }
 
-        // Add the extension to the image name
-        NSRange dot = [imageName rangeOfString:@"."];
+		// Add a custom extension to the image name
+		NSRange dot = [imageName rangeOfString:@"." options:NSBackwardsSearch];
         NSMutableString *imageNameMutable = [imageName mutableCopy];
         if (dot.location != NSNotFound) {
             [imageNameMutable insertString:extension atIndex:dot.location];
