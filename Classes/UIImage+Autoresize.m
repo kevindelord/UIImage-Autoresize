@@ -171,4 +171,5 @@
 	finalImage.accessibilityIdentifier = imageName;
 	return finalImage;
 }
+
 @end

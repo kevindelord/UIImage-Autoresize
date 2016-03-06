@@ -40,7 +40,7 @@
  * @param imageName The NSString object representing the filename of the image.
  * @return An UIImage created from a given string name.
  */
-+ (UIImage *)dynamicImageNamed:(NSString *)imageName;
+//+ (UIImage *)dynamicImageNamed:(NSString *)imageName;
 
 /**
  * Returns a new UIImage object created from a filename and a required transition Size.
@@ -56,4 +56,20 @@
 
 @end
 
+//@interface UIImage (AutoresizeTests)
+//
+//+ (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w;
+//+ (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w;
+//+ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size;
+//+ (UIImage *)dynamicImageNamed:(NSString *)imageName;
+//+ (UIImage *)dynamicImageNamedWithAccessibilityIdentifier:(NSString *)imageName;
+//
+//@end
+
 #endif
+
+//+ (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w;
+//+ (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w;
+//+ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size;
+//+ (UIImage *)dynamicImageNamed:(NSString *)imageName;
+//+ (UIImage *)dynamicImageNamedWithAccessibilityIdentifier:(NSString *)imageName;
