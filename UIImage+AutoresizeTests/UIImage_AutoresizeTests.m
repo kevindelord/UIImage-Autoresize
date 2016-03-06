@@ -8,7 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import "UIImage+Autoresize.h"
-//#import "UIImage+AutoresizeTests.h"
+#import "UIImage_AutoresizeTests.h"
+#import <objc/runtime.h>
 
 @interface UIImage_AutoresizeTests : XCTestCase
 
@@ -16,22 +17,48 @@
 
 @implementation UIImage_AutoresizeTests
 
++ (UIImage *)localTestImageNamedWithAccessibilityIdentifier:(NSString *)imageName {
+	return nil;
+}
+
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
-- (void)testExample {
+- (void)testShouldNotCrashOnSwizzling {
+
+	// TODO: explanation
+	Method origImageNamedMethod = class_getClassMethod(UIImage.class, @selector(dynamicImageNamedWithAccessibilityIdentifier:));
+	method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(self.class, @selector(localTestImageNamedWithAccessibilityIdentifier:)));
+
+	XCTAssertNil([UIImage dynamicImageNamed:@"test.bg.png"]);
+//	XCTAssertNotNil([UIImage dynamicImageNamed:@"bg.png"]);
+	XCTAssertNil([UIImage dynamicImageNamed:@"bg"]);
+	XCTAssertNil([UIImage dynamicImageNamed:@"test.bg@3x.png"]);
+	XCTAssertNil([UIImage dynamicImageNamed:@"bg@2x.png"]);
+}
+
+- (void)testShouldReturnInstanciatedImage {
 	UIImage * image = [UIImage imageNamed:@"test.bg.png"];
 	XCTAssertNotNil(image);
 }
 
+- (void)testShouldReturnInstanciatedImageWithAccessibilityIdentifier {
+	UIImage * image = [UIImage imageNamed:@"test.bg.png"];
+	XCTAssertNotNil(image);
+}
+
+- (void)testShouldReturnNilForInvalidImageName {
+	UIImage * image = [UIImage imageNamed:@"fakeImage.png"];
+	XCTAssertNil(image);
+}
+
 - (void)testShouldReturnCorrectVerticalExtension {
+	// TODO: full tests
 	NSString * image = [UIImage verticalExtensionForHeight:10 width: 10];
 	XCTAssertNotNil(image);
 }

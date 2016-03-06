@@ -13,9 +13,11 @@
 
 + (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w;
 + (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w;
+
+// The following functions can not be unit tested due to infinite loop.
 + (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size;
-+ (UIImage *)dynamicImageNamed:(NSString *)imageName;
 + (UIImage *)dynamicImageNamedWithAccessibilityIdentifier:(NSString *)imageName;
++ (UIImage *)dynamicImageNamed:(NSString *)imageName;
 
 @end
 
