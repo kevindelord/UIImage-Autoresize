@@ -7,7 +7,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "UIImage+Autoresize.h"
 #import "UIImage_AutoresizeTests.h"
 #import <objc/runtime.h>
 
@@ -18,6 +17,7 @@
 @implementation UIImage_AutoresizeTests
 
 + (UIImage *)localTestImageNamedWithAccessibilityIdentifier:(NSString *)imageName {
+	// TODO: remove?
 	return nil;
 }
 
@@ -31,15 +31,16 @@
 
 - (void)testShouldNotCrashOnSwizzling {
 
-	// TODO: explanation
-	Method origImageNamedMethod = class_getClassMethod(UIImage.class, @selector(dynamicImageNamedWithAccessibilityIdentifier:));
-	method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(self.class, @selector(localTestImageNamedWithAccessibilityIdentifier:)));
+//	// TODO: explanation + isolate ?
 
-	XCTAssertNil([UIImage dynamicImageNamed:@"test.bg.png"]);
-//	XCTAssertNotNil([UIImage dynamicImageNamed:@"bg.png"]);
-	XCTAssertNil([UIImage dynamicImageNamed:@"bg"]);
-	XCTAssertNil([UIImage dynamicImageNamed:@"test.bg@3x.png"]);
-	XCTAssertNil([UIImage dynamicImageNamed:@"bg@2x.png"]);
+//	Method origImageNamedMethod = class_getClassMethod(UIImage.class, @selector(dynamicImageNamedWithAccessibilityIdentifier:));
+//	method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(self.class, @selector(localTestImageNamedWithAccessibilityIdentifier:)));
+//
+//	XCTAssertNil([UIImage dynamicImageNamed:@"test.bg.png"]);
+////	XCTAssertNotNil([UIImage dynamicImageNamed:@"bg.png"]);
+//	XCTAssertNil([UIImage dynamicImageNamed:@"bg"]);
+//	XCTAssertNil([UIImage dynamicImageNamed:@"test.bg@3x.png"]);
+//	XCTAssertNil([UIImage dynamicImageNamed:@"bg@2x.png"]);
 }
 
 - (void)testShouldReturnInstanciatedImage {
@@ -48,8 +49,14 @@
 }
 
 - (void)testShouldReturnInstanciatedImageWithAccessibilityIdentifier {
+
+	// TODO: explanation + isolate ?
+	Method origImageNamedMethod = class_getClassMethod(UIImage.class, @selector(imageNamed:));
+	method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(UIImage.class, @selector(dynamicImageNamed:)));
+
 	UIImage * image = [UIImage imageNamed:@"test.bg.png"];
 	XCTAssertNotNil(image);
+	XCTAssertNotNil(image.accessibilityIdentifier);
 }
 
 - (void)testShouldReturnNilForInvalidImageName {
