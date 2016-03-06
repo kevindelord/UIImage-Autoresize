@@ -44,12 +44,12 @@
     [super viewWillAppear:animated];
 
     if (_background == nil) {
-        _background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]];
+        _background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"test.bg.png"]];
         [self.view addSubview:_background];
         [self.view sendSubviewToBack:_background];
         [self matchParentConstraints:self.view child:_background];
     } else {
-        _background.image = [UIImage imageNamed:@"bg.png"];
+        _background.image = [UIImage imageNamed:@"test.bg.png"];
     }
 }
 
@@ -71,7 +71,7 @@
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 
-    _background.image = [UIImage imageNamed:@"bg.png" withTransitionSize:size];
+    _background.image = [UIImage imageNamed:@"test.bg.png" withTransitionSize:size];
 }
 
 /**
@@ -81,7 +81,7 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 
-    _background.image = [UIImage imageNamed:@"bg.png"];
+    _background.image = [UIImage imageNamed:@"test.bg.png"];
 }
 
 @end
