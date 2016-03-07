@@ -24,7 +24,8 @@
  * will be correct when shown again.
  */
 - (void)viewWillAppear:(BOOL)animated {
-    self.imageView.image = [UIImage imageNamed:@"bg.png"];
+	[super viewWillAppear:animated];
+    self.imageView.image = [UIImage imageNamed:@"test.bg.png"];
 }
 
 #pragma mark - Rotation
@@ -36,7 +37,7 @@
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 
-    self.imageView.image = [UIImage imageNamed:@"bg.png" withTransitionSize:size];
+    self.imageView.image = [UIImage imageNamed:@"test.bg.png" withTransitionSize:size];
 }
 
 /**
@@ -46,7 +47,7 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 
-    self.imageView.image = [UIImage imageNamed:@"bg.png" ];
+    self.imageView.image = [UIImage imageNamed:@"test.bg.png"];
 }
 
 @end

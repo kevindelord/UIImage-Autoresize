@@ -31,18 +31,6 @@
 + (void)load;
 
 /**
- * Returns a new UIImage object created from a filename.
- *
- * @discussion This method will automatically add the needed image suffix for the current device.
- * It also deals with the device interface orientation and different iOS versions.
- * Important: the given filename should NOT contain any size-extension, only a name and its file type.
- *
- * @param imageName The NSString object representing the filename of the image.
- * @return An UIImage created from a given string name.
- */
-+ (UIImage *)dynamicImageNamed:(NSString *)imageName;
-
-/**
  * Returns a new UIImage object created from a filename and a required transition Size.
  *
  * @discussion This function should be called from a view controller when the device changes its orientation.

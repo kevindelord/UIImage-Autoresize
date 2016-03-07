@@ -27,35 +27,36 @@
     });
 }
 
+void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
+	NSLog(@"---------------  %@  ----------------------", (isVertical == true ? @"VERTICAL" : @"HORIZONTAL"));
+	NSLog(@"h: %f", h);
+	NSLog(@"w: %f", w);
+	NSLog(@"scale: %f", scale);
+	NSLog(@"-------------------------------------------------");
+}
+
 /**
  * Returns a valid suffix string to use with a portrait/vertical image file.
  * It takes as parameters the desired height and witdh of the screen.
  */
-+ (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w {
-    //
-    // Get the current device scale
-    CGFloat scale = [UIScreen mainScreen].scale;
++ (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
 
     if (__K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__) {
-        NSLog(@"---------------  VERTICAL  ----------------------");
-        NSLog(@"h: %f", h);
-        NSLog(@"w: %f", w);
-        NSLog(@"scale: %f", scale);
-        NSLog(@"-------------------------------------------------");
+		logInfo(true, scale, h, w);
     }
 
     // Generate the current valid file extension depending on the current device screen size.
     NSString *extension = @"";      // iPhone 3GS and earlier
     if (scale == 3.f && h == 736.0f && w == 414.0f) {
-        extension = @"@3x";         // iPhone 6 Plus, Standard mode
+        extension = @"@3x";         // iPhone 6(S) Plus Standard mode
     } else if (scale == 3.f && h == 667.0f && w == 375.0f) {
-        extension = @"-667h@3x";    // iPhone 6 Plus, Zoomed mode
+        extension = @"-667h@3x";    // iPhone 6(S) Plus Zoomed mode
     } else if (scale == 2.f && h == 568.0f && w == 320.0f) {
-        extension = @"-568h@2x";    // iPhone 5, 5S, 5C
+        extension = @"-568h@2x";    // iPhone 5(S,C), iPhone 6(S) Zoomed mode
     } else if (scale == 2.f && h == 667.0f && w == 375.0f) {
-        extension = @"-667h@2x";    // iPhone 6
+        extension = @"-667h@2x";    // iPhone 6(S) Standard mode
     } else if (scale == 2.f && h == 480.0f && w == 320.0f) {
-        extension = @"@2x";         // iPhone 4, 4S
+        extension = @"@2x";         // iPhone 4(S)
     } else if (scale == 1.f && h == 1024.0f && w == 768.0f) {
         extension = @"-512h";       // iPad Mini, iPad 2, iPad 1
     } else if (scale == 2.f && h == 1024.0f && w == 768.0f) {
@@ -68,31 +69,24 @@
  * Returns a valid suffix string to use with a landscape/horizontal image file.
  * It takes as parameters the desired height and witdh of the screen.
  */
-+ (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w {
-    //
-    // Get the current device scale
-    CGFloat scale = [UIScreen mainScreen].scale;
++ (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
 
     if (__K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__) {
-        NSLog(@"---------------  HORIZONTAL  --------------------");
-        NSLog(@"h: %f", h);
-        NSLog(@"w: %f", w);
-        NSLog(@"scale: %f", scale);
-        NSLog(@"-------------------------------------------------");
+		logInfo(false, scale, h, w);
     }
 
     // Generate the current valid file extension depending on the current device screen size.
     NSString *extension = @"-l";    // iPhone 3GS and earlier
     if (scale == 3.f && w == 736.0f && h == 414.0f) {
-        extension = @"-l@3x";       // iPhone 6 Plus, Standard mode
+        extension = @"-l@3x";       // iPhone 6(S) Plus Standard mode
     } else if (scale == 3.f && w == 667.0f && h == 375.0f) {
-        extension = @"-375h-l@3x";  // iPhone 6 Plus, Zoomed mode
+        extension = @"-375h-l@3x";  // iPhone 6(S) Plus Zoomed mode
     } else if (scale == 2.f && w == 568.0f && h == 320.0f) {
-        extension = @"-320h-l@2x";  // iPhone 5, 5S, 5C
+        extension = @"-320h-l@2x";  // iPhone 5(S,C), iPhone 6(S) Zoomed mode
     } else if (scale == 2.f && w == 667.0f && h == 375.0f) {
-        extension = @"-375h-l@2x";  // iPhone 6
+        extension = @"-375h-l@2x";  // iPhone 6(S) Standard Standard mode
     } else if (scale == 2.f && w == 480.0f && h == 320.0f) {
-        extension = @"-l@2x";       // iPhone 4, 4S
+        extension = @"-l@2x";       // iPhone 4(S)
     } else if (scale == 1.f && w == 1024.0f && h == 768.0f) {
         extension = @"-384h-l";     // iPad Mini, iPad 2, iPad 1
     } else if (scale == 2.f && w == 1024.0f && h == 768.0f) {
@@ -108,7 +102,11 @@
  * Returns an UIImage object.
  */
 + (UIImage *)dynamicImageNamed:(NSString *)imageName {
-    //
+	// Verification step
+	if (imageName == nil || ([imageName isKindOfClass:[NSString class]] == false) || imageName.length == 0) {
+		return nil;
+	}
+
     // Only change the name if no '@2x' or '@3x' are specified
     if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
@@ -124,28 +122,31 @@
                 size.height = temp;
             }
         }
-        return [self imageNamed:imageName withTransitionSize:size];
+		return [self imageNamed:imageName withTransitionSize:size];
     }
 
     // Otherwise returns an UIImage with the original filename.
-    return [UIImage dynamicImageNamed:imageName];
+	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName];
 }
 
 /**
- * When given a valid name and a transition size as parameters, this function will generate a new
- * filename with a required suffix.
+ * When given a valid name and a transition size as parameters, this function will generate a new filename with a required suffix.
  * This filename is used to create and return a new UIImage object.
  */
 + (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size {
-    //
+	// Verification step
+	if (imageName == nil || ([imageName isKindOfClass:[NSString class]] == false) || imageName.length == 0) {
+		return nil;
+	}
+
     // Only change the name if no '@2x' or '@3x' are specified
     if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
         NSString *extension = @"";
         if (size.height >= size.width) {
-            extension = [self verticalExtensionForHeight:size.height width:size.width];
+			extension = [self verticalExtensionForHeight:size.height width:size.width scale:[UIScreen mainScreen].scale];
         } else {
-            extension = [self horizontalExtensionForHeight:size.height width:size.width];
+            extension = [self horizontalExtensionForHeight:size.height width:size.width scale:[UIScreen mainScreen].scale];
         }
 
 		// Add a custom extension to the image name
@@ -158,11 +159,22 @@
         }
         // If exist returns the corresponding UIImage
         if ([[NSBundle mainBundle] pathForResource:imageNameMutable ofType:@""]) {
-            return [UIImage dynamicImageNamed:imageNameMutable];
+			return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageNameMutable];
         }
     }
     // Otherwise returns an UIImage with the original filename.
-    return [UIImage dynamicImageNamed:imageName];
+	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName];
+}
+
+/**
+ * Instanciate an UIImage object given a specific filename and set the `accessibilityIdentifier` to the same image name.
+ *
+ * After that, it will be possible to get the filename used at runtime for a dedicated UIImage object.
+ */
++ (UIImage *)dynamicImageNamedWithAccessibilityIdentifier:(NSString *)imageName {
+	UIImage *finalImage = [UIImage dynamicImageNamed:imageName];
+	finalImage.accessibilityIdentifier = imageName;
+	return finalImage;
 }
 
 @end
