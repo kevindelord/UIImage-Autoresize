@@ -128,8 +128,7 @@
 }
 
 /**
- * When given a valid name and a transition size as parameters, this function will generate a new
- * filename with a required suffix.
+ * When given a valid name and a transition size as parameters, this function will generate a new filename with a required suffix.
  * This filename is used to create and return a new UIImage object.
  */
 + (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size {

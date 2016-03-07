@@ -47,7 +47,7 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 
-    self.imageView.image = [UIImage imageNamed:@"test.bg.png" ];
+    self.imageView.image = [UIImage imageNamed:@"test.bg.png"];
 }
 
 @end
