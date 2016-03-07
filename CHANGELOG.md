@@ -1,4 +1,4 @@
-CHANGELOG.md
+# CHANGELOG.md
 
 ## 1.1.0
 
