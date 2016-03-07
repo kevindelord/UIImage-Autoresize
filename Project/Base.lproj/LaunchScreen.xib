@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10112" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,23 +11,39 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="pZ5-6e-Shx">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UIImage            +       Autoresize" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZK-wj-NCL">
+                    <rect key="frame" x="140" y="0.0" width="200" height="480"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="cUv-Xp-KM5"/>
+                        <constraint firstAttribute="height" constant="100" id="kmF-ri-NvY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="kmF-ri-NvY"/>
+                        </mask>
+                    </variation>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="pZ5-6e-Shx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YMz-pL-GNE"/>
-                <constraint firstAttribute="bottom" secondItem="pZ5-6e-Shx" secondAttribute="bottom" id="Zmm-Lm-S5r"/>
-                <constraint firstAttribute="trailing" secondItem="pZ5-6e-Shx" secondAttribute="trailing" id="reR-4a-Vbq"/>
-                <constraint firstItem="pZ5-6e-Shx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vI7-6V-PDc"/>
+                <constraint firstAttribute="trailing" secondItem="vZK-wj-NCL" secondAttribute="trailing" id="2lV-Ay-Ul4"/>
+                <constraint firstItem="vZK-wj-NCL" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Bkn-t9-Ybx"/>
+                <constraint firstItem="vZK-wj-NCL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TNZ-7C-5H1"/>
+                <constraint firstItem="vZK-wj-NCL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gj8-JK-YXV"/>
+                <constraint firstAttribute="bottom" secondItem="vZK-wj-NCL" secondAttribute="bottom" id="iBq-5L-vaV"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="2lV-Ay-Ul4"/>
+                    <exclude reference="TNZ-7C-5H1"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
-    <resources>
-        <image name="Logo" width="260" height="260"/>
-    </resources>
 </document>
