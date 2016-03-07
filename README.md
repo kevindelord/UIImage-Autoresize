@@ -102,15 +102,13 @@ The library works with Swift as smooth as it does in Obj-C. Nothing to worry abo
 
 Run the project itself !
 
-```
-$> pod try UIImage+Autoresize 
-```
+	$> pod try UIImage+Autoresize
 
 ## Special thanks to
 
 Dennis Rieth for the assets, dennis@ieth.de
 
-@waywalker and @jzblog for the feedbacks.
+[@waywalker](https://github.com/waywalker) and [@jzblog](https://github.com/jzblog) for the feedbacks.
 
 ## Author
 
