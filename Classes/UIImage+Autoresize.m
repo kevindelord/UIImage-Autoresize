@@ -47,15 +47,15 @@
     // Generate the current valid file extension depending on the current device screen size.
     NSString *extension = @"";      // iPhone 3GS and earlier
     if (scale == 3.f && h == 736.0f && w == 414.0f) {
-        extension = @"@3x";         // iPhone 6 Plus, Standard mode
+        extension = @"@3x";         // iPhone 6(S) Plus Standard mode
     } else if (scale == 3.f && h == 667.0f && w == 375.0f) {
-        extension = @"-667h@3x";    // iPhone 6 Plus, Zoomed mode
+        extension = @"-667h@3x";    // iPhone 6(S) Plus Zoomed mode
     } else if (scale == 2.f && h == 568.0f && w == 320.0f) {
-        extension = @"-568h@2x";    // iPhone 5, 5S, 5C
+        extension = @"-568h@2x";    // iPhone 5(S,C), iPhone 6(S) Zoomed mode
     } else if (scale == 2.f && h == 667.0f && w == 375.0f) {
-        extension = @"-667h@2x";    // iPhone 6
+        extension = @"-667h@2x";    // iPhone 6(S) Standard mode
     } else if (scale == 2.f && h == 480.0f && w == 320.0f) {
-        extension = @"@2x";         // iPhone 4, 4S
+        extension = @"@2x";         // iPhone 4(S)
     } else if (scale == 1.f && h == 1024.0f && w == 768.0f) {
         extension = @"-512h";       // iPad Mini, iPad 2, iPad 1
     } else if (scale == 2.f && h == 1024.0f && w == 768.0f) {
@@ -84,15 +84,15 @@
     // Generate the current valid file extension depending on the current device screen size.
     NSString *extension = @"-l";    // iPhone 3GS and earlier
     if (scale == 3.f && w == 736.0f && h == 414.0f) {
-        extension = @"-l@3x";       // iPhone 6 Plus, Standard mode
+        extension = @"-l@3x";       // iPhone 6(S) Plus, Standard mode
     } else if (scale == 3.f && w == 667.0f && h == 375.0f) {
-        extension = @"-375h-l@3x";  // iPhone 6 Plus, Zoomed mode
+        extension = @"-375h-l@3x";  // iPhone 6(S) Plus, Zoomed mode
     } else if (scale == 2.f && w == 568.0f && h == 320.0f) {
-        extension = @"-320h-l@2x";  // iPhone 5, 5S, 5C
+        extension = @"-320h-l@2x";  // iPhone 5(S,C), iPhone 6(S) Zoomed
     } else if (scale == 2.f && w == 667.0f && h == 375.0f) {
-        extension = @"-375h-l@2x";  // iPhone 6
+        extension = @"-375h-l@2x";  // iPhone 6(S) Standard
     } else if (scale == 2.f && w == 480.0f && h == 320.0f) {
-        extension = @"-l@2x";       // iPhone 4, 4S
+        extension = @"-l@2x";       // iPhone 4(S)
     } else if (scale == 1.f && w == 1024.0f && h == 768.0f) {
         extension = @"-384h-l";     // iPad Mini, iPad 2, iPad 1
     } else if (scale == 2.f && w == 1024.0f && h == 768.0f) {
