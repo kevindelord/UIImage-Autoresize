@@ -11,7 +11,7 @@
 
 @interface UIImage (AutoresizeTests)
 
-+ (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w;
++ (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale;
 
 @end
 
@@ -22,7 +22,7 @@
 @implementation UIImage_HorizontalExtensionTests
 
 - (void)testShouldReturnCorrectHorizontalExtension {
-	NSString * image = [UIImage horizontalExtensionForHeight:10 width: 10];
+	NSString * image = [UIImage horizontalExtensionForHeight:10 width: 10 scale:1];
 	XCTAssertNotNil(image);
 }
 

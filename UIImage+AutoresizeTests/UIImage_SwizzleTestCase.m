@@ -11,6 +11,7 @@
 @interface UIImage (DynamicAutoresizeTests)
 
 + (UIImage *)dynamicImageNamed:(NSString *)imageName;
+void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w);
 
 @end
 
@@ -29,6 +30,11 @@
     [super tearDown];
 	Method origImageNamedMethod = class_getClassMethod(UIImage.class, @selector(dynamicImageNamed:));
 	method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(UIImage.class, @selector(imageNamed:)));
+}
+
+- (void)testShouldNotCrashOnLog {
+	logInfo(true, 1, 12, 43);
+	logInfo(false, 0, 2, 4.3);
 }
 
 @end

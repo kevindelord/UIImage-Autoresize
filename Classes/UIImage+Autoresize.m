@@ -27,21 +27,22 @@
     });
 }
 
+void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
+	NSLog(@"---------------  %@  ----------------------", (isVertical == true ? @"VERTICAL" : @"HORIZONTAL"));
+	NSLog(@"h: %f", h);
+	NSLog(@"w: %f", w);
+	NSLog(@"scale: %f", scale);
+	NSLog(@"-------------------------------------------------");
+}
+
 /**
  * Returns a valid suffix string to use with a portrait/vertical image file.
  * It takes as parameters the desired height and witdh of the screen.
  */
-+ (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w {
-    //
-    // Get the current device scale
-    CGFloat scale = [UIScreen mainScreen].scale;
++ (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
 
     if (__K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__) {
-        NSLog(@"---------------  VERTICAL  ----------------------");
-        NSLog(@"h: %f", h);
-        NSLog(@"w: %f", w);
-        NSLog(@"scale: %f", scale);
-        NSLog(@"-------------------------------------------------");
+		logInfo(true, scale, h, w);
     }
 
     // Generate the current valid file extension depending on the current device screen size.
@@ -68,17 +69,10 @@
  * Returns a valid suffix string to use with a landscape/horizontal image file.
  * It takes as parameters the desired height and witdh of the screen.
  */
-+ (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w {
-    //
-    // Get the current device scale
-    CGFloat scale = [UIScreen mainScreen].scale;
++ (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
 
     if (__K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__) {
-        NSLog(@"---------------  HORIZONTAL  --------------------");
-        NSLog(@"h: %f", h);
-        NSLog(@"w: %f", w);
-        NSLog(@"scale: %f", scale);
-        NSLog(@"-------------------------------------------------");
+		logInfo(false, scale, h, w);
     }
 
     // Generate the current valid file extension depending on the current device screen size.
@@ -150,9 +144,9 @@
 
         NSString *extension = @"";
         if (size.height >= size.width) {
-            extension = [self verticalExtensionForHeight:size.height width:size.width];
+			extension = [self verticalExtensionForHeight:size.height width:size.width scale:[UIScreen mainScreen].scale];
         } else {
-            extension = [self horizontalExtensionForHeight:size.height width:size.width];
+            extension = [self horizontalExtensionForHeight:size.height width:size.width scale:[UIScreen mainScreen].scale];
         }
 
 		// Add a custom extension to the image name
