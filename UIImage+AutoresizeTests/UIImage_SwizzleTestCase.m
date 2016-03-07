@@ -8,12 +8,21 @@
 
 #import "UIImage_SwizzleTestCase.h"
 
+@interface UIImage (DynamicAutoresizeTests)
+
++ (UIImage *)dynamicImageNamed:(NSString *)imageName;
+
+@end
+
+
 @implementation UIImage_SwizzleTestCase
 
 - (void)setUp {
     [super setUp];
 	Method origImageNamedMethod = class_getClassMethod(UIImage.class, @selector(imageNamed:));
 	method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(UIImage.class, @selector(dynamicImageNamed:)));
+
+	_scale = [UIScreen mainScreen].scale;
 }
 
 - (void)tearDown {

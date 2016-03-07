@@ -50,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		751E02541C8C5BCD00C047A6 /* UIImage_AutoresizeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImage_AutoresizeTests.h; sourceTree = "<group>"; };
 		7533CC0D1A10CF57007AAC39 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		7533CC0E1A10CF57007AAC39 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		753F846B1C8C496C00DDB19B /* test.bg-512h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test.bg-512h.png"; sourceTree = "<group>"; };
@@ -119,11 +118,10 @@
 				755F73FD1C8D8D4A008B5588 /* UIImage_SwizzleTestCase.h */,
 				755F73FE1C8D8D4A008B5588 /* UIImage_SwizzleTestCase.m */,
 				753F84A11C8C55CA00DDB19B /* Info.plist */,
-				751E02541C8C5BCD00C047A6 /* UIImage_AutoresizeTests.h */,
 				753F849F1C8C55CA00DDB19B /* UIImage_AutoresizeTests.m */,
+				755F73FA1C8D882A008B5588 /* UIImage_WithTransitionSizeTests.m */,
 				755F73F71C8D86E7008B5588 /* UIImage_VerticalExtensionTests.m */,
 				755F73F91C8D882A008B5588 /* UIImage_HorizontalExtensionTests.m */,
-				755F73FA1C8D882A008B5588 /* UIImage_WithTransitionSizeTests.m */,
 			);
 			path = "UIImage+AutoresizeTests";
 			sourceTree = "<group>";

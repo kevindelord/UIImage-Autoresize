@@ -7,7 +7,13 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "UIImage_AutoresizeTests.h"
+#import "UIImage+Autoresize.h"
+
+@interface UIImage (AutoresizeTests)
+
++ (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w;
+
+@end
 
 @interface UIImage_VerticalExtensionTests : XCTestCase
 

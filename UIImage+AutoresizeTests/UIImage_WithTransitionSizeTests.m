@@ -8,18 +8,11 @@
 
 #import "UIImage_SwizzleTestCase.h"
 
-@interface UIImage_WithTransitionSizeTests : UIImage_SwizzleTestCase {
-	CGFloat _scale;
-}
+@interface UIImage_WithTransitionSizeTests : UIImage_SwizzleTestCase
 
 @end
 
 @implementation UIImage_WithTransitionSizeTests
-
-- (void)setUp {
-	[super setUp];
-	_scale = [UIScreen mainScreen].scale;
-}
 
 - (void)testShouldReturnObjectFromDotNameWithHorizontalExtension {
 	UIImage * image = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
@@ -98,18 +91,27 @@
 	XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg-375h-l@2x.png"]);
 }
 
-
 - (void)testShouldReturnNilForInvalidImageName {
 	UIImage * image = [UIImage imageNamed:@"fake.test.bg" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
 	XCTAssertNil(image);
 }
+
+#pragma mark - invalid name
 
 - (void)testShouldReturnNilForNilImageName {
 	UIImage * image = [UIImage imageNamed:nil withTransitionSize:CGSizeMake(568.0f, 320.0f)];
 	XCTAssertNil(image);
 }
 
+- (void)testShouldReturnNilForNSNullImageName {
+	NSString *name = ((NSString *)[NSNull null]);
+	UIImage * image = [UIImage imageNamed:name withTransitionSize:CGSizeMake(568.0f, 320.0f)];
+	XCTAssertNil(image);
+}
+
+- (void)testShouldReturnNilForEmptyImageName {
+	UIImage * image = [UIImage imageNamed:@"" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
+	XCTAssertNil(image);
+}
+
 @end
-
-
-//CGFloat scale = [UIScreen mainScreen].scale;

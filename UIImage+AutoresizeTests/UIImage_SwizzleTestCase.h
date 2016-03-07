@@ -10,10 +10,12 @@
 #define UIImage_SwizzleTestCase_h
 
 #import <XCTest/XCTest.h>
-#import "UIImage_AutoresizeTests.h"
+#import "UIImage+Autoresize.h"
 #import <objc/runtime.h>
 
-@interface UIImage_SwizzleTestCase : XCTestCase
+@interface UIImage_SwizzleTestCase : XCTestCase {
+	CGFloat _scale;
+}
 
 @end
 
