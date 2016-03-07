@@ -15,7 +15,7 @@ The suffixes are described as [requirements](https://github.com/kevindelord/UIIm
 
 #### Original problem & solution
 
-With Xcode, at the moment, it is pretty hard to use the xcassets logic to deal with image backgrounds for all your devices supporting all interface orientation.
+With Xcode, at the moment, it is pretty hard to use the xcassets logic to deal with image backgrounds for [all devices](http://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions) supporting all interface orientation.
 You could maybe achieve such thing with [Size Class](https://developer.apple.com/library/ios/recipes/xcode_help-IB_adaptive_sizes/chapters/SelectingASizeClass.html) and the [customized assets](https://developer.apple.com/library/ios/recipes/xcode_help-image_catalog-1.0/chapters/CustomizingImageSetsforSizeClasses.html) (if so please, contact me).
 
 But the easiest solution so far, is still to link one picture to one interface-oriented-screen-size.
