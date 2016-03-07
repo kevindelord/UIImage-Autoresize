@@ -104,7 +104,11 @@
  * Returns an UIImage object.
  */
 + (UIImage *)dynamicImageNamed:(NSString *)imageName {
-    //
+	// Verification step
+	if (imageName == nil || ([imageName isKindOfClass:[NSString class]] == false) || imageName.length == 0) {
+		return nil;
+	}
+
     // Only change the name if no '@2x' or '@3x' are specified
     if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
@@ -132,7 +136,11 @@
  * This filename is used to create and return a new UIImage object.
  */
 + (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size {
-    //
+	// Verification step
+	if (imageName == nil || ([imageName isKindOfClass:[NSString class]] == false) || imageName.length == 0) {
+		return nil;
+	}
+
     // Only change the name if no '@2x' or '@3x' are specified
     if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
