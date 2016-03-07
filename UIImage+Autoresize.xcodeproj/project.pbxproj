@@ -79,6 +79,8 @@
 		755F74001C8D91A3008B5588 /* ressourcebg-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ressourcebg-667h@2x.png"; sourceTree = "<group>"; };
 		755F74031C8DB917008B5588 /* test.bg-375h-l@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test.bg-375h-l@3x.png"; sourceTree = "<group>"; };
 		755F74051C8DB91F008B5588 /* test.bg-667h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test.bg-667h@3x.png"; sourceTree = "<group>"; };
+		755F74071C8DBD0F008B5588 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
+		755F74081C8DBDEC008B5588 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		756655361A0E1615000CBCBC /* UIImage+Autoresize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Autoresize.h"; sourceTree = "<group>"; };
 		756655371A0E1615000CBCBC /* UIImage+Autoresize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Autoresize.m"; sourceTree = "<group>"; };
 		7566553A1A0E161A000CBCBC /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -161,6 +163,8 @@
 		756DA3BA19FFC19300C702B7 = {
 			isa = PBXGroup;
 			children = (
+				755F74081C8DBDEC008B5588 /* TODO.md */,
+				755F74071C8DBD0F008B5588 /* VERSION */,
 				758C05241A0E1D32004B9297 /* README.md */,
 				758C05261A0E1D32004B9297 /* UIImage+Autoresize.podspec */,
 				758C05271A0E1D32004B9297 /* LICENSE */,

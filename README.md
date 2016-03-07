@@ -24,8 +24,7 @@ This library is here for you!
 
 ## Installation
 
-UIImage+Autoresize is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+UIImage+Autoresize is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
     pod "UIImage+Autoresize"
 
@@ -46,23 +45,26 @@ The following suffixes are expected:
 |:------------|:------------|:---------|
 | none        | -l          | 3GS and earlier |
 | @2x         | -l@2x       | iPhone 4, 4S |
-| -568h@2x    | -320h-l@2x  | iPhone 5, 5C, 5S |
-| -667h@2x    | -375h-l@2x  | iPhone 6 |
-| @3x         | -l@3x       | iPhone 6 Plus |
+| -568h@2x    | -320h-l@2x  | iPhone 5, 5C, 5S, iPhone 6 Zoomed Mode |
+| -667h@2x    | -375h-l@2x  | iPhone 6 Standard Mode |
+| @3x         | -l@3x       | iPhone 6 Plus Standard Mode |
+| -667h@3x    | -375h-l@3x  | iPhone 6 Plus Zoomed Mode |
 | -512h       | -384h-l     | iPad Mini, iPad 2, iPad 1 |
 | -1024h@2x   | -768h-l@2x  | iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2 |
 
 ## Usage
 
 When this class is integrated into your project, you have nothing else to do.
-You can instantiate an image in your code as you used to like this:
+You can instantiate an image in your code as you usually do:
 
     [UIImage imageNamed: @"background.png" ];
 
 The code will `automatically` load an image corresponding to the current device.
 
-You do NOT need to specify any custom file extension.
+You do NOT need to specify any _custom_ file extension.
 If you do, the library will ignore its own methods and only load the file you are asking for.
+
+**Important:** To avoid edge cases and bugs, always specify the image type: `.png`, `.jpg`, etc. 
 
 ## Rotating screen: Portrait & Landscape modes
 
@@ -72,18 +74,18 @@ One for the portrait mode and another one for the landscape.
 With `UIImage+Autoresize` and its naming convention you could even use the same asset name in the code.
 The displayed picture will simply change by implementing the folloying methods in your view controller:
 
-On iOS 8:
+Starting iOS 8:
 
     - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
         [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
         self.imageView.image = [UIImage imageNamed:@"bg.png" withTransitionSize:size];
     }
 
-On iOS 7:
+On iOS 7 and earlier:
 
     - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
         [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-        self.imageView.image = [UIImage imageNamed:@"bg.png" ];
+        self.imageView.image = [UIImage imageNamed:@"bg.png"];
     }
 
 ### Tips
@@ -98,13 +100,17 @@ The library works with Swift as smooth as it does in Obj-C. Nothing to worry abo
 
 ## Example
 
-To run the example project, clone the repo, and open the `UIImage+Autoresize.xcodeproj` file.
+Run the project itself !
 
-## TODO:
-* Make it work with Storyboard
+```
+$> pod try UIImage+Autoresize 
+```
 
 ## Special thanks to
+
 Dennis Rieth for the assets, dennis@ieth.de
+
+@waywalker and @jzblog for the feedbacks.
 
 ## Author
 
