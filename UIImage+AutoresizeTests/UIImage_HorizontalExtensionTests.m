@@ -81,18 +81,25 @@
 	XCTAssert([name isEqualToString:@"-l@2x"]);
 }
 
-- (void)testShouldReturnSuffixForiPads {
+- (void)testShouldReturnSuffixForSmalliPads {
 	// iPad Mini, iPad 2, iPad 1
 	NSString * name = [UIImage horizontalExtensionForHeight:768.0f width:1024.0f scale:1];
 	XCTAssertNotNil(name);
 	XCTAssert([name isEqualToString:@"-384h-l"]);
 }
 
-- (void)testShouldReturnSuffixForiPhoneAir {
+- (void)testShouldReturnSuffixForiPadAir {
 	// iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2
 	NSString * name = [UIImage horizontalExtensionForHeight:768.0f width:1024.0f scale:2];
 	XCTAssertNotNil(name);
 	XCTAssert([name isEqualToString:@"-768h-l@2x"]);
+}
+
+- (void)testShouldReturnSuffixForiPhonePro {
+	// iPad Pro
+	NSString * name = [UIImage horizontalExtensionForHeight:1024.0f width:1366.0f scale:2];
+	XCTAssertNotNil(name);
+	XCTAssert([name isEqualToString:@"-1024h-l@2x"]);
 }
 
 @end
