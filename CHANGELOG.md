@@ -7,4 +7,5 @@
 - Add support for iPhone 6 Plus in Zoomed mode. Thanks [@waywalker](https://github.com/waywalker)
 - Minor improvement when the image filename contains more than one dot. Thanks [@jzblog](https://github.com/jzblog)
 - The `accessibilityIdentifier` of the returned image is now always set to the asset filename.
+- Update test resources.
 - And now with 49 unit tests !
