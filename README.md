@@ -45,13 +45,13 @@ The following suffixes are expected:
 |:------------|:------------|:---------|
 | none        | -l          | 3GS and earlier |
 | @2x         | -l@2x       | iPhone 4, 4S |
-| -568h@2x    | -320h-l@2x  | iPhone 5, 5C, 5S, iPhone 6 Zoomed Mode |
+| -568h@2x    | -320h-l@2x  | iPhone 5, 5C, 5S, SE, iPhone 6 Zoomed Mode |
 | -667h@2x    | -375h-l@2x  | iPhone 6 Standard Mode |
 | @3x         | -l@3x       | iPhone 6 Plus Standard Mode |
 | -667h@3x    | -375h-l@3x  | iPhone 6 Plus Zoomed Mode |
 | -512h       | -384h-l     | iPad Mini, iPad 2, iPad 1 |
-| -1024h@2x   | -768h-l@2x  | iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2 |
-| -1366h@2x   | -1024h-l@2x | iPad Pro |
+| -1024h@2x   | -768h-l@2x  | iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2, iPad Pro (9.7 inch) |
+| -1366h@2x   | -1024h-l@2x | iPad Pro (12,9 inch) |
 
 ## Usage
 

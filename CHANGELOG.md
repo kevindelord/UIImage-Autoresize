@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.1.1
+
+- README: add information about new iPad Pro (9.7 inch) and iPhone SE
+
 ## 1.1.0
 
 - The function `dynamicImageNamed:`is no more public.
