@@ -9,5 +9,6 @@
 #ifndef UIImageAutoresize_h
 #define UIImageAutoresize_h
 
+#import "UIImage+Autoresize.h"
 
 #endif /* UIImageAutoresize_h */

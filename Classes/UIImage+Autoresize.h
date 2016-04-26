@@ -11,9 +11,15 @@
 
 #import <UIKit/UIKit.h>
 
+//! Project version number for UIImageAutoresize.
+FOUNDATION_EXPORT double UIImageAutoresizeVersionNumber;
+
+//! Project version string for UIImageAutoresize.
+FOUNDATION_EXPORT const unsigned char UIImageAutoresizeVersionString[];
+
 /**
  * A categorized class of UIImage replacing the default `UIImage::imageNamed:` method with a custom one.
- * Mainly used for fullscreen background images, this class adds a naming convetion to deal image assets 
+ * Mainly used for fullscreen background images, this class adds a naming convention to deal image assets
  * with different sizes, orientations and scales.
  *
  * The suffixes are describe in the `README.md`.
@@ -41,6 +47,9 @@
  * @return An UIImage created from a generated string name.
  */
 + (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size;
+
+// TODO: doc
++ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle *)bundle;
 
 @end
 
