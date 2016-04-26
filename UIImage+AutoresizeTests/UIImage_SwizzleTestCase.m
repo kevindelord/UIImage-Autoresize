@@ -37,4 +37,14 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w);
 	logInfo(false, 0, 2, 4.3);
 }
 
+- (UIImage *)imageNamed:(NSString *)name {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	return [UIImage imageNamed:name inBundle:bundle compatibleWithTraitCollection:nil];
+}
+
+- (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	return [UIImage imageNamed:imageName withTransitionSize:size inBundle:bundle];
+}
+
 @end

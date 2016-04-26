@@ -17,7 +17,7 @@
 #pragma mark - Fake Image Name
 
 - (void)testShouldReturnObjectFromValidName {
-	UIImage * image = [UIImage imageNamed:@"test.bg.png"];
+	UIImage *image = [self imageNamed:@"test.bg.png"];
 	XCTAssertNotNil(image);
 	XCTAssertNotNil(image.accessibilityIdentifier);
 	if (_scale == 3.f) {
@@ -37,14 +37,14 @@
 }
 
 - (void)testShouldReturnObjectFromDotNameWithoutExtension {
-	UIImage * image = [UIImage imageNamed:@"test.bg"];
+	UIImage * image = [self imageNamed:@"test.bg"];
 	XCTAssertNotNil(image);
 	XCTAssertNotNil(image.accessibilityIdentifier);
 	XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg"]);
 }
 
 - (void)testShouldReturnObjectFromNameWithExtensionOrNilIfMissingAsset {
-	UIImage * image = [UIImage imageNamed:@"ressourcebg.png"];
+	UIImage * image = [self imageNamed:@"ressourcebg.png"];
 	CGSize size = [UIScreen mainScreen].bounds.size;
 	if (_scale == 2.f && size.height == 667.0f && size.width == 375.0f) {
 		XCTAssert([image.accessibilityIdentifier isEqualToString:@"ressourcebg-667h@2x.png"]);
@@ -54,27 +54,27 @@
 }
 
 - (void)testShouldReturnObjectFromNameWithoutExtension {
-	UIImage * image = [UIImage imageNamed:@"ressourcebg"];
+	UIImage * image = [self imageNamed:@"ressourcebg"];
 	XCTAssertNil(image);
 	XCTAssertNil(image.accessibilityIdentifier);
 }
 
 - (void)testShouldReturnObjectFromNameWithScaleExtension {
-	UIImage * image = [UIImage imageNamed:@"test.bg@2x.png"];
+	UIImage * image = [self imageNamed:@"test.bg@2x.png"];
 	XCTAssertNotNil(image);
 	XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg@2x.png"]);
 
-	image = [UIImage imageNamed:@"test.bg@3x.png"];
+	image = [self imageNamed:@"test.bg@3x.png"];
 	XCTAssertNotNil(image);
 	XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg@3x.png"]);
 }
 
 - (void)testShouldReturnObjectFromNameWithComplexExtension {
-	UIImage * image = [UIImage imageNamed:@"test.bg-375h-l@2x.png"];
+	UIImage * image = [self imageNamed:@"test.bg-375h-l@2x.png"];
 	XCTAssertNotNil(image);
 	XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg-375h-l@2x.png"]);
 
-	image = [UIImage imageNamed:@"ressourcebg-667h@2x.png"];
+	image = [self imageNamed:@"ressourcebg-667h@2x.png"];
 	XCTAssertNotNil(image);
 	XCTAssert([image.accessibilityIdentifier isEqualToString:@"ressourcebg-667h@2x.png"]);
 }
@@ -82,12 +82,12 @@
 #pragma mark - Fake Image Name
 
 - (void)testShouldReturnNilForInvalidImageName {
-	UIImage * image = [UIImage imageNamed:@"fakeImage.png"];
+	UIImage * image = [self imageNamed:@"fakeImage.png"];
 	XCTAssertNil(image);
 }
 
 - (void)testShouldReturnNilForInvalidImageNameAndExtension {
-	UIImage * image = [UIImage imageNamed:@"fakeImage@2x.png"];
+	UIImage * image = [self imageNamed:@"fakeImage@2x.png"];
 	XCTAssertNil(image);
 }
 
@@ -95,18 +95,18 @@
 
 - (void)testShouldReturnNilForNilImageName {
 	NSString *name = nil;
-	UIImage * image = [UIImage imageNamed:name];
+	UIImage * image = [self imageNamed:name];
 	XCTAssertNil(image);
 }
 
 - (void)testShouldReturnNilForNSNullImageName {
 	NSString *name = ((NSString *)[NSNull null]);
-	UIImage * image = [UIImage imageNamed:name];
+	UIImage * image = [self imageNamed:name];
 	XCTAssertNil(image);
 }
 
 - (void)testShouldReturnNilForEmptyImageName {
-	UIImage * image = [UIImage imageNamed:@""];
+	UIImage * image = [self imageNamed:@""];
 	XCTAssertNil(image);
 }
 
