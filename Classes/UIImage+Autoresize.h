@@ -49,7 +49,7 @@ FOUNDATION_EXPORT const unsigned char UIImageAutoresizeVersionString[];
  *
  *  @return An UIImage created from a generated string name.
  */
-+ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size NS_AVAILABLE_IOS(8.0);
++ (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName withTransitionSize:(CGSize)size NS_AVAILABLE_IOS(8.0);
 
 /**
  *  Returns a new UIImage object created from a filename and a required transition Size from a specific bundle.
@@ -60,7 +60,7 @@ FOUNDATION_EXPORT const unsigned char UIImageAutoresizeVersionString[];
  *
  *  @return An UIImage created from a generated string name within a specific bundle.
  */
-+ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle *)bundle NS_AVAILABLE_IOS(8.0);
++ (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle * _Nullable)bundle NS_AVAILABLE_IOS(8.0);
 
 @end
 

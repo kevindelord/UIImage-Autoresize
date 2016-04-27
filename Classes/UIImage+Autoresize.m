@@ -61,7 +61,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
  *
  *  @return Image suffix name to match a valid portrait/vertical image file.
  */
-+ (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
++ (NSString * _Nonnull)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
 
     if (__K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__) {
 		logInfo(true, scale, h, w);
@@ -98,7 +98,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
  *
  *  @return Image suffix name to match a valid landscape/horizontal image file.
  */
-+ (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
++ (NSString * _Nonnull)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
 
     if (__K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__) {
 		logInfo(false, scale, h, w);
@@ -138,7 +138,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
  *
  *  Returns an UIImage object.
  */
-+ (UIImage *)dynamicImageNamed:(NSString *)imageName {
++ (UIImage * _Nullable)dynamicImageNamed:(NSString * _Nonnull)imageName {
 	return [self imageNamed:imageName inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
 }
 
@@ -156,7 +156,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
  *
  *  @return The image object that best matches the desired traits with a dynamic name, or nil if no suitable image was found.
  */
-+ (UIImage *)dynamicImageNamed:(NSString *)imageName inBundle:(NSBundle *)bundle compatibleWithTraitCollection:(UITraitCollection *)traitCollection {
++ (UIImage * _Nullable)dynamicImageNamed:(NSString * _Nonnull)imageName inBundle:(NSBundle * _Nullable)bundle compatibleWithTraitCollection:(UITraitCollection * _Nullable)traitCollection {
 	// Verification step
 	if ([self isImageNameValid:imageName] == false) {
 		return nil;
@@ -199,7 +199,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
  *
  *  @return An UIImage created from a generated string name.
  */
-+ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size {
++ (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName withTransitionSize:(CGSize)size {
 	return [self imageNamed:imageName withTransitionSize:size inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
 }
 
@@ -212,7 +212,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
  *
  *  @return An UIImage created from a generated string name within a specific bundle.
  */
-+ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle *)bundle {
++ (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle * _Nullable)bundle {
 	return [self imageNamed:imageName withTransitionSize:size inBundle:bundle compatibleWithTraitCollection:nil];
 }
 
@@ -226,7 +226,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
  *
  *  @return An UIImage created from a generated string name within a specific bundle.
  */
-+ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle *)bundle compatibleWithTraitCollection:(UITraitCollection *)traitCollection {
++ (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle * _Nullable)bundle compatibleWithTraitCollection:(UITraitCollection * _Nullable)traitCollection {
 	// Verification step
 	if ([self isImageNameValid:imageName] == false) {
 		return nil;
@@ -272,7 +272,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
  *
  *  @return An UIImage object with its image filename set as accessibility identifier.
  */
-+ (UIImage *)dynamicImageNamedWithAccessibilityIdentifier:(NSString *)imageName inBundle:(NSBundle *)bundle compatibleWithTraitCollection:(UITraitCollection *)traitCollection {
++ (UIImage * _Nullable)dynamicImageNamedWithAccessibilityIdentifier:(NSString * _Nonnull)imageName inBundle:(NSBundle * _Nullable)bundle compatibleWithTraitCollection:(UITraitCollection * _Nullable)traitCollection {
 	UIImage *finalImage = [UIImage dynamicImageNamed:imageName inBundle:bundle compatibleWithTraitCollection:traitCollection];
 	finalImage.accessibilityIdentifier = imageName;
 	return finalImage;
@@ -285,7 +285,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
  *
  *  @return TRUE if the filename is valid; FALSE otherwise.
  */
-+ (BOOL)isImageNameValid:(NSString *)imageName {
++ (BOOL)isImageNameValid:(NSString * _Nonnull)imageName {
 	if (imageName == nil || ([imageName isKindOfClass:[NSString class]] == false)) {
 		return false;
 	}
