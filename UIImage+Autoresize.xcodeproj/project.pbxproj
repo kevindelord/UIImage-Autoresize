@@ -12,7 +12,6 @@
 		75323C4D1CCFADDB00A681C0 /* UIImageAutoresize.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75323C371CCFADDB00A681C0 /* UIImageAutoresize.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		75323C611CCFAE4D00A681C0 /* UIImage+Autoresize.m in Sources */ = {isa = PBXBuildFile; fileRef = 756655371A0E1615000CBCBC /* UIImage+Autoresize.m */; };
 		75323C631CCFAE5300A681C0 /* UIImage+Autoresize.h in Headers */ = {isa = PBXBuildFile; fileRef = 756655361A0E1615000CBCBC /* UIImage+Autoresize.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		75323C661CCFAFD700A681C0 /* UIImageAutoresize.h in Headers */ = {isa = PBXBuildFile; fileRef = 75323C651CCFAFD700A681C0 /* UIImageAutoresize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75323C701CCFB11300A681C0 /* UIImageAutoresize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75323C371CCFADDB00A681C0 /* UIImageAutoresize.framework */; };
 		75323C761CCFB11F00A681C0 /* ressourcebg-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 755F74001C8D91A3008B5588 /* ressourcebg-667h@2x.png */; };
 		75323C771CCFB11F00A681C0 /* UIImage_SwizzleTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 755F73FE1C8D8D4A008B5588 /* UIImage_SwizzleTestCase.m */; };
@@ -98,9 +97,9 @@
 
 /* Begin PBXFileReference section */
 		7515F8931CD0F20000AB3422 /* UIImage_MainBundleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImage_MainBundleTests.m; sourceTree = "<group>"; };
+		7515F8951CD0F3C600AB3422 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		75323C371CCFADDB00A681C0 /* UIImageAutoresize.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIImageAutoresize.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75323C3B1CCFADDB00A681C0 /* UIImage-Autoresize-Framework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIImage-Autoresize-Framework-Info.plist"; sourceTree = "<group>"; };
-		75323C651CCFAFD700A681C0 /* UIImageAutoresize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAutoresize.h; sourceTree = "<group>"; };
 		75323C6B1CCFB11300A681C0 /* UIImageAutoresizeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIImageAutoresizeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7533CC0D1A10CF57007AAC39 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		7533CC0E1A10CF57007AAC39 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
@@ -206,8 +205,8 @@
 		756655351A0E1615000CBCBC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7515F8951CD0F3C600AB3422 /* module.modulemap */,
 				756655361A0E1615000CBCBC /* UIImage+Autoresize.h */,
-				75323C651CCFAFD700A681C0 /* UIImageAutoresize.h */,
 				756655371A0E1615000CBCBC /* UIImage+Autoresize.m */,
 			);
 			path = Classes;
@@ -310,7 +309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				75323C631CCFAE5300A681C0 /* UIImage+Autoresize.h in Headers */,
-				75323C661CCFAFD700A681C0 /* UIImageAutoresize.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +553,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = Classes/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.UIImageAutoresize;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -573,6 +572,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = Classes/module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = io.kevindelord.UIImageAutoresize;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
