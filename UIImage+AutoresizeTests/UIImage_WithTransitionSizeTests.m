@@ -114,4 +114,11 @@
 	XCTAssertNil(image);
 }
 
+- (void)testShouldReturnNilWhenUsingMainBundleOnTestTarget {
+	UIImage *imageTestBundle = [self imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(320.0f, 480.0f)];
+	XCTAssertNotNil(imageTestBundle);
+	UIImage *imageMainBundle = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
+	XCTAssertNil(imageMainBundle);
+}
+
 @end

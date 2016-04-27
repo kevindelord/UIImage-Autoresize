@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7515F8941CD0F20000AB3422 /* UIImage_MainBundleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7515F8931CD0F20000AB3422 /* UIImage_MainBundleTests.m */; };
 		75323C4C1CCFADDB00A681C0 /* UIImageAutoresize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75323C371CCFADDB00A681C0 /* UIImageAutoresize.framework */; };
 		75323C4D1CCFADDB00A681C0 /* UIImageAutoresize.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75323C371CCFADDB00A681C0 /* UIImageAutoresize.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		75323C611CCFAE4D00A681C0 /* UIImage+Autoresize.m in Sources */ = {isa = PBXBuildFile; fileRef = 756655371A0E1615000CBCBC /* UIImage+Autoresize.m */; };
 		75323C631CCFAE5300A681C0 /* UIImage+Autoresize.h in Headers */ = {isa = PBXBuildFile; fileRef = 756655361A0E1615000CBCBC /* UIImage+Autoresize.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		75323C661CCFAFD700A681C0 /* UIImageAutoresize.h in Headers */ = {isa = PBXBuildFile; fileRef = 75323C651CCFAFD700A681C0 /* UIImageAutoresize.h */; };
+		75323C661CCFAFD700A681C0 /* UIImageAutoresize.h in Headers */ = {isa = PBXBuildFile; fileRef = 75323C651CCFAFD700A681C0 /* UIImageAutoresize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75323C701CCFB11300A681C0 /* UIImageAutoresize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75323C371CCFADDB00A681C0 /* UIImageAutoresize.framework */; };
 		75323C761CCFB11F00A681C0 /* ressourcebg-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 755F74001C8D91A3008B5588 /* ressourcebg-667h@2x.png */; };
 		75323C771CCFB11F00A681C0 /* UIImage_SwizzleTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 755F73FE1C8D8D4A008B5588 /* UIImage_SwizzleTestCase.m */; };
@@ -96,6 +97,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7515F8931CD0F20000AB3422 /* UIImage_MainBundleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImage_MainBundleTests.m; sourceTree = "<group>"; };
 		75323C371CCFADDB00A681C0 /* UIImageAutoresize.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIImageAutoresize.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75323C3B1CCFADDB00A681C0 /* UIImage-Autoresize-Framework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIImage-Autoresize-Framework-Info.plist"; sourceTree = "<group>"; };
 		75323C651CCFAFD700A681C0 /* UIImageAutoresize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAutoresize.h; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				755F73FA1C8D882A008B5588 /* UIImage_WithTransitionSizeTests.m */,
 				755F73F71C8D86E7008B5588 /* UIImage_VerticalExtensionTests.m */,
 				755F73F91C8D882A008B5588 /* UIImage_HorizontalExtensionTests.m */,
+				7515F8931CD0F20000AB3422 /* UIImage_MainBundleTests.m */,
 			);
 			name = UnitTests;
 			path = "UIImage+AutoresizeTests";
@@ -490,6 +493,7 @@
 				75323C7A1CCFB11F00A681C0 /* UIImage_VerticalExtensionTests.m in Sources */,
 				75323C781CCFB11F00A681C0 /* UIImage_AutoresizeTests.m in Sources */,
 				75323C791CCFB11F00A681C0 /* UIImage_WithTransitionSizeTests.m in Sources */,
+				7515F8941CD0F20000AB3422 /* UIImage_MainBundleTests.m in Sources */,
 				75323C7B1CCFB11F00A681C0 /* UIImage_HorizontalExtensionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -722,6 +726,7 @@
 				75323C4F1CCFADDB00A681C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		75323C731CCFB11300A681C0 /* Build configuration list for PBXNativeTarget "UIImageAutoresizeTests" */ = {
 			isa = XCConfigurationList;
@@ -730,6 +735,7 @@
 				75323C751CCFB11300A681C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		756DA3BE19FFC19300C702B7 /* Build configuration list for PBXProject "UIImage+Autoresize" */ = {
 			isa = XCConfigurationList;
