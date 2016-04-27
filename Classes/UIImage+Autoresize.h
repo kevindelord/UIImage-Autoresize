@@ -18,38 +18,49 @@ FOUNDATION_EXPORT double UIImageAutoresizeVersionNumber;
 FOUNDATION_EXPORT const unsigned char UIImageAutoresizeVersionString[];
 
 /**
- * A categorized class of UIImage replacing the default `UIImage::imageNamed:` method with a custom one.
- * Mainly used for fullscreen background images, this class adds a naming convention to deal image assets
- * with different sizes, orientations and scales.
+ *  A categorized class of UIImage replacing the default `UIImage::imageNamed:` method with a custom one.
+ *  Mainly used for fullscreen background images, this class adds a naming convention to deal image assets
+ *  with different sizes, orientations and scales.
  *
- * The suffixes are describe in the `README.md`.
- *
+ *  The suffixes are describe in the `README.md`.
  */
 @interface UIImage (Autoresize)
 
 #pragma mark - UIImage Initializer
 
 /**
- * Method to override the `UIImage::imageNamed:` method with a custom one.
- * The new method and its implementation will be executed instead of the default UIImage::imageNamed:
- * The user don't need to do anything.
+ *  Method to override the `UIImage` initializer methods with custom ones.
+ *  The new methods and their implementation will be executed instead of the default one.
+ *  The user don't need to do anything.
+ *  The `imageNamed:` and `imageNamed:inBundle:compatibleWithTraitCollection:` are swizzled.
  */
-+ (void)load;
++ (void)load NS_AVAILABLE_IOS(2.0);
 
 /**
- * Returns a new UIImage object created from a filename and a required transition Size.
+ *  Returns a new UIImage object created from a filename and a required transition Size.
  *
- * @discussion This function should be called from a view controller when the device changes its orientation.
- * The function `viewWillTransitionToSize:withTransitionCoordinator:` is only available from iOS 8.
+ *  @discussion This function should be called from a view controller when the device changes its orientation.
+ *  The function `viewWillTransitionToSize:withTransitionCoordinator:` is only available from iOS 8.
  *
- * @param imageName The NSString object representing the filename of the image.
- * @param size The new size for the container’s view.
- * @return An UIImage created from a generated string name.
+ *  The app's main bundle is used.
+ *
+ *  @param imageName The NSString object representing the filename of the image.
+ *  @param size      The new size for the container’s view.
+ *
+ *  @return An UIImage created from a generated string name.
  */
-+ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size;
++ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size NS_AVAILABLE_IOS(8.0);
 
-// TODO: doc
-+ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle *)bundle;
+/**
+ *  Returns a new UIImage object created from a filename and a required transition Size from a specific bundle.
+ *
+ *  @param imageName The NSString object representing the filename of the image.
+ *  @param size      The new size for the container’s view.
+ *  @param bundle    The bundle containing the image file or asset catalog. Specify nil to search the app’s main bundle.
+ *
+ *  @return An UIImage created from a generated string name within a specific bundle.
+ */
++ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle *)bundle NS_AVAILABLE_IOS(8.0);
 
 @end
 

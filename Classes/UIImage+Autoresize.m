@@ -16,9 +16,9 @@
 #pragma mark - UIImage Initializer
 
 /**
- * This function actually do the magic trick. When called for the first time it will swizz (replace)
+ * This function actually do the magic trick. When called for the first time it will swizzle (replace)
  * the normal methods with custom ones implemented in this library.
- * The `imageNamed:` and `imageNamed:inBundle:compatibleWithTraitCollection:` are changed.
+ * The `imageNamed:` and `imageNamed:inBundle:compatibleWithTraitCollection:` are swizzled.
  */
 + (void)load {
     static dispatch_once_t onceToken;
@@ -32,20 +32,34 @@
     });
 }
 
+#pragma mark - DEBUG Log Functions
+
 /**
- * Log information about the give scale and size.
+ *  Log information about the give scale and size.
+ *
+ *  @param isVertical Is the current device orientation vertical or not.
+ *  @param scale      The natural scale factor associated with the screen.
+ *  @param h          The height of the displayed screen in pixels.
+ *  @param w          The width of the displayed screen in pixels.
  */
-void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
+void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
 	NSLog(@"---------------  %@  ----------------------", (isVertical == true ? @"VERTICAL" : @"HORIZONTAL"));
-	NSLog(@"h: %f", h);
-	NSLog(@"w: %f", w);
+	NSLog(@"height: %f", height);
+	NSLog(@"width: %f", width);
 	NSLog(@"scale: %f", scale);
 	NSLog(@"-------------------------------------------------");
 }
 
+#pragma mark - Suffix Name Convention
+
 /**
- * Returns a valid suffix string to use with a portrait/vertical image file.
- * It takes as parameters the desired height and witdh of the screen.
+ *  Returns a valid suffix string to use with a portrait/vertical image file.
+ *
+ *  @param h     The height of the displayed screen in pixels.
+ *  @param w     The width of the displayed screen in pixels.
+ *  @param scale The natural scale factor associated with the screen.
+ *
+ *  @return Image suffix name to match a valid portrait/vertical image file.
  */
 + (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
 
@@ -76,8 +90,13 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
 }
 
 /**
- * Returns a valid suffix string to use with a landscape/horizontal image file.
- * It takes as parameters the desired height and witdh of the screen.
+ *  Returns a valid suffix string to use with a landscape/horizontal image file.
+ *
+ *  @param h     The height of the displayed screen in pixels.
+ *  @param w     The width of the displayed screen in pixels.
+ *  @param scale The natural scale factor associated with the screen.
+ *
+ *  @return Image suffix name to match a valid landscape/horizontal image file.
  */
 + (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
 
@@ -107,35 +126,42 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
 	return extension;
 }
 
+#pragma mark - Image Named swizzled functions
+
 /**
- * This function calculates the required CGSize with which the UIImage should depend from.
- * This size is then use to get the correct suffix of the image filename.
+ *  Returns the image object associated with a dynamic filename.
  *
- * The main bundle is used.
+ *  The filename is improved depending on the current device size and orientation to
+ *  return an image that perfectly matches the device's screen.
  *
- * Returns an UIImage object.
+ *  The app's main bundle and the trait collection associated with the main screen are used.
+ *
+ *  Returns an UIImage object.
  */
 + (UIImage *)dynamicImageNamed:(NSString *)imageName {
 	return [self imageNamed:imageName inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
 }
 
 /**
- *  Returns the named image that is also compatible with the specified trait collection.
+ *  Returns the image object associated with a dynamic filename from a given bundle and with compatible trait collection.
  *
- *  The image object that best matches the desired traits with the given name, or nil if no suitable image was found.
+ *  This function calculates the required CGSize with which the UIImage should depend from.
+ *  This size is then used to get the correct suffix of the image filename.
+ *
+ *  If specified, the named image also needs to be compatible with the specified trait collection. If no suitable image was found the function returns nil.
  *
  *  @param imageName       The name of the image. For images in asset catalogs, specify the name of the image asset. For PNG image files, specify the filename without the filename extension. For all other image file formats, include the filename extension in the name.
  *  @param bundle          The bundle containing the image file or asset catalog. Specify nil to search the app’s main bundle.
  *  @param traitCollection The traits associated with the intended environment for the image. Use this parameter to ensure that the correct variant of the image is loaded. If you specify nil, this method uses the traits associated with the main screen.
  *
- *  @return The image object that best matches the desired traits with the given name, or nil if no suitable image was found.
+ *  @return The image object that best matches the desired traits with a dynamic name, or nil if no suitable image was found.
  */
 + (UIImage *)dynamicImageNamed:(NSString *)imageName inBundle:(NSBundle *)bundle compatibleWithTraitCollection:(UITraitCollection *)traitCollection {
 	// Verification step
 	if ([self isImageNameValid:imageName] == false) {
 		return nil;
 	}
-
+	bundle = (bundle != nil ? bundle : [NSBundle mainBundle]);
 	// Only change the name if no '@2x' or '@3x' are specified
 	if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
@@ -158,25 +184,54 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
 	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName inBundle:bundle compatibleWithTraitCollection:traitCollection];
 }
 
+#pragma mark - Orientation change functions
+
 /**
- * When given a valid name and a transition size as parameters, this function will generate a new filename with a required suffix.
- * This filename is used to create and return a new UIImage object.
+ *  Returns a new UIImage object created from a filename and a required transition Size.
+ *
+ *  @discussion This function should be called from a view controller when the device changes its orientation.
+ *  The function `viewWillTransitionToSize:withTransitionCoordinator:` is only available from iOS 8.
+ *
+ *  The app's main bundle and the trait collection associated with the main screen are used.
+ *
+ *  @param imageName The NSString object representing the filename of the image.
+ *  @param size      The new size for the container’s view.
+ *
+ *  @return An UIImage created from a generated string name.
  */
 + (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size {
-	return [self imageNamed:imageName withTransitionSize:size inBundle:[NSBundle mainBundle]];
+	return [self imageNamed:imageName withTransitionSize:size inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
 }
 
-// TODO: doc
+/**
+ *  Returns a new UIImage object created from a filename and a required transition Size from a specific bundle.
+ *
+ *  @param imageName The NSString object representing the filename of the image.
+ *  @param size      The new size for the container’s view.
+ *  @param bundle    The bundle containing the image file or asset catalog. Specify nil to search the app’s main bundle.
+ *
+ *  @return An UIImage created from a generated string name within a specific bundle.
+ */
 + (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle *)bundle {
 	return [self imageNamed:imageName withTransitionSize:size inBundle:bundle compatibleWithTraitCollection:nil];
 }
 
+/**
+ *  Returns a new UIImage object created from a filename and a required transition Size from a specific bundle.
+ *
+ *  @param imageName       The NSString object representing the filename of the image.
+ *  @param size            The new size for the container’s view.
+ *  @param bundle          The bundle containing the image file or asset catalog. Specify nil to search the app’s main bundle.
+ *  @param traitCollection The traits associated with the intended environment for the image. Use this parameter to ensure that the correct variant of the image is loaded. If you specify nil, this method uses the traits associated with the main screen.
+ *
+ *  @return An UIImage created from a generated string name within a specific bundle.
+ */
 + (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle *)bundle compatibleWithTraitCollection:(UITraitCollection *)traitCollection {
 	// Verification step
 	if ([self isImageNameValid:imageName] == false) {
 		return nil;
 	}
-
+	bundle = (bundle != nil ? bundle : [NSBundle mainBundle]);
 	// Only change the name if no '@2x' or '@3x' are specified
 	if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
@@ -204,10 +259,18 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
 	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName inBundle:bundle compatibleWithTraitCollection:traitCollection];
 }
 
+#pragma mark - Utilities
+
 /**
- * Instanciate an UIImage object given a specific filename and set the `accessibilityIdentifier` to the same image name.
+ *  Instanciate an UIImage object given a specific filename and set the `accessibilityIdentifier` to the same image name.
  *
- * After that, it will be possible to get the filename used at runtime for a dedicated UIImage object.
+ *	By default, the accessibility identifier will now always be set to the image filename.
+ *
+ *  @param imageName       The NSString object representing the filename of the image. This value will also be set as the accessibility identifier of the element.
+ *  @param bundle          The bundle containing the image file or asset catalog. Specify nil to search the app’s main bundle.
+ *  @param traitCollection The traits associated with the intended environment for the image. Use this parameter to ensure that the correct variant of the image is loaded. If you specify nil, this method uses the traits associated with the main screen.
+ *
+ *  @return An UIImage object with its image filename set as accessibility identifier.
  */
 + (UIImage *)dynamicImageNamedWithAccessibilityIdentifier:(NSString *)imageName inBundle:(NSBundle *)bundle compatibleWithTraitCollection:(UITraitCollection *)traitCollection {
 	UIImage *finalImage = [UIImage dynamicImageNamed:imageName inBundle:bundle compatibleWithTraitCollection:traitCollection];
@@ -217,6 +280,10 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
 
 /**
  *  Check wether a given file name is valid or not.
+ *
+ *  @param imageName NSString object representing the image filename.
+ *
+ *  @return TRUE if the filename is valid; FALSE otherwise.
  */
 + (BOOL)isImageNameValid:(NSString *)imageName {
 	if (imageName == nil || ([imageName isKindOfClass:[NSString class]] == false)) {
