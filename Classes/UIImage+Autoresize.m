@@ -119,7 +119,17 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
 	return [self imageNamed:imageName inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
 }
 
-// TODO: doc
+/**
+ *  Returns the named image that is also compatible with the specified trait collection.
+ *
+ *  The image object that best matches the desired traits with the given name, or nil if no suitable image was found.
+ *
+ *  @param imageName       The name of the image. For images in asset catalogs, specify the name of the image asset. For PNG image files, specify the filename without the filename extension. For all other image file formats, include the filename extension in the name.
+ *  @param bundle          The bundle containing the image file or asset catalog. Specify nil to search the app’s main bundle.
+ *  @param traitCollection The traits associated with the intended environment for the image. Use this parameter to ensure that the correct variant of the image is loaded. If you specify nil, this method uses the traits associated with the main screen.
+ *
+ *  @return The image object that best matches the desired traits with the given name, or nil if no suitable image was found.
+ */
 + (UIImage *)dynamicImageNamed:(NSString *)imageName inBundle:(NSBundle *)bundle compatibleWithTraitCollection:(UITraitCollection *)traitCollection {
 	// Verification step
 	if ([self isImageNameValid:imageName] == false) {
@@ -141,11 +151,11 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
 				size.height = temp;
 			}
 		}
-		return [self imageNamed:imageName withTransitionSize:size inBundle:bundle];
+		return [self imageNamed:imageName withTransitionSize:size inBundle:bundle compatibleWithTraitCollection:traitCollection];
 	}
 
 	// Otherwise returns an UIImage with the original filename.
-	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName inBundle:bundle];
+	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName inBundle:bundle compatibleWithTraitCollection:traitCollection];
 }
 
 /**
@@ -158,6 +168,10 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
 
 // TODO: doc
 + (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle *)bundle {
+	return [self imageNamed:imageName withTransitionSize:size inBundle:bundle compatibleWithTraitCollection:nil];
+}
+
++ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle *)bundle compatibleWithTraitCollection:(UITraitCollection *)traitCollection {
 	// Verification step
 	if ([self isImageNameValid:imageName] == false) {
 		return nil;
@@ -183,11 +197,11 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
 		}
 		// If exist returns the corresponding UIImage
 		if ([bundle pathForResource:imageNameMutable ofType:@""]) {
-			return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageNameMutable inBundle:bundle];
+			return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageNameMutable inBundle:bundle compatibleWithTraitCollection:traitCollection];
 		}
 	}
 	// Otherwise returns an UIImage with the original filename.
-	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName inBundle:bundle];
+	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName inBundle:bundle compatibleWithTraitCollection:traitCollection];
 }
 
 /**
@@ -195,8 +209,8 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
  *
  * After that, it will be possible to get the filename used at runtime for a dedicated UIImage object.
  */
-+ (UIImage *)dynamicImageNamedWithAccessibilityIdentifier:(NSString *)imageName inBundle:(NSBundle *)bundle {
-	UIImage *finalImage = [UIImage dynamicImageNamed:imageName inBundle:bundle compatibleWithTraitCollection:nil];
++ (UIImage *)dynamicImageNamedWithAccessibilityIdentifier:(NSString *)imageName inBundle:(NSBundle *)bundle compatibleWithTraitCollection:(UITraitCollection *)traitCollection {
+	UIImage *finalImage = [UIImage dynamicImageNamed:imageName inBundle:bundle compatibleWithTraitCollection:traitCollection];
 	finalImage.accessibilityIdentifier = imageName;
 	return finalImage;
 }
