@@ -36,7 +36,6 @@
 		75323C8B1CCFB8BD00A681C0 /* test.bg-l.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B4784E1C8F036900C6C3F8 /* test.bg-l.png */; };
 		75323C8C1CCFB8BD00A681C0 /* test.bg-l@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B4784F1C8F036900C6C3F8 /* test.bg-l@2x.png */; };
 		75323C8D1CCFB8BD00A681C0 /* test.bg-l@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B478501C8F036900C6C3F8 /* test.bg-l@3x.png */; };
-		755961F91CD25C430038A218 /* UIImage+Autoresize.m in Sources */ = {isa = PBXBuildFile; fileRef = 756655371A0E1615000CBCBC /* UIImage+Autoresize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -342,7 +341,6 @@
 				7501F98B1CD209FA005D14DA /* UIImage_AutoresizeTests.m in Sources */,
 				7501F9901CD209FA005D14DA /* UIImage_WithTransitionSizeTests.m in Sources */,
 				7501F98D1CD209FA005D14DA /* UIImage_MainBundleTests.m in Sources */,
-				755961F91CD25C430038A218 /* UIImage+Autoresize.m in Sources */,
 				7501F98C1CD209FA005D14DA /* UIImage_HorizontalExtensionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
