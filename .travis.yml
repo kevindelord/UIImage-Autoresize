@@ -24,8 +24,8 @@ env:
     - DESTINATION="OS=9.3,name=iPhone 6s Plus"
     - DESTINATION="OS=8.1,name=iPad 2"
     - DESTINATION="OS=9.0,name=iPad Retina"
-    - DESTINATION="OS=9.1,name=iPad Air"
-    - DESTINATION="OS=8.3,name=iPad Air 2"
+    - DESTINATION="OS=8.4,name=iPad Air"
+    - DESTINATION="OS=9.1,name=iPad Air 2"
     - DESTINATION="OS=9.3,name=iPad Pro"
 
 before_install:
