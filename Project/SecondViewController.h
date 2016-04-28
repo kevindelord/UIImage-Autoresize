@@ -2,12 +2,14 @@
 //  SecondViewController.h
 //  UIImage+Autoresize
 //
-//  Created by kevin delord on 28/10/14.
-//  Copyright (c) 2014 Kevin Delord. All rights reserved.
+//  Created by kevin delord on 28/04/16.
+//  Copyright © 2016 Smart Mobile Factory. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 @interface SecondViewController : UIViewController
+
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
 
 @end
