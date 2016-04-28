@@ -30,16 +30,17 @@
 	XCTAssertNotNil(imageInBundle);
 }
 
-- (void)testShouldReturnNilWhenUsingMainBundleOnTestTarget {
+- (void)testShouldReturnNilWhenUsingWrongBundleOnTestTarget {
 	UIImage *imageTestBundle = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(320.0f, 480.0f) inBundle:[NSBundle bundleForClass:[self class]]];
 	XCTAssertNotNil(imageTestBundle);
-	UIImage *imageMainBundle = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(568.0f, 320.0f) inBundle:[NSBundle mainBundle]];
+	UIImage *imageMainBundle = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(568.0f, 320.0f) inBundle:[NSBundle bundleWithPath:@""]];
 	XCTAssertNil(imageMainBundle);
 }
 
 - (void)testShouldReturnNilFromMainBundleInTestTargetWithTransitionSize {
 	UIImage *image = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(320.0f, 480.0f)];
-	XCTAssertNil(image);
+	UIImage *imageTestBundle = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(320.0f, 480.0f) inBundle:[NSBundle mainBundle]];
+	XCTAssertEqual(image.accessibilityIdentifier, imageTestBundle.accessibilityIdentifier);
 }
 
 @end
