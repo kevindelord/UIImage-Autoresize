@@ -32,9 +32,8 @@
 
 - (void)testShouldReturnNilWhenUsingWrongBundleOnTestTarget {
 	UIImage *imageTestBundle = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(320.0f, 480.0f) inBundle:[NSBundle bundleForClass:[self class]]];
-	XCTAssertNotNil(imageTestBundle);
-	UIImage *imageMainBundle = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(568.0f, 320.0f) inBundle:[NSBundle bundleWithPath:@""]];
-	XCTAssertNil(imageMainBundle);
+	UIImage *imageWrongBundle = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(568.0f, 320.0f) inBundle:[NSBundle bundleWithPath:@""]];
+	XCTAssertNotEqual(imageTestBundle.accessibilityIdentifier, imageWrongBundle.accessibilityIdentifier);
 }
 
 - (void)testShouldReturnNilFromMainBundleInTestTargetWithTransitionSize {
