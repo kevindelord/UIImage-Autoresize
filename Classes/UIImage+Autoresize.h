@@ -78,7 +78,7 @@ FOUNDATION_EXPORT const unsigned char UIImageAutoresizeVersionString[];
  *
  *  @param dynamicImageName The dynamic image name set in the storyboard.
  */
-- (void)setDynamicImageName:(NSString * _Nonnull)dynamicImageName;
+- (void)setDynamicImageName:(NSString * _Nonnull)dynamicImageName NS_AVAILABLE_IOS(2.0);
 
 /**
  *  Update the image of the current image view with an image object associated to the given dynamic filename from a specific bundle.
@@ -89,14 +89,14 @@ FOUNDATION_EXPORT const unsigned char UIImageAutoresizeVersionString[];
  *  @param bundle           The bundle containing the image file or asset catalog. Specify nil to search the app’s main bundle.
  *  @param traitCollection  The traits associated with the intended environment for the image. Use this parameter to ensure that the correct variant of the image is loaded. If you specify nil, this method uses the traits associated with the main screen.
  */
-- (void)setDynamicImageName:(NSString * _Nonnull)dynamicImageName inBundle:(NSBundle * _Nullable)bundle compatibleWithTraitCollection:(UITraitCollection * _Nullable)traitCollection;
+- (void)setDynamicImageName:(NSString * _Nonnull)dynamicImageName inBundle:(NSBundle * _Nullable)bundle compatibleWithTraitCollection:(UITraitCollection * _Nullable)traitCollection NS_AVAILABLE_IOS(2.0);
 
 /**
  *  Returns the accessibility identifier of the image object of the current image view.
  *
  *  @return A NSString object that identifies the image element; nil if none set or if no image.
  */
-- (NSString * _Nullable)dynamicImageName;
+- (NSString * _Nullable)dynamicImageName NS_AVAILABLE_IOS(2.0);
 
 @end
 
