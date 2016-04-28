@@ -10,7 +10,6 @@
 
 @interface UIImage (DynamicAutoresizeTests)
 
-+ (UIImage *)dynamicImageNamed:(NSString *)imageName;
 void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w);
 
 @end
@@ -20,21 +19,26 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w);
 
 - (void)setUp {
     [super setUp];
-	Method origImageNamedMethod = class_getClassMethod(UIImage.class, @selector(imageNamed:));
-	method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(UIImage.class, @selector(dynamicImageNamed:)));
-
 	_scale = [UIScreen mainScreen].scale;
 }
 
 - (void)tearDown {
     [super tearDown];
-	Method origImageNamedMethod = class_getClassMethod(UIImage.class, @selector(dynamicImageNamed:));
-	method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(UIImage.class, @selector(imageNamed:)));
 }
 
 - (void)testShouldNotCrashOnLog {
 	logInfo(true, 1, 12, 43);
 	logInfo(false, 0, 2, 4.3);
+}
+
+- (UIImage *)imageNamed:(NSString *)name {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	return [UIImage imageNamed:name inBundle:bundle compatibleWithTraitCollection:nil];
+}
+
+- (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	return [UIImage imageNamed:imageName withTransitionSize:size inBundle:bundle];
 }
 
 @end

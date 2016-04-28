@@ -15,7 +15,7 @@
 @implementation UIImage_WithTransitionSizeTests
 
 - (void)testShouldReturnObjectFromDotNameWithHorizontalExtension {
-	UIImage * image = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
+	UIImage * image = [self imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
 	XCTAssertNotNil(image);
 	XCTAssertNotNil(image.accessibilityIdentifier);
 	if (_scale == 3.f) {
@@ -28,7 +28,7 @@
 }
 
 - (void)testShouldReturnObjectFromDotNameWithVerticalExtension {
-	UIImage * image = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(320.0f, 480.0f)];
+	UIImage * image = [self imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(320.0f, 480.0f)];
 	XCTAssertNotNil(image);
 	XCTAssertNotNil(image.accessibilityIdentifier);
 	if (_scale == 3.f) {
@@ -41,14 +41,14 @@
 }
 
 - (void)testShouldReturnObjectFromDotNameWithoutExtension {
-	UIImage * image = [UIImage imageNamed:@"test.bg" withTransitionSize:CGSizeMake(320.0f, 568.0f)];
+	UIImage * image = [self imageNamed:@"test.bg" withTransitionSize:CGSizeMake(320.0f, 568.0f)];
 	XCTAssertNotNil(image);
 	XCTAssertNotNil(image.accessibilityIdentifier);
 	XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg"]);
 }
 
 - (void)testShouldReturnObjectFromNameWithExtension {
-	UIImage * image = [UIImage imageNamed:@"ressourcebg.png" withTransitionSize:CGSizeMake(375.0f, 667.0f)];
+	UIImage * image = [self imageNamed:@"ressourcebg.png" withTransitionSize:CGSizeMake(375.0f, 667.0f)];
 	if (_scale == 3.f || _scale == 1.f) {
 		XCTAssertNil(image);
 	} else if (_scale == 2.f) {
@@ -57,13 +57,13 @@
 }
 
 - (void)testShouldReturnObjectFromNameWithoutExtension {
-	UIImage * image = [UIImage imageNamed:@"ressourcebg" withTransitionSize:CGSizeMake(375.0f, 667.0f)];
+	UIImage * image = [self imageNamed:@"ressourcebg" withTransitionSize:CGSizeMake(375.0f, 667.0f)];
 	XCTAssertNil(image);
 	XCTAssertNil(image.accessibilityIdentifier);
 }
 
 - (void)testShouldReturnObjectFromNameWithZeroTransitionSize {
-	UIImage * image = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeZero];
+	UIImage * image = [self imageNamed:@"test.bg.png" withTransitionSize:CGSizeZero];
 	XCTAssertNotNil(image);
 	XCTAssertNotNil(image.accessibilityIdentifier);
 	if (_scale == 3.f) {
@@ -74,43 +74,43 @@
 }
 
 - (void)testShouldReturnObjectFromNameWithExtensionAndZeroTransitionSize {
-	UIImage * image = [UIImage imageNamed:@"test.bg@2x.png" withTransitionSize:CGSizeZero];
+	UIImage * image = [self imageNamed:@"test.bg@2x.png" withTransitionSize:CGSizeZero];
 	XCTAssertNotNil(image);
 	XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg@2x.png"]);
 }
 
 - (void)testShouldReturnObjectFromNameWithComplexExtensionAndZeroTransitionSize {
-	UIImage * image = [UIImage imageNamed:@"test.bg-375h-l@2x.png" withTransitionSize:CGSizeZero];
+	UIImage * image = [self imageNamed:@"test.bg-375h-l@2x.png" withTransitionSize:CGSizeZero];
 	XCTAssertNotNil(image);
 	XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg-375h-l@2x.png"]);
 }
 
 - (void)testShouldReturnObjectFromNameWithComplexExtensionAndValidTransitionSize {
-	UIImage * image = [UIImage imageNamed:@"test.bg-375h-l@2x.png" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
+	UIImage * image = [self imageNamed:@"test.bg-375h-l@2x.png" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
 	XCTAssertNotNil(image);
 	XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg-375h-l@2x.png"]);
 }
 
 - (void)testShouldReturnNilForInvalidImageName {
-	UIImage * image = [UIImage imageNamed:@"fake.test.bg" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
+	UIImage * image = [self imageNamed:@"fake.test.bg" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
 	XCTAssertNil(image);
 }
 
 #pragma mark - invalid name
 
 - (void)testShouldReturnNilForNilImageName {
-	UIImage * image = [UIImage imageNamed:nil withTransitionSize:CGSizeMake(568.0f, 320.0f)];
+	UIImage * image = [self imageNamed:nil withTransitionSize:CGSizeMake(568.0f, 320.0f)];
 	XCTAssertNil(image);
 }
 
 - (void)testShouldReturnNilForNSNullImageName {
 	NSString *name = ((NSString *)[NSNull null]);
-	UIImage * image = [UIImage imageNamed:name withTransitionSize:CGSizeMake(568.0f, 320.0f)];
+	UIImage * image = [self imageNamed:name withTransitionSize:CGSizeMake(568.0f, 320.0f)];
 	XCTAssertNil(image);
 }
 
 - (void)testShouldReturnNilForEmptyImageName {
-	UIImage * image = [UIImage imageNamed:@"" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
+	UIImage * image = [self imageNamed:@"" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
 	XCTAssertNil(image);
 }
 

@@ -1,0 +1,7 @@
+framework module UIImageAutoresize {
+
+	umbrella header "UIImage+Autoresize.h"
+
+	export *
+	module * { export * }
+}

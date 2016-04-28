@@ -16,33 +16,52 @@
 #pragma mark - UIImage Initializer
 
 /**
- * This function actually do the magic trick. When called for the first time it will swizz (replace)
- * the normal `imageNamed:` method with a custom one implemented in this library.
+ * This function actually do the magic trick. When called for the first time it will swizzle (replace)
+ * the normal methods with custom ones implemented in this library.
+ * The `imageNamed:` and `imageNamed:inBundle:compatibleWithTraitCollection:` are swizzled.
  */
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+		// Method: `imageNamed:`
         Method origImageNamedMethod = class_getClassMethod(self.class, @selector(imageNamed:));
         method_exchangeImplementations(origImageNamedMethod, class_getClassMethod(self.class, @selector(dynamicImageNamed:)));
+		// Method: `imageNamed:inBundle:compatibleWithTraitCollection:`
+		Method origImageNamedInBundleMethod = class_getClassMethod(self.class, @selector(imageNamed:inBundle:compatibleWithTraitCollection:));
+		method_exchangeImplementations(origImageNamedInBundleMethod, class_getClassMethod(self.class, @selector(dynamicImageNamed:inBundle:compatibleWithTraitCollection:)));
     });
 }
 
+#pragma mark - DEBUG Log Functions
+
 /**
- * Log information about the give scale and size.
+ *  Log information about the give scale and size.
+ *
+ *  @param isVertical Is the current device orientation vertical or not.
+ *  @param scale      The natural scale factor associated with the screen.
+ *  @param h          The height of the displayed screen in pixels.
+ *  @param w          The width of the displayed screen in pixels.
  */
-void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
+void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
 	NSLog(@"---------------  %@  ----------------------", (isVertical == true ? @"VERTICAL" : @"HORIZONTAL"));
-	NSLog(@"h: %f", h);
-	NSLog(@"w: %f", w);
+	NSLog(@"height: %f", height);
+	NSLog(@"width: %f", width);
 	NSLog(@"scale: %f", scale);
 	NSLog(@"-------------------------------------------------");
 }
 
+#pragma mark - Suffix Name Convention
+
 /**
- * Returns a valid suffix string to use with a portrait/vertical image file.
- * It takes as parameters the desired height and witdh of the screen.
+ *  Returns a valid suffix string to use with a portrait/vertical image file.
+ *
+ *  @param h     The height of the displayed screen in pixels.
+ *  @param w     The width of the displayed screen in pixels.
+ *  @param scale The natural scale factor associated with the screen.
+ *
+ *  @return Image suffix name to match a valid portrait/vertical image file.
  */
-+ (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
++ (NSString * _Nonnull)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
 
     if (__K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__) {
 		logInfo(true, scale, h, w);
@@ -71,10 +90,15 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
 }
 
 /**
- * Returns a valid suffix string to use with a landscape/horizontal image file.
- * It takes as parameters the desired height and witdh of the screen.
+ *  Returns a valid suffix string to use with a landscape/horizontal image file.
+ *
+ *  @param h     The height of the displayed screen in pixels.
+ *  @param w     The width of the displayed screen in pixels.
+ *  @param scale The natural scale factor associated with the screen.
+ *
+ *  @return Image suffix name to match a valid landscape/horizontal image file.
  */
-+ (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
++ (NSString * _Nonnull)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale {
 
     if (__K_DEBUG_LOG_UIIMAGE_AUTORESIZE_ENABLED__) {
 		logInfo(false, scale, h, w);
@@ -102,86 +126,212 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat h, CGFloat w) {
 	return extension;
 }
 
+#pragma mark - Image Named swizzled functions
+
 /**
- * This function calculates the required CGSize with which the UIImage should depend from.
- * This size is then use to get the correct suffix of the image filename.
+ *  Returns the image object associated with a dynamic filename.
  *
- * Returns an UIImage object.
+ *  The filename is improved depending on the current device size and orientation to
+ *  return an image that perfectly matches the device's screen.
+ *
+ *  The app's main bundle and the trait collection associated with the main screen are used.
+ *
+ *  Returns an UIImage object.
  */
-+ (UIImage *)dynamicImageNamed:(NSString *)imageName {
-	// Verification step
-	if (imageName == nil || ([imageName isKindOfClass:[NSString class]] == false) || imageName.length == 0) {
-		return nil;
-	}
-
-    // Only change the name if no '@2x' or '@3x' are specified
-    if ([imageName rangeOfString:@"@"].location == NSNotFound) {
-
-        UIInterfaceOrientation interfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
-        CGSize size = [UIScreen mainScreen].bounds.size;
-        //
-        // Before iOS 8.0 the current mainScreen bounds were giving a different result than with newest iOS version.
-        // The size needs to be reversed for landscape mode.
-        if ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedAscending) {
-            if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-                CGFloat temp = size.width;
-                size.width = size.height;
-                size.height = temp;
-            }
-        }
-		return [self imageNamed:imageName withTransitionSize:size];
-    }
-
-    // Otherwise returns an UIImage with the original filename.
-	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName];
++ (UIImage * _Nullable)dynamicImageNamed:(NSString * _Nonnull)imageName {
+	return [self imageNamed:imageName inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
 }
 
 /**
- * When given a valid name and a transition size as parameters, this function will generate a new filename with a required suffix.
- * This filename is used to create and return a new UIImage object.
+ *  Returns the image object associated with a dynamic filename from a given bundle and with compatible trait collection.
+ *
+ *  This function calculates the required CGSize with which the UIImage should depend from.
+ *  This size is then used to get the correct suffix of the image filename.
+ *
+ *  If specified, the named image also needs to be compatible with the specified trait collection. If no suitable image was found the function returns nil.
+ *
+ *  @param imageName       The name of the image. For images in asset catalogs, specify the name of the image asset. For PNG image files, specify the filename without the filename extension. For all other image file formats, include the filename extension in the name.
+ *  @param bundle          The bundle containing the image file or asset catalog. Specify nil to search the app’s main bundle.
+ *  @param traitCollection The traits associated with the intended environment for the image. Use this parameter to ensure that the correct variant of the image is loaded. If you specify nil, this method uses the traits associated with the main screen.
+ *
+ *  @return The image object that best matches the desired traits with a dynamic name, or nil if no suitable image was found.
  */
-+ (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size {
++ (UIImage * _Nullable)dynamicImageNamed:(NSString * _Nonnull)imageName inBundle:(NSBundle * _Nullable)bundle compatibleWithTraitCollection:(UITraitCollection * _Nullable)traitCollection {
 	// Verification step
-	if (imageName == nil || ([imageName isKindOfClass:[NSString class]] == false) || imageName.length == 0) {
+	if ([self isImageNameValid:imageName] == false) {
 		return nil;
 	}
+	bundle = (bundle != nil ? bundle : [NSBundle mainBundle]);
+	// Only change the name if no '@2x' or '@3x' are specified
+	if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
-    // Only change the name if no '@2x' or '@3x' are specified
-    if ([imageName rangeOfString:@"@"].location == NSNotFound) {
+		UIInterfaceOrientation interfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
+		CGSize size = [UIScreen mainScreen].bounds.size;
+		//
+		// Before iOS 8.0 the current mainScreen bounds were giving a different result than with newest iOS version.
+		// The size needs to be reversed for landscape mode.
+		if ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedAscending) {
+			if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+				CGFloat temp = size.width;
+				size.width = size.height;
+				size.height = temp;
+			}
+		}
+		return [self imageNamed:imageName withTransitionSize:size inBundle:bundle compatibleWithTraitCollection:traitCollection];
+	}
 
-        NSString *extension = @"";
-        if (size.height >= size.width) {
+	// Otherwise returns an UIImage with the original filename.
+	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName inBundle:bundle compatibleWithTraitCollection:traitCollection];
+}
+
+#pragma mark - Orientation change functions
+
+/**
+ *  Returns a new UIImage object created from a filename and a required transition Size.
+ *
+ *  @discussion This function should be called from a view controller when the device changes its orientation.
+ *  The function `viewWillTransitionToSize:withTransitionCoordinator:` is only available from iOS 8.
+ *
+ *  The app's main bundle and the trait collection associated with the main screen are used.
+ *
+ *  @param imageName The NSString object representing the filename of the image.
+ *  @param size      The new size for the container’s view.
+ *
+ *  @return An UIImage created from a generated string name.
+ */
++ (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName withTransitionSize:(CGSize)size {
+	return [self imageNamed:imageName withTransitionSize:size inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
+}
+
+/**
+ *  Returns a new UIImage object created from a filename and a required transition Size from a specific bundle.
+ *
+ *  @param imageName The NSString object representing the filename of the image.
+ *  @param size      The new size for the container’s view.
+ *  @param bundle    The bundle containing the image file or asset catalog. Specify nil to search the app’s main bundle.
+ *
+ *  @return An UIImage created from a generated string name within a specific bundle.
+ */
++ (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle * _Nullable)bundle {
+	return [self imageNamed:imageName withTransitionSize:size inBundle:bundle compatibleWithTraitCollection:nil];
+}
+
+/**
+ *  Returns a new UIImage object created from a filename and a required transition Size from a specific bundle.
+ *
+ *  @param imageName       The NSString object representing the filename of the image.
+ *  @param size            The new size for the container’s view.
+ *  @param bundle          The bundle containing the image file or asset catalog. Specify nil to search the app’s main bundle.
+ *  @param traitCollection The traits associated with the intended environment for the image. Use this parameter to ensure that the correct variant of the image is loaded. If you specify nil, this method uses the traits associated with the main screen.
+ *
+ *  @return An UIImage created from a generated string name within a specific bundle.
+ */
++ (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle * _Nullable)bundle compatibleWithTraitCollection:(UITraitCollection * _Nullable)traitCollection {
+	// Verification step
+	if ([self isImageNameValid:imageName] == false) {
+		return nil;
+	}
+	bundle = (bundle != nil ? bundle : [NSBundle mainBundle]);
+	// Only change the name if no '@2x' or '@3x' are specified
+	if ([imageName rangeOfString:@"@"].location == NSNotFound) {
+
+		NSString *extension = @"";
+		if (size.height >= size.width) {
 			extension = [self verticalExtensionForHeight:size.height width:size.width scale:[UIScreen mainScreen].scale];
-        } else {
-            extension = [self horizontalExtensionForHeight:size.height width:size.width scale:[UIScreen mainScreen].scale];
-        }
+		} else {
+			extension = [self horizontalExtensionForHeight:size.height width:size.width scale:[UIScreen mainScreen].scale];
+		}
 
 		// Add a custom extension to the image name
 		NSRange dot = [imageName rangeOfString:@"." options:NSBackwardsSearch];
-        NSMutableString *imageNameMutable = [imageName mutableCopy];
-        if (dot.location != NSNotFound) {
-            [imageNameMutable insertString:extension atIndex:dot.location];
-        } else {
-            [imageNameMutable appendString:extension];
-        }
-        // If exist returns the corresponding UIImage
-        if ([[NSBundle mainBundle] pathForResource:imageNameMutable ofType:@""]) {
-			return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageNameMutable];
-        }
-    }
-    // Otherwise returns an UIImage with the original filename.
-	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName];
+		NSMutableString *imageNameMutable = [imageName mutableCopy];
+		if (dot.location != NSNotFound) {
+			[imageNameMutable insertString:extension atIndex:dot.location];
+		} else {
+			[imageNameMutable appendString:extension];
+		}
+		// If exist returns the corresponding UIImage
+		if ([bundle pathForResource:imageNameMutable ofType:@""]) {
+			return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageNameMutable inBundle:bundle compatibleWithTraitCollection:traitCollection];
+		}
+	}
+	// Otherwise returns an UIImage with the original filename.
+	return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageName inBundle:bundle compatibleWithTraitCollection:traitCollection];
+}
+
+#pragma mark - Utilities
+
+/**
+ *  Instanciate an UIImage object given a specific filename and set the `accessibilityIdentifier` to the same image name.
+ *
+ *	By default, the accessibility identifier will now always be set to the image filename.
+ *
+ *  @param imageName       The NSString object representing the filename of the image. This value will also be set as the accessibility identifier of the element.
+ *  @param bundle          The bundle containing the image file or asset catalog. Specify nil to search the app’s main bundle.
+ *  @param traitCollection The traits associated with the intended environment for the image. Use this parameter to ensure that the correct variant of the image is loaded. If you specify nil, this method uses the traits associated with the main screen.
+ *
+ *  @return An UIImage object with its image filename set as accessibility identifier.
+ */
++ (UIImage * _Nullable)dynamicImageNamedWithAccessibilityIdentifier:(NSString * _Nonnull)imageName inBundle:(NSBundle * _Nullable)bundle compatibleWithTraitCollection:(UITraitCollection * _Nullable)traitCollection {
+	UIImage *finalImage = [UIImage dynamicImageNamed:imageName inBundle:bundle compatibleWithTraitCollection:traitCollection];
+	finalImage.accessibilityIdentifier = imageName;
+	return finalImage;
 }
 
 /**
- * Instanciate an UIImage object given a specific filename and set the `accessibilityIdentifier` to the same image name.
+ *  Check wether a given file name is valid or not.
  *
- * After that, it will be possible to get the filename used at runtime for a dedicated UIImage object.
+ *  @param imageName NSString object representing the image filename.
+ *
+ *  @return TRUE if the filename is valid; FALSE otherwise.
  */
-+ (UIImage *)dynamicImageNamedWithAccessibilityIdentifier:(NSString *)imageName {
-	UIImage *finalImage = [UIImage dynamicImageNamed:imageName];
-	finalImage.accessibilityIdentifier = imageName;
-	return finalImage;
++ (BOOL)isImageNameValid:(NSString * _Nonnull)imageName {
+	if (imageName == nil || ([imageName isKindOfClass:[NSString class]] == false)) {
+		return false;
+	}
+	if (imageName != nil && ([imageName isKindOfClass:[NSString class]] == true) && imageName.length == 0) {
+		return false;
+	}
+	return true;
+}
+
+@end
+
+@implementation UIImageView (Autoresize)
+
+/**
+ *  Update the image of the current image view with an image object associated to the given dynamic filename.
+ *
+ *  The filename is improved depending on the current device size and orientation to return an image that perfectly matches the device's screen.
+ *
+ *  The app's main bundle and the trait collection associated with the main screen are used.
+ *
+ *  @param dynamicImageName The dynamic image name set in the storyboard.
+ */
+- (void)setDynamicImageName:(NSString * _Nonnull)dynamicImageName {
+	[self setDynamicImageName:dynamicImageName inBundle:nil compatibleWithTraitCollection:nil];
+}
+
+/**
+ *  Update the image of the current image view with an image object associated to the given dynamic filename from a specific bundle.
+ *
+ *  The filename is improved depending on the current device size and orientation to return an image that perfectly matches the device's screen.
+ *
+ *  @param dynamicImageName The NSString object representing the filename of the image. This value will also be set as the accessibility identifier of the element.
+ *  @param bundle           The bundle containing the image file or asset catalog. Specify nil to search the app’s main bundle.
+ *  @param traitCollection  The traits associated with the intended environment for the image. Use this parameter to ensure that the correct variant of the image is loaded. If you specify nil, this method uses the traits associated with the main screen.
+ */
+- (void)setDynamicImageName:(NSString * _Nonnull)dynamicImageName inBundle:(NSBundle * _Nullable)bundle compatibleWithTraitCollection:(UITraitCollection * _Nullable)traitCollection {
+	self.image = [UIImage imageNamed:dynamicImageName inBundle:bundle compatibleWithTraitCollection:traitCollection];
+}
+
+/**
+ *  Returns the accessibility identifier of the image object of the current image view.
+ *
+ *  @return A NSString object that identifies the image element; nil if none set or if no image.
+ */
+- (NSString * _Nullable)dynamicImageName {
+	return self.image.accessibilityIdentifier;
 }
 
 @end

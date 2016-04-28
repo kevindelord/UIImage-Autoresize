@@ -1,20 +1,21 @@
 //
-//  SecondViewController.m
+//  ThirdViewController.m
 //  UIImage+Autoresize
 //
 //  Created by kevin delord on 28/10/14.
 //  Copyright (c) 2014 Kevin Delord. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "ThirdViewController.h"
+#import "UIImage+Autoresize.h"
 
-@interface SecondViewController () {
+@interface ThirdViewController () {
     UIImageView * _background;
 }
 
 @end
 
-@implementation SecondViewController
+@implementation ThirdViewController
 
 #pragma mark - Constraints
 
@@ -35,7 +36,7 @@
 #pragma mark - Life view cycle
 
 /**
- * This `secondVieyController` is a test/proof that the library still works
+ * This `ThirdViewController` is a test/proof that the library still works
  * when the imageView is instanciated from the code.
  * In order to improve the flow and automatic image resize, the `_background` is
  * initialized once and the image attribute updated each time the `viewWillAppear`

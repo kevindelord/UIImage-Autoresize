@@ -17,6 +17,9 @@
 	CGFloat _scale;
 }
 
+- (UIImage *)imageNamed:(NSString *)name;
+- (UIImage *)imageNamed:(NSString *)imageName withTransitionSize:(CGSize)size;
+
 @end
 
 #endif /* UIImage_SwizzleTestCase_h */

@@ -7,15 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "UIImage+Autoresize.h"
 
 @implementation ViewController
 
 #pragma mark - Life view cycle
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // TODO: find a way to make the library loads the correct image when instanciated from a storyboard.
-}
 
 /**
  * In order to improve the flow and automatic image resize, the `imageView` is initialized once (in the storyboard)
