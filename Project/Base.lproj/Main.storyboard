@@ -80,7 +80,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TSQ-g9-FCa">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="dynamicImageName" value="test.bg.png"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="dynamicImageName" value="background.png"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yZ-dy-qdV" userLabel="Add Button">

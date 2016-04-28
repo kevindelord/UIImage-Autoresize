@@ -75,7 +75,7 @@ It is possible to directly set the image name within an UIImageView in the story
 
 To do so, you need to add an `User Defined Runtime Attribute` to the UIImageView object.
 
-The key should be `"dynamicImageName"` and the value the basic image filename `"bg.png"`:
+The key should be `"dynamicImageName"` and the value the basic image filename `"background.png"`:
 
 ![User Defined Runtime Attributes](Resources/userDefinedImageName.png)
 
@@ -91,14 +91,14 @@ Starting iOS 8:
 
     - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
         [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-        self.imageView.image = [UIImage imageNamed:@"bg.png" withTransitionSize:size];
+        self.imageView.image = [UIImage imageNamed:@"background.png" withTransitionSize:size];
     }
 
 On iOS 7 and earlier:
 
     - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
         [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-        self.imageView.image = [UIImage imageNamed:@"bg.png"];
+        self.imageView.image = [UIImage imageNamed:@"background.png"];
     }
 
 **Important:**  Those functions and logics are also required when integrating the picture using the storyboard.
