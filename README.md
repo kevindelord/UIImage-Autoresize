@@ -77,7 +77,7 @@ To do so, you need to add an `User Defined Runtime Attribute` to the UIImageView
 
 The key should be `"dynamicImageName"` and the value the basic image filename `"bg.png"`:
 
-![User Defined Runtime Attributes](https://raw.githubusercontent.com/kevindelord/UIImage-Autoresize/Resources/userDefinedImageName.png)
+![User Defined Runtime Attributes](Resources/userDefinedImageName.png)
 
 ## Rotating screen: Portrait & Landscape modes
 
