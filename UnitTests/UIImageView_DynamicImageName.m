@@ -7,11 +7,12 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "UIImage+Autoresize.h"
 
 @interface UIImageView (DynamicAutoresizeTests)
 
 - (void)setDynamicImageName:(NSString * _Nonnull)dynamicImageName;
+- (void)setDynamicImageName:(NSString * _Nonnull)dynamicImageName inBundle:(NSBundle * _Nullable)bundle compatibleWithTraitCollection:(UITraitCollection * _Nullable)traitCollection;
+- (NSString * _Nullable)dynamicImageName;
 
 @end
 
@@ -35,9 +36,11 @@
 	UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
 	XCTAssertNotNil(imgView);
 	XCTAssertNil(imgView.image);
-	[imgView setDynamicImageName:@"ressourcebg.png" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+	[imgView setDynamicImageName:@"test.bg.png" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
 	XCTAssertNotNil(imgView.image);
 	XCTAssertNotNil(imgView.image.accessibilityIdentifier);
+	XCTAssertEqual(imgView.image.accessibilityIdentifier, imgView.dynamicImageName);
 }
+
 
 @end
