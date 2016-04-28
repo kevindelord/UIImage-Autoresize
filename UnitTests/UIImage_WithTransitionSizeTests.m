@@ -8,6 +8,14 @@
 
 #import "UIImage_SwizzleTestCase.h"
 
+@interface UIImage (AutoresizeTests)
+
++ (NSString *)verticalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale;
++ (NSString *)horizontalExtensionForHeight:(CGFloat)h width:(CGFloat)w scale:(CGFloat)scale;
+
+@end
+
+
 @interface UIImage_WithTransitionSizeTests : UIImage_SwizzleTestCase
 
 @end
@@ -15,29 +23,29 @@
 @implementation UIImage_WithTransitionSizeTests
 
 - (void)testShouldReturnObjectFromDotNameWithHorizontalExtension {
-	UIImage * image = [self imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(568.0f, 320.0f)];
+	CGFloat h = [UIScreen mainScreen].bounds.size.width;
+	CGFloat w = [UIScreen mainScreen].bounds.size.height;
+
+	UIImage *image = [self imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(w, h)];
 	XCTAssertNotNil(image);
 	XCTAssertNotNil(image.accessibilityIdentifier);
-	if (_scale == 3.f) {
-		XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg-l@3x.png"]);
-	} else if (_scale == 2.f) {
-		XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg-320h-l@2x.png"]);
-	} else {
-		XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg-l.png"]);
-	}
+
+	NSString *extension = [UIImage horizontalExtensionForHeight:h width:w scale:_scale];
+	NSString *finalFormat = [NSString stringWithFormat:@"test.bg%@.png", extension];
+	XCTAssert([image.accessibilityIdentifier isEqualToString:finalFormat]);
 }
 
 - (void)testShouldReturnObjectFromDotNameWithVerticalExtension {
-	UIImage * image = [self imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(320.0f, 480.0f)];
+	CGFloat h = [UIScreen mainScreen].bounds.size.height;
+	CGFloat w = [UIScreen mainScreen].bounds.size.width;
+
+	UIImage *image = [self imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(w, h)];
 	XCTAssertNotNil(image);
 	XCTAssertNotNil(image.accessibilityIdentifier);
-	if (_scale == 3.f) {
-		XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg@3x.png"]);
-	} else if (_scale == 2.f) {
-		XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg@2x.png"]);
-	} else {
-		XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg.png"]);
-	}
+
+	NSString *extension = [UIImage verticalExtensionForHeight:h width:w scale:_scale];
+	NSString *finalFormat = [NSString stringWithFormat:@"test.bg%@.png", extension];
+	XCTAssert([image.accessibilityIdentifier isEqualToString:finalFormat]);
 }
 
 - (void)testShouldReturnObjectFromDotNameWithoutExtension {
@@ -66,11 +74,7 @@
 	UIImage * image = [self imageNamed:@"test.bg.png" withTransitionSize:CGSizeZero];
 	XCTAssertNotNil(image);
 	XCTAssertNotNil(image.accessibilityIdentifier);
-	if (_scale == 3.f) {
-		XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg@3x.png"]);
-	} else {
-		XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg.png"]);
-	}
+	XCTAssert([image.accessibilityIdentifier isEqualToString:@"test.bg.png"]);
 }
 
 - (void)testShouldReturnObjectFromNameWithExtensionAndZeroTransitionSize {
