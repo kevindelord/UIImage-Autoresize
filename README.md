@@ -25,20 +25,6 @@ But the easiest solution so far, is still to link one picture to one interface-o
 
 This library is here for you!
 
-## Installation
-
-UIImage+Autoresize is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
-
-    pod "UIImage+Autoresize"
-
-And finally import the header file:
-
-    #import "UIImage+Autoresize.h"
-
-## Documentation
-
-This pod is also documented on [CocoaDocs](http://cocoadocs.org/docsets/UIImage+Autoresize)
-
 ## Requirements
 
 Through the categorised class `UIImage+Autoresize`, a naming convention is applied to deal with different image files.
@@ -55,6 +41,28 @@ The following suffixes are expected:
 | -512h       | -384h-l     | iPad Mini, iPad 2, iPad 1 |
 | -1024h@2x   | -768h-l@2x  | iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2, iPad Pro (9.7 inch) |
 | -1366h@2x   | -1024h-l@2x | iPad Pro (12,9 inch) |
+
+## Integration
+
+### [CocoaPods](http://cocoapods.org)
+
+Add the following to your `Podfile`:
+
+    pod "UIImage+Autoresize"
+
+And import the header file:
+
+    #import "UIImage+Autoresize.h"
+
+### [Carthage](https://github.com/Carthage/Carthage)
+
+Add the following to your `Cartfile`:
+
+    github "kevindelord/UIImage-Autoresize"
+
+And import the framework (Swift):
+
+    import UIImageAutoresize
 
 ## Usage
 
@@ -112,6 +120,10 @@ When the user pops back, the previous background will look as it should.
 ## Swift
 
 The library works with Swift as smooth as it does in Obj-C. Nothing to worry about :)
+
+## Documentation
+
+This pod is also documented on [CocoaDocs](http://cocoadocs.org/docsets/UIImage+Autoresize)
 
 ## Example
 
