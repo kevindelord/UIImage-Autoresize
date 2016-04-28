@@ -25,14 +25,14 @@
 	UIImage *image = [UIImage imageNamed:@"test.bg@2x.png"];
 	XCTAssert(image != nil);
 	XCTAssertNotNil(image);
-	UIImage *imageinBundle = [UIImage imageNamed:@"test.bg@2x.png" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
-	XCTAssert(imageinBundle != nil);
-	XCTAssertNotNil(imageinBundle);
+	UIImage *imageInBundle = [UIImage imageNamed:@"test.bg@2x.png" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
+	XCTAssert(imageInBundle != nil);
+	XCTAssertNotNil(imageInBundle);
 }
 
 - (void)testShouldReturnNilWhenUsingMainBundleOnTestTarget {
-	UIImage *imageTestBundle = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(320.0f, 480.0f) inBundle:[NSBundle mainBundle]];
-	XCTAssertNil(imageTestBundle);
+	UIImage *imageTestBundle = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(320.0f, 480.0f) inBundle:[NSBundle bundleForClass:[self class]]];
+	XCTAssertNotNil(imageTestBundle);
 	UIImage *imageMainBundle = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(568.0f, 320.0f) inBundle:[NSBundle mainBundle]];
 	XCTAssertNil(imageMainBundle);
 }
