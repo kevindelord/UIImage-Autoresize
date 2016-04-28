@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7501F9731CD1FDE6005D14DA /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501F9721CD1FDE6005D14DA /* SecondViewController.m */; };
+		7501F9751CD20176005D14DA /* UIImageView_DynamicImageName.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501F9741CD20176005D14DA /* UIImageView_DynamicImageName.m */; };
 		7515F8941CD0F20000AB3422 /* UIImage_MainBundleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7515F8931CD0F20000AB3422 /* UIImage_MainBundleTests.m */; };
 		75323C4C1CCFADDB00A681C0 /* UIImageAutoresize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75323C371CCFADDB00A681C0 /* UIImageAutoresize.framework */; };
 		75323C4D1CCFADDB00A681C0 /* UIImageAutoresize.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 75323C371CCFADDB00A681C0 /* UIImageAutoresize.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -37,7 +39,7 @@
 		75323C8B1CCFB8BD00A681C0 /* test.bg-l.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B4784E1C8F036900C6C3F8 /* test.bg-l.png */; };
 		75323C8C1CCFB8BD00A681C0 /* test.bg-l@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B4784F1C8F036900C6C3F8 /* test.bg-l@2x.png */; };
 		75323C8D1CCFB8BD00A681C0 /* test.bg-l@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 75B478501C8F036900C6C3F8 /* test.bg-l@3x.png */; };
-		7533CC0F1A10CF57007AAC39 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7533CC0E1A10CF57007AAC39 /* SecondViewController.m */; };
+		7533CC0F1A10CF57007AAC39 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7533CC0E1A10CF57007AAC39 /* ThirdViewController.m */; };
 		756655451A0E161A000CBCBC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7566553B1A0E161A000CBCBC /* AppDelegate.m */; };
 		756655461A0E161A000CBCBC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7566553C1A0E161A000CBCBC /* LaunchScreen.xib */; };
 		756655471A0E161A000CBCBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7566553E1A0E161A000CBCBC /* Main.storyboard */; };
@@ -96,13 +98,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7501F9711CD1FDE6005D14DA /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		7501F9721CD1FDE6005D14DA /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		7501F9741CD20176005D14DA /* UIImageView_DynamicImageName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageView_DynamicImageName.m; sourceTree = "<group>"; };
 		7515F8931CD0F20000AB3422 /* UIImage_MainBundleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImage_MainBundleTests.m; sourceTree = "<group>"; };
 		7515F8951CD0F3C600AB3422 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		75323C371CCFADDB00A681C0 /* UIImageAutoresize.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIImageAutoresize.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75323C3B1CCFADDB00A681C0 /* UIImage-Autoresize-Framework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIImage-Autoresize-Framework-Info.plist"; sourceTree = "<group>"; };
 		75323C6B1CCFB11300A681C0 /* UIImageAutoresizeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIImageAutoresizeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7533CC0D1A10CF57007AAC39 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		7533CC0E1A10CF57007AAC39 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		7533CC0D1A10CF57007AAC39 /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		7533CC0E1A10CF57007AAC39 /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		753F849F1C8C55CA00DDB19B /* UIImage_AutoresizeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIImage_AutoresizeTests.m; sourceTree = "<group>"; };
 		753F84A11C8C55CA00DDB19B /* UIImage-Autoresize-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIImage-Autoresize-Tests-Info.plist"; sourceTree = "<group>"; };
 		755F73F71C8D86E7008B5588 /* UIImage_VerticalExtensionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImage_VerticalExtensionTests.m; sourceTree = "<group>"; };
@@ -197,6 +202,7 @@
 				755F73F71C8D86E7008B5588 /* UIImage_VerticalExtensionTests.m */,
 				755F73F91C8D882A008B5588 /* UIImage_HorizontalExtensionTests.m */,
 				7515F8931CD0F20000AB3422 /* UIImage_MainBundleTests.m */,
+				7501F9741CD20176005D14DA /* UIImageView_DynamicImageName.m */,
 			);
 			name = UnitTests;
 			path = "UIImage+AutoresizeTests";
@@ -215,8 +221,10 @@
 		756655391A0E161A000CBCBC /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				7533CC0D1A10CF57007AAC39 /* SecondViewController.h */,
-				7533CC0E1A10CF57007AAC39 /* SecondViewController.m */,
+				7501F9711CD1FDE6005D14DA /* SecondViewController.h */,
+				7501F9721CD1FDE6005D14DA /* SecondViewController.m */,
+				7533CC0D1A10CF57007AAC39 /* ThirdViewController.h */,
+				7533CC0E1A10CF57007AAC39 /* ThirdViewController.m */,
 				758C05221A0E1B0B004B9297 /* Project-Prefix.pch */,
 				7566553A1A0E161A000CBCBC /* AppDelegate.h */,
 				7566553B1A0E161A000CBCBC /* AppDelegate.m */,
@@ -488,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75323C771CCFB11F00A681C0 /* UIImage_SwizzleTestCase.m in Sources */,
+				7501F9751CD20176005D14DA /* UIImageView_DynamicImageName.m in Sources */,
 				75323C7A1CCFB11F00A681C0 /* UIImage_VerticalExtensionTests.m in Sources */,
 				75323C781CCFB11F00A681C0 /* UIImage_AutoresizeTests.m in Sources */,
 				75323C791CCFB11F00A681C0 /* UIImage_WithTransitionSizeTests.m in Sources */,
@@ -500,7 +509,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7533CC0F1A10CF57007AAC39 /* SecondViewController.m in Sources */,
+				7501F9731CD1FDE6005D14DA /* SecondViewController.m in Sources */,
+				7533CC0F1A10CF57007AAC39 /* ThirdViewController.m in Sources */,
 				756655451A0E161A000CBCBC /* AppDelegate.m in Sources */,
 				7566554A1A0E161A000CBCBC /* main.m in Sources */,
 				7566554B1A0E161A000CBCBC /* ViewController.m in Sources */,
