@@ -13,7 +13,7 @@ env:
     - IOS_FRAMEWORK_SCHEME="UIImageAutoresize"
     - IOS_SDK=iphonesimulator9.3
     - IOS_EXAMPLE_SCHEME="Example"
-    matrix:
+  matrix:
     - DESTINATION="OS=8.1,name=iPhone 4S"
     - DESTINATION="OS=8.2,name=iPhone 5"
     - DESTINATION="OS=8.3,name=iPhone 5S"
@@ -33,9 +33,9 @@ script:
   - xcodebuild -showsdks
 
   # Build Framework and Run Tests
-  xcodebuild -workspace "$WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "$DESTINATION" GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES build test | xcpretty -c;
+  - xcodebuild -workspace "$WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "$DESTINATION" GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES build test | xcpretty -c;
   # Build Example in Debug
-  xcodebuild -workspace "$WORKSPACE" -scheme "$IOS_EXAMPLE_SCHEME"   -sdk "$IOS_SDK" -destination "$DESTINATION" GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES build test | xcpretty -c;
+  - xcodebuild -workspace "$WORKSPACE" -scheme "$IOS_EXAMPLE_SCHEME"   -sdk "$IOS_SDK" -destination "$DESTINATION" GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES build test | xcpretty -c;
 
 before_deploy:
   - carthage build --no-skip-current
