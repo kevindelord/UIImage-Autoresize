@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 1.2.0
+
+- Add Carthage support.
+- Add storyboard support with an UIImageView extension.
+- Add availability information on functions.
+- Add custom bundle support.
+- Improve Swift support.
+- Improve unit tests and code coverage.
+
 ## 1.1.1
 
 - README: add information about new iPad Pro (9.7 inch) and iPhone SE
