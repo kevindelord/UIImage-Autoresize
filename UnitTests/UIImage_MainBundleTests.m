@@ -7,7 +7,13 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "UIImage+Autoresize.h"
+
+@interface UIImage (Autoresize)
+
++ (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName withTransitionSize:(CGSize)size NS_AVAILABLE_IOS(8.0);
++ (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle * _Nullable)bundle NS_AVAILABLE_IOS(8.0);
+
+@end
 
 @interface UIImage_MainBundleTests : XCTestCase
 
@@ -15,7 +21,7 @@
 
 @implementation UIImage_MainBundleTests
 
-- (void)testShouldReturnNilFromMainBunleInTestTarget {
+- (void)testShouldReturnNilFromMainBundleInTestTarget {
 	UIImage *image = [UIImage imageNamed:@"test.bg@2x.png"];
 	XCTAssert(image != nil);
 	XCTAssertNotNil(image);
@@ -29,6 +35,11 @@
 	XCTAssertNil(imageTestBundle);
 	UIImage *imageMainBundle = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(568.0f, 320.0f) inBundle:[NSBundle mainBundle]];
 	XCTAssertNil(imageMainBundle);
+}
+
+- (void)testShouldReturnNilFromMainBundleInTestTargetWithTransitionSize {
+	UIImage *image = [UIImage imageNamed:@"test.bg.png" withTransitionSize:CGSizeMake(320.0f, 480.0f)];
+	XCTAssertNil(image);
 }
 
 @end

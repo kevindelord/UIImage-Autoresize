@@ -206,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				7501F9801CD209FA005D14DA /* ressourcebg-667h@2x.png */,
+				7501F9881CD209FA005D14DA /* UIImage-Autoresize-Tests-Info.plist */,
 				7501F9811CD209FA005D14DA /* UIImage_AutoresizeTests.m */,
 				7501F9821CD209FA005D14DA /* UIImage_HorizontalExtensionTests.m */,
 				7501F9831CD209FA005D14DA /* UIImage_MainBundleTests.m */,
@@ -213,7 +214,6 @@
 				7501F9851CD209FA005D14DA /* UIImage_SwizzleTestCase.m */,
 				7501F9861CD209FA005D14DA /* UIImage_VerticalExtensionTests.m */,
 				7501F9871CD209FA005D14DA /* UIImage_WithTransitionSizeTests.m */,
-				7501F9881CD209FA005D14DA /* UIImage-Autoresize-Tests-Info.plist */,
 				7501F9891CD209FA005D14DA /* UIImageView_DynamicImageName.m */,
 			);
 			name = UnitTests;
