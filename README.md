@@ -58,8 +58,7 @@ The following suffixes are expected:
 
 ## Usage
 
-When this class is integrated into your project, you have nothing else to do.
-You can instantiate an image in your code as you usually do:
+When this class is integrated into your project, you can instantiate an image in your code as you usually do:
 
     [UIImage imageNamed: @"background.png" ];
 
@@ -69,6 +68,16 @@ You do NOT need to specify any _custom_ file extension.
 If you do, the library will ignore its own methods and only load the file you are asking for.
 
 **Important:** To avoid edge cases and bugs, always specify the image type: `.png`, `.jpg`, etc. 
+
+## Storyboard integration
+
+It is possible to directly set the image name within an UIImageView in the storyboard. At runtime the default image set will be replaced by the one required by the current screen size and orientation.
+
+To do so, you need to add an `User Defined Runtime Attribute` to the UIImageView object.
+
+The key should be `"dynamicImageName"` and the value the basic image filename `"bg.png"`:
+
+![User Defined Runtime Attributes](https://raw.githubusercontent.com/kevindelord/UIImage-Autoresize/Resources/userDefinedImageName.png)
 
 ## Rotating screen: Portrait & Landscape modes
 
@@ -92,9 +101,11 @@ On iOS 7 and earlier:
         self.imageView.image = [UIImage imageNamed:@"bg.png"];
     }
 
+**Important:**  Those functions and logics are also required when integrating the picture using the storyboard.
+
 ### Tips
 
-If you are implementing a multi interface orientations app, it would be good to do the first initialization of your UIImageView in the viewWillAppear.
+If you are implementing a multi interface orientations app, it would be good to do the first initialization of your UIImageView in the `viewWillAppear`.
 This way, you should have less problems when the orientation change while a child view controller is presented.
 When the user pops back, the previous background will look as it should.
 
