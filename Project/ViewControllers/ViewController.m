@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "UIImage+Autoresize.h"
 
 @implementation ViewController
 

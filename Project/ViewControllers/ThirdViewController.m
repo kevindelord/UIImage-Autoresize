@@ -7,6 +7,7 @@
 //
 
 #import "ThirdViewController.h"
+#import "UIImage+Autoresize.h"
 
 @interface ThirdViewController () {
     UIImageView * _background;

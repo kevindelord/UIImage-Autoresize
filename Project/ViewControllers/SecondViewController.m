@@ -7,6 +7,7 @@
 //
 
 #import "SecondViewController.h"
+#import "UIImage+Autoresize.h"
 
 @interface SecondViewController ()
 
