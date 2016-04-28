@@ -37,9 +37,9 @@ script:
   - xctool -version
 
   # Build Framework and Run Tests
-  - xctool -workspace "$WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "$DESTINATION" GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES build test | xcpretty -c;
+  - xctool -workspace "$WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "$DESTINATION" GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES build test
   # Build Example in Debug
-  # - xctool -workspace "$WORKSPACE" -scheme "$IOS_EXAMPLE_SCHEME"   -sdk "$IOS_SDK" -destination "$DESTINATION" GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES build | xcpretty -c;
+  # - xctool -workspace "$WORKSPACE" -scheme "$IOS_EXAMPLE_SCHEME"   -sdk "$IOS_SDK" -destination "$DESTINATION" GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES build
 
 before_deploy:
   - carthage build --no-skip-current
