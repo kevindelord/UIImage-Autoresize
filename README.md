@@ -60,9 +60,12 @@ Add the following to your `Cartfile`:
 
     github "kevindelord/UIImage-Autoresize"
 
-And import the framework (Swift):
+And import the framework:
 
+    // Swift
     import UIImageAutoresize
+    // Obj-C
+    #import <UIImageAutoresize/UIImage+Autoresize.h>
 
 ## Usage
 
