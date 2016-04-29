@@ -1,7 +1,7 @@
 # UIImage+Autoresize
 
 [![Build Status](https://travis-ci.org/kevindelord/UIImage-Autoresize.svg?branch=master)](https://travis-ci.org/kevindelord/UIImage-Autoresize)
-[![codecov.io](https://codecov.io/github/kevindelord/UIImage-Autoresize/coverage.svg?branch=master)](https://codecov.io/gh/kevindelord/UIImage-Autoresize)
+[![codecov.io](https://codecov.io/github/kevindelord/UIImage-Autoresize/coverage.svg)](https://codecov.io/gh/kevindelord/UIImage-Autoresize)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/kevindelord/UIImage-Autoresize)
 [![License](https://img.shields.io/cocoapods/l/UIImage+Autoresize.svg?style=flat)](http://cocoadocs.org/docsets/UIImage+Autoresize)
