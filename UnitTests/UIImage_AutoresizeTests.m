@@ -79,6 +79,11 @@
 	XCTAssert([image.accessibilityIdentifier isEqualToString:@"ressourcebg-667h@2x.png"]);
 }
 
+- (void)testShouldReturnDynamicImageNameWithoutSpecialSizeParameterGiven {
+	NSString * dynamicImageName = [UIImage getDynamicImageName:@"test.bg@2x.png"];
+	XCTAssertNotNil(dynamicImageName);
+}
+
 #pragma mark - Fake Image Name
 
 - (void)testShouldReturnNilForInvalidImageName {

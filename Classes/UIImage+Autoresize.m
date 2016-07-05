@@ -165,19 +165,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
 	// Only change the name if no '@2x' or '@3x' are specified
 	if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
-		UIInterfaceOrientation interfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
-		CGSize size = [UIScreen mainScreen].bounds.size;
-		//
-		// Before iOS 8.0 the current mainScreen bounds were giving a different result than with newest iOS version.
-		// The size needs to be reversed for landscape mode.
-		if ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedAscending) {
-			if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-				CGFloat temp = size.width;
-				size.width = size.height;
-				size.height = temp;
-			}
-		}
-		return [self imageNamed:imageName withTransitionSize:size inBundle:bundle compatibleWithTraitCollection:traitCollection];
+		return [self imageNamed:imageName withTransitionSize:self.screenSize inBundle:bundle compatibleWithTraitCollection:traitCollection];
 	}
 
 	// Otherwise returns an UIImage with the original filename.
@@ -235,24 +223,11 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
 	// Only change the name if no '@2x' or '@3x' are specified
 	if ([imageName rangeOfString:@"@"].location == NSNotFound) {
 
-		NSString *extension = @"";
-		if (size.height >= size.width) {
-			extension = [self verticalExtensionForHeight:size.height width:size.width scale:[UIScreen mainScreen].scale];
-		} else {
-			extension = [self horizontalExtensionForHeight:size.height width:size.width scale:[UIScreen mainScreen].scale];
-		}
+		NSString *dynamicImageName = [self getDynamicImageName:imageName size:size];
 
-		// Add a custom extension to the image name
-		NSRange dot = [imageName rangeOfString:@"." options:NSBackwardsSearch];
-		NSMutableString *imageNameMutable = [imageName mutableCopy];
-		if (dot.location != NSNotFound) {
-			[imageNameMutable insertString:extension atIndex:dot.location];
-		} else {
-			[imageNameMutable appendString:extension];
-		}
 		// If exist returns the corresponding UIImage
-		if ([bundle pathForResource:imageNameMutable ofType:@""]) {
-			return [UIImage dynamicImageNamedWithAccessibilityIdentifier:imageNameMutable inBundle:bundle compatibleWithTraitCollection:traitCollection];
+		if ([bundle pathForResource:dynamicImageName ofType:@""]) {
+			return [UIImage dynamicImageNamedWithAccessibilityIdentifier:dynamicImageName inBundle:bundle compatibleWithTraitCollection:traitCollection];
 		}
 	}
 	// Otherwise returns an UIImage with the original filename.
@@ -293,6 +268,65 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
 		return false;
 	}
 	return true;
+}
+
+/**
+ * Returns the screen size of the applications UIScreen
+ *
+ *@return the screen size of the applications UIScreen
+ */
++ (CGSize)screenSize {
+	UIInterfaceOrientation interfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
+	CGSize size = [UIScreen mainScreen].bounds.size;
+	//
+	// Before iOS 8.0 the current mainScreen bounds were giving a different result than with newest iOS version.
+	// The size needs to be reversed for landscape mode.
+	if ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedAscending) {
+		if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+			CGFloat temp = size.width;
+			size.width = size.height;
+			size.height = temp;
+		}
+	}
+	return size;
+}
+
+/**
+ *  Returns the dynamic image name for the given image name.
+ *
+ *  @param imageFilename The original filename to which the extension should be added.
+ *
+ *  @return The dynamic filename which includes the screen depending extension.
+ */
++ (NSString *)getDynamicImageName:(NSString *)imageFilename {
+	return [self getDynamicImageName:imageFilename size:self.screenSize];
+}
+
+/**
+ *  Returns the dynamic image name for the given image name.
+ *
+ *  @param imageFilename The original filename to which the extension should be added.
+ *  @param size			 The size of the screen.
+ *
+ *  @return The dynamic filename which includes the screen depending extension.
+ */
++ (NSString *)getDynamicImageName:(NSString *)imageFilename size:(CGSize)size {
+	// Create the extension
+	NSString *extension = @"";
+	if (size.height >= size.width) {
+		extension = [self verticalExtensionForHeight:size.height width:size.width scale:[UIScreen mainScreen].scale];
+	} else {
+		extension = [self horizontalExtensionForHeight:size.height width:size.width scale:[UIScreen mainScreen].scale];
+	}
+	// Add a custom extension to the image name
+	NSRange dot = [imageFilename rangeOfString:@"." options:NSBackwardsSearch];
+	NSMutableString *imageNameMutable = [imageFilename mutableCopy];
+	if (dot.location != NSNotFound) {
+		[imageNameMutable insertString:extension atIndex:dot.location];
+	} else {
+		[imageNameMutable appendString:extension];
+	}
+	return imageNameMutable;
 }
 
 @end
