@@ -62,6 +62,15 @@ FOUNDATION_EXPORT const unsigned char UIImageAutoresizeVersionString[];
  */
 + (UIImage * _Nullable)imageNamed:(NSString * _Nonnull)imageName withTransitionSize:(CGSize)size inBundle:(NSBundle * _Nullable)bundle NS_AVAILABLE_IOS(8.0);
 
+/**
+ *  Returns the dynamic image name for the given image name.
+ *
+ *  @param imageFilename The original filename to which the extension should be added.
+ *
+ *  @return The dynamic filename which includes the screen depending extension.
+ */
++ (NSString *)getDynamicImageName:(NSString *)imageFilename;
+
 @end
 
 /**
