@@ -298,7 +298,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
  *
  *  @return The dynamic filename which includes the screen depending extension.
  */
-+ (NSString *)getDynamicImageName:(NSString *)imageFilename {
++ (NSString * _Nonnull)getDynamicImageName:(NSString * _Nonnull)imageFilename {
 	return [self getDynamicImageName:imageFilename size:self.screenSize];
 }
 
@@ -310,7 +310,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
  *
  *  @return The dynamic filename which includes the screen depending extension.
  */
-+ (NSString *)getDynamicImageName:(NSString *)imageFilename size:(CGSize)size {
++ (NSString * _Nonnull)getDynamicImageName:(NSString * _Nonnull)imageFilename size:(CGSize)size {
 	// Create the extension
 	NSString *extension = @"";
 	if (size.height >= size.width) {

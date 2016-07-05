@@ -69,7 +69,7 @@ FOUNDATION_EXPORT const unsigned char UIImageAutoresizeVersionString[];
  *
  *  @return The dynamic filename which includes the screen depending extension.
  */
-+ (NSString *)getDynamicImageName:(NSString *)imageFilename;
++ (NSString * _Nonnull)getDynamicImageName:(NSString * _Nonnull)imageFilename;
 
 /**
  *  Returns the dynamic image name for the given image name.
@@ -79,7 +79,7 @@ FOUNDATION_EXPORT const unsigned char UIImageAutoresizeVersionString[];
  *
  *  @return The dynamic filename which includes the screen depending extension.
  */
-+ (NSString *)getDynamicImageName:(NSString *)imageFilename size:(CGSize)size;
++ (NSString * _Nonnull)getDynamicImageName:(NSString * _Nonnull)imageFilename size:(CGSize)size;
 
 @end
 
