@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.2.1
+
+- Add `getDynamicImageName:` function.
+- Add `getDynamicImageName:size:` function.
+
 ## 1.2.0
 
 - Add Carthage support.
