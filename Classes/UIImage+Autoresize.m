@@ -124,7 +124,7 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
         extension = @"-768h-l@2x";  // iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2
 	} else if (scale == 2.f && w == 1366.0f && h == 1024.0f) {
 		extension = @"-1024h-l@2x"; // iPad Pro
-	} else if (scale == 3.f && w == 375.0f && h == 812.0f) {
+	} else if (scale == 3.f && w == 812.0f && h == 375.0f) {
 		extension = @"-375h-X-l@3x";		// iPhone X
 	}
 	return extension;
