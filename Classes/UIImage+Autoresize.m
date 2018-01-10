@@ -85,6 +85,8 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
         extension = @"-1024h@2x";   // iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2
 	} else if (scale == 2.f && h == 1366.0f && w == 1024.0f) {
 		extension = @"-1366h@2x";	// iPad Pro
+	} else if (scale == 3.f && h == 812.0f && w == 375.0f) {
+		extension = @"-812h@3x";		// iPhone X
 	}
     return extension;
 }
@@ -122,6 +124,8 @@ void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
         extension = @"-768h-l@2x";  // iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2
 	} else if (scale == 2.f && w == 1366.0f && h == 1024.0f) {
 		extension = @"-1024h-l@2x"; // iPad Pro
+	} else if (scale == 3.f && w == 812.0f && h == 375.0f) {
+		extension = @"-375h-X-l@3x";		// iPhone X
 	}
 	return extension;
 }

@@ -102,4 +102,11 @@
 	XCTAssert([name isEqualToString:@"-1024h-l@2x"]);
 }
 
+- (void)testShouldReturnSuffixForiPhoneX {
+	// iPhone X
+	NSString * name = [UIImage horizontalExtensionForHeight:375.0f width:812.0f scale:3];
+	XCTAssertNotNil(name);
+	XCTAssert([name isEqualToString:@"-375h-X-l@3x"]);
+}
+
 @end
