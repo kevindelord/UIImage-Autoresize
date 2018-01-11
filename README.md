@@ -42,6 +42,7 @@ The following suffixes are expected:
 | -512h       | -384h-l      | iPad Mini, iPad 2, iPad 1 |
 | -1024h@2x   | -768h-l@2x   | iPad Mini 3, iPad Mini 2, iPad Air, iPad Air 2, iPad Pro (9.7 inch) |
 | -1366h@2x   | -1024h-l@2x  | iPad Pro (12,9 inch) |
+
 ## Integration
 
 ### [CocoaPods](http://cocoapods.org)
