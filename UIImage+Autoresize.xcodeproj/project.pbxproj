@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AF7AF0B20065F33009CD3AA /* test.bg-812h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AF7AF0A20065F33009CD3AA /* test.bg-812h@3x.png */; };
+		4AF7AF0C20065F33009CD3AA /* test.bg-812h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AF7AF0A20065F33009CD3AA /* test.bg-812h@3x.png */; };
+		4AF9A781200661770036A795 /* test.bg-375h-X-l@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AF9A780200661770036A795 /* test.bg-375h-X-l@3x.png */; };
+		4AF9A782200661770036A795 /* test.bg-375h-X-l@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AF9A780200661770036A795 /* test.bg-375h-X-l@3x.png */; };
 		7501F98A1CD209FA005D14DA /* ressourcebg-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7501F9801CD209FA005D14DA /* ressourcebg-667h@2x.png */; };
 		7501F98B1CD209FA005D14DA /* UIImage_AutoresizeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501F9811CD209FA005D14DA /* UIImage_AutoresizeTests.m */; };
 		7501F98C1CD209FA005D14DA /* UIImage_HorizontalExtensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7501F9821CD209FA005D14DA /* UIImage_HorizontalExtensionTests.m */; };
@@ -49,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4AF7AF0A20065F33009CD3AA /* test.bg-812h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test.bg-812h@3x.png"; sourceTree = "<group>"; };
+		4AF9A780200661770036A795 /* test.bg-375h-X-l@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test.bg-375h-X-l@3x.png"; sourceTree = "<group>"; };
 		7501F9801CD209FA005D14DA /* ressourcebg-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ressourcebg-667h@2x.png"; path = "UnitTests/ressourcebg-667h@2x.png"; sourceTree = SOURCE_ROOT; };
 		7501F9811CD209FA005D14DA /* UIImage_AutoresizeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImage_AutoresizeTests.m; path = UnitTests/UIImage_AutoresizeTests.m; sourceTree = SOURCE_ROOT; };
 		7501F9821CD209FA005D14DA /* UIImage_HorizontalExtensionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImage_HorizontalExtensionTests.m; path = UnitTests/UIImage_HorizontalExtensionTests.m; sourceTree = SOURCE_ROOT; };
@@ -180,6 +186,7 @@
 				75B4784D1C8F036900C6C3F8 /* test.bg-768h-l@2x.png */,
 				75B4784E1C8F036900C6C3F8 /* test.bg-l.png */,
 				75B4784F1C8F036900C6C3F8 /* test.bg-l@2x.png */,
+				4AF9A780200661770036A795 /* test.bg-375h-X-l@3x.png */,
 				75B478501C8F036900C6C3F8 /* test.bg-l@3x.png */,
 			);
 			path = landscape;
@@ -193,6 +200,7 @@
 				75B478541C8F036900C6C3F8 /* test.bg-512h.png */,
 				75B478551C8F036900C6C3F8 /* test.bg-568h@2x.png */,
 				75B478561C8F036900C6C3F8 /* test.bg-667h@2x.png */,
+				4AF7AF0A20065F33009CD3AA /* test.bg-812h@3x.png */,
 				75B478571C8F036900C6C3F8 /* test.bg-667h@3x.png */,
 				75B478581C8F036900C6C3F8 /* test.bg.png */,
 				75B478591C8F036900C6C3F8 /* test.bg@2x.png */,
@@ -291,6 +299,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF7AF0B20065F33009CD3AA /* test.bg-812h@3x.png in Resources */,
+				4AF9A781200661770036A795 /* test.bg-375h-X-l@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,8 +321,10 @@
 				75323C7C1CCFB21600A681C0 /* test.bg-1024h@2x.png in Resources */,
 				75323C821CCFB21600A681C0 /* test.bg.png in Resources */,
 				75323C861CCFB8BD00A681C0 /* test.bg-320h-l@2x.png in Resources */,
+				4AF9A782200661770036A795 /* test.bg-375h-X-l@3x.png in Resources */,
 				75323C8A1CCFB8BD00A681C0 /* test.bg-768h-l@2x.png in Resources */,
 				75323C7E1CCFB21600A681C0 /* test.bg-512h.png in Resources */,
+				4AF7AF0C20065F33009CD3AA /* test.bg-812h@3x.png in Resources */,
 				75323C801CCFB21600A681C0 /* test.bg-667h@2x.png in Resources */,
 				75323C841CCFB21600A681C0 /* test.bg@3x.png in Resources */,
 				75323C8D1CCFB8BD00A681C0 /* test.bg-l@3x.png in Resources */,
