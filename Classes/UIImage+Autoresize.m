@@ -39,8 +39,8 @@
  *
  *  @param isVertical Is the current device orientation vertical or not.
  *  @param scale      The natural scale factor associated with the screen.
- *  @param h          The height of the displayed screen in pixels.
- *  @param w          The width of the displayed screen in pixels.
+ *  @param height     The height of the displayed screen in pixels.
+ *  @param width      The width of the displayed screen in pixels.
  */
 void logInfo(BOOL isVertical, CGFloat scale, CGFloat height, CGFloat width) {
 	NSLog(@"---------------  %@  ----------------------", (isVertical == true ? @"VERTICAL" : @"HORIZONTAL"));
