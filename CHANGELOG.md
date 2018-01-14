@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.2.2
+- Add iPhone X support.
+
 ## 1.2.1
 
 - Add `getDynamicImageName:` function.
